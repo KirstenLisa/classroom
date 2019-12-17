@@ -1,0 +1,18 @@
+.loginForm {
+    display: block;
+    font-size: 26px;
+}
+
+input {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin: 5px;
+    font-size: 22px;
+}
+
+button {
+    font-size: 20px;
+    border: 2px solid darkgray;
+    border-radius: 3px;
+    margin: 10px;
+}

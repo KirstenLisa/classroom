@@ -11,12 +11,19 @@ class LoginForm extends React.Component {
       this.state = {
         username: '',
         password: '',
-        class_name: ''
+        class_name: '',
+        user_type: ''
         }}
     
     updateClassName(class_name) {
           this.setState({class_name: class_name});  
           }
+
+    updateUserType(user_type) {
+      this.setState({
+        user_type: user_type
+      })
+    }
     
 
     handleSubmit = (e) => {
@@ -30,15 +37,16 @@ class LoginForm extends React.Component {
 
     render() {
 
-      console.log(this.props)
-      console.log(this.context.classList)
+    console.log(this.props)
+    console.log(this.context.classList)
 
-     const classList = this
+    const classList = this
         .context
         .classList
         .map(
             (c, i) => <option value={c.class_id} key={i} id={c.class_id}>{c.class_name}</option>
           );
+    
       
       
 
@@ -88,6 +96,20 @@ class LoginForm extends React.Component {
                     {classList}
                     </select>
                 </div>
+        <div className="user-select">
+          <label htmlFor="user_name">Log in as *</label>
+          <select
+            name="user_type"
+            id="user_type"
+            onChange={e => this.updateUserType(e.target.value)}
+            aria-required="true">
+            <option value={"None"}>Select a class...</option>
+            <option value="teacher" key={1} id={1}>Teacher</option>
+            <option value="parent" key={2} id={2}>Parent</option>
+            <option value="student" key={3} id={3}>Student</option>
+          </select>
+        </div>
+
         <button 
           type="submit"
           className="login-button">

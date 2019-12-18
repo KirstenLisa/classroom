@@ -9,6 +9,8 @@ import LandingPage from './routes/LandingPage/LandingPage'
 import LoginPage from './routes/LoginPage/LoginPage'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import StartPage from './routes/StartPage/StartPage'
+import HomeworkItem from './components/HomeworkItem/HomeworkItem'
+import UpdatesItem from './components/UpdatesItem/UpdatesItem'
 import './App.css'
 
 class App extends Component {
@@ -57,9 +59,26 @@ class App extends Component {
               component={RegistrationPage}
             />
             <Route
-              path={'/welcome/:class'}
+              exact
+              path={'/welcome/:userType/:class'}
               component={StartPage}
             />
+            <Route
+              exact
+              path={'/homework/:userType/:class/:homework'}
+              component={HomeworkItem}
+              />
+
+            <Route
+              exact
+              path={'/latest/:userType/:class/:updates'}
+              component={UpdatesItem}
+              />
+            
+            <Route
+              exact
+              path={'/add-comment/:pageToCommentOn'}
+              />
         
         </main>
       </div>

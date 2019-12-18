@@ -1,19 +1,30 @@
 import React, { Component } from 'react'
-import HomeworkContext from '../../contexts/HomeworkContexts'
-import HomeworkItem from '../../components/HomeworkItem/HomeworkItem'
+import { Link } from 'react-router-dom'
+import ClassesContext from '../../contexts/ClassesContexts'
 import './HomeworkList.css'
 
 export default class HomeworkList extends Component {
-    static contextType = HomeworkContext
+    static contextType = ClassesContext
   
     render() {
 
-      const class_id = this.props
-      console.log(class_id)
+      const userType = "parent"
+      const classId = 1
+      //console.log(class_id)
+      const homeworkForClass = this.context.homeworkList
+      .filter(homework => homework.class_id === classId);
+      const homeworkList = homeworkForClass.map(
+        (homework, i) => <li className="homework-list-subjects" key={i} id={i}>
+          <Link to={`/homework/${userType}/${classId}/${homework.subject}`}>
+            {homework.subject}
+          </Link>
+        </li>
+      )
+     
   
       return (
           <div className="start-page">
-              <HomeworkItem />
+              {homeworkList}
           </div>
         
       )

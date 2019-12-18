@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import updatesList from '../dummystore'
+import STORE from '../dummystore'
 
 
 const UpdatesContext = React.createContext({
@@ -12,7 +12,7 @@ export default UpdatesContext
 export class UpdatesProvider extends Component {
 
 state = {
-  updatesList: updatesList,
+  updatesList: STORE.updatesList,
   error: null
 };
 

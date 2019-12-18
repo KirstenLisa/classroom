@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import homeworkList from '../dummystore'
+import STORE from '../dummystore'
 
 
 const HomeworkContext = React.createContext({
@@ -12,7 +12,7 @@ export default HomeworkContext
 export class HomeworkProvider extends Component {
 
 state = {
-  homeworkList: homeworkList,
+  homeworkList: STORE.homeworkList,
   error: null
 };
 

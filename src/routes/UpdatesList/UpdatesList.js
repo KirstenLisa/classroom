@@ -1,18 +1,35 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContexts'
-import UpdatesItem from '../../components/UpdatesItem/UpdatesItem'
 import './UpdatesList.css'
 
 class UpdatesList extends React.Component {
     static contextType = ClassesContext
-  
-  
+
   
     render() {
+
+    const userType = "parent"
+    const classId = 2
+    const classUpdates = this.context.updatesList.filter(
+                        update => update.class_id === classId)
+    const updatesList = classUpdates.map(
+              (update, i) => 
+              <li id={i} key={i}>
+                <Link to={`/latest/${userType}/${classId}/${update.update_id}`}>
+                  {update.headline}
+                </Link>
+                
+              </li>
+
+    )
   
       return (
           <div className="updates-page">
-              <UpdatesItem />
+            <ul className="updates-list">
+              {updatesList}
+            </ul>
+              
           </div>
         
       )

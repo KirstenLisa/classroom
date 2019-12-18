@@ -15,9 +15,21 @@ class StartPage extends React.Component {
 
     return (
         <div className="start-page">
+          <div className="schedule-section">
+            <h2>SCHEDULE</h2>
             <Schedule />
+          </div>
+          <div className="homework-section">
+            <h2>HOMEWORK</h2>
             <HomeworkList />
+          </div>
+          <div className="updates-section">
+            <h2>LATEST</h2>
             <UpdatesList />
+          </div>
+            
+           
+            
         </div>
       
     )

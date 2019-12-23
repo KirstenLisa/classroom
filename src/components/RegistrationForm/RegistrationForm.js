@@ -1,5 +1,6 @@
 import React from 'react';
-import ClassesContext from '../../contexts/ClassesContexts'
+import {withRouter} from 'react-router'
+import ClassesContext from '../../contexts/ClassesContext'
 
  class RegistrationForm extends React.Component {
 
@@ -12,7 +13,7 @@ import ClassesContext from '../../contexts/ClassesContexts'
 
     const classes = this
           .context
-          .classes
+          .classList
           .map(
             (c, i) => <option value={c.id} key={i} id={c.id}>{c.name}</option>
           );
@@ -77,9 +78,14 @@ import ClassesContext from '../../contexts/ClassesContexts'
         <button type='submit'>
           Register
         </button>
+        <button
+          type='button' 
+          onClick={() => this.props.history.push('/')}>
+          Cancel
+        </button>
       </form>
     )
   }
 }
 
-export default RegistrationForm ;
+export default withRouter(RegistrationForm);

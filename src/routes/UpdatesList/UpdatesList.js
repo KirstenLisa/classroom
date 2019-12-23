@@ -1,6 +1,7 @@
 import React from 'react'
+import {withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
-import ClassesContext from '../../contexts/ClassesContexts'
+import ClassesContext from '../../contexts/ClassesContext'
 import './UpdatesList.css'
 
 class UpdatesList extends React.Component {
@@ -9,17 +10,17 @@ class UpdatesList extends React.Component {
   
     render() {
 
-    const userType = "parent"
-    const classId = 2
+    const userType = this.props.match.params.userType
+    const classId = this.props.match.params.class
+    console.log(this.props.match)
     const classUpdates = this.context.updatesList.filter(
-                        update => update.class_id === classId)
+                        update => update.class_id == classId)
     const updatesList = classUpdates.map(
               (update, i) => 
               <li id={i} key={i}>
                 <Link to={`/latest/${userType}/${classId}/${update.update_id}`}>
                   {update.headline}
-                </Link>
-                
+                </Link> 
               </li>
 
     )
@@ -29,6 +30,16 @@ class UpdatesList extends React.Component {
             <ul className="updates-list">
               {updatesList}
             </ul>
+
+            {userType === "teacher" && (
+              <button
+                type="button"
+                className="addUpdate">
+                  <Link to={`/latest/add-update/${classId}`}>
+                    Add Update
+                  </Link>
+                </button>
+            )}
               
           </div>
         
@@ -36,4 +47,6 @@ class UpdatesList extends React.Component {
     }
   }
 
-export default UpdatesList;
+export default withRouter(UpdatesList);
+
+//<Link to={`/latest/add-update/${classId}`}>

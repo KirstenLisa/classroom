@@ -1,5 +1,5 @@
 import React from 'react';
-import ClassesContext from '../../contexts/ClassesContexts'
+import ClassesContext from '../../contexts/ClassesContext'
 import Schedule from '../Schedule/Schedule'
 import HomeworkList from '../HomeworkList/HomeworkList'
 import UpdatesList from '../UpdatesList/UpdatesList'

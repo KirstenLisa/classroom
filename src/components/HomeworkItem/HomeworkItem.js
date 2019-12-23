@@ -1,49 +1,129 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
-import ClassesContext from '../../contexts/ClassesContexts'
+import ClassesContext from '../../contexts/ClassesContext'
+import Homework from '../Homework/Homework'
+import Comment from '../Comment/Comment'
 import './HomeworkItem.css'
 
 class HomeworkItem extends React.Component {
 
     static contextType = ClassesContext
 
+    deleteRequest = (e) => {
+        e.preventDefault();
+        //const id = 
+        const classId = this.props.match.params.class
+        //console.log(id)
+        //this.context.deleteHomework(id)
+        //this.props.history.push(`/welcome/teacher/${classId}`);
 
+    }
+
+  
     render() {
 
-        const classId = 1
-        const subject = "Math"
-        const className = this.context.classList.filter(c => c.class_id === classId)
-        const classHomework = this.context.homeworkList.filter(homework => homework.class_id === classId)
-        const homework = classHomework.filter(homework => homework.subject === subject)
-        console.log(homework[0])
-        const teacherId = homework[0].teacher_id
-        const teacherName = this.context.teachersList.filter(teacher => teacher.id === teacherId)
-        console.log(teacherName)
+        const classId = this.props.match.params.class
+        const className = this.context.classList.filter(c => c.class_id == classId)
+        const classHomework = this.context.homeworkList.filter(homework => homework.class_id == classId)
+        const homeworkId = this.props.match.params.homework
+        const userType = this.props.match.params.userType
+        const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
+        //const teacherId = homework.map(homework => homework.teacher_id)
+        //const teacherName = this.context.teachersList.filter(teacher => teacher.id == teacherId)
+        //console.log(teacherName)
+        const homeworkList = homework.map(
+            (homework, i) => 
+                    <li className="homework" id={homework.homework_id} key={i}>
+                            <Homework
+                                id={homework.id}
+                                subject={homework.subject}
+                                homework={homework.homework}
+                                due_date={format(new Date(homework.due_date), 'do MMM yyyy')}
+                                teacher_name={homework.teacher_name}
+                                class_id={homework.class_id}
+                                />
+                                <div className="homework-buttons">
+                {userType === "teacher" && (
+                    <button
+                        type="button"
+                        className="editHomework">
+                            <Link
+                                to={`/edit-homework/${homework.class_id}/${homework.homework_id}/${homework.id}`}>
+                            Edit
+                            </Link>
+                      
+                        </button>
+                    )}
+                {userType === "teacher" && (
+                    <button
+                        type="button"
+                        className="deleteHomework"
+                        onClick={this.deleteRequest}>
+                            Delete
+                        </button>
+                    )}
+                
+                    </div>
+                    </li>)
+        
+        const commentsList = this.context.commentsList.filter(comment => comment.page_id == homeworkId)
+        const comment = commentsList.map(
+                        (comment, i) => 
+                        <li className="comment" id={comment.id} key={i}>
+                            <Comment 
+                                comment={comment.comment}
+                                date={format(new Date(), 'do MMM yyyy')}
+                                author={comment.user_name}
+                                id={comment.comment_id}
+                                />
+            </li>);
+
+     
+
 
         return (
             <div className="homework-item">
-                <h2>{subject} homework for class {className[0].class_name}</h2>
-                <h3>{teacherName[0].teacher_name}</h3>
-                <ul className="homework">
-                    To Do
-                    <li>{homework[0].homework}</li>
-                    <li>Due Date: {format(new Date(homework[0].due_date), 'do MMM yyyy')}</li>
-            </ul>
-            <div className="homework-buttons">
-                <button 
+                <h2>{homework[0].subject} homework for class {className[0].class_name}</h2>
+               {homeworkList}
+
+               <div>
+               {userType === "teacher" && (
+               <button 
                     type="button"
-                    className="commentButton">
-                        Comment
-                    </button>
+                    className="addButton">
+                        <Link to={`/add-homework/${classId}/${homeworkId}`} 
+                              className="addHomeworkButton">
+                            Add Homework
+                        </Link>
+                    </button>)}
+                
+
                     <button 
                     type="button"
-                    className="backButton">
+                    className="backButton"
+                    onClick={() => this.props.history.goBack()}>
                         Back
                     </button>
+                
             </div>
             <div className="homework-comments">
                 <h3>Comments</h3>
+                <button 
+                    type="button"
+                    className="Button">
+                        <Link to={`/homework/add-comment/${homeworkId}`} className="addCommentButton">
+                            Comment
+                        </Link>
+                    </button>
+                {comment.length > 0 && (
+                    <ul className="homework-comments">
+                        {comment}   
+                    </ul>
+                )}
+                {!comment.length && (
+                    <p>No comments</p>
+                )}
             </div>
             </div>
             

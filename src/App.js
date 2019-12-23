@@ -11,6 +11,11 @@ import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import StartPage from './routes/StartPage/StartPage'
 import HomeworkItem from './components/HomeworkItem/HomeworkItem'
 import UpdatesItem from './components/UpdatesItem/UpdatesItem'
+import AddComment from './routes/AddComment/AddComment'
+import AddUpdate from './routes/AddUpdate/AddUpdate'
+import AddHomework from './routes/AddHomework/AddHomework'
+import EditHomework from './routes/EditHomework/EditHomework'
+import EditUpdate from './routes/EditUpdate/EditUpdate'
 import './App.css'
 
 class App extends Component {
@@ -22,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+  
     return (
       <>
       <GoogleFontLoader
@@ -62,11 +67,18 @@ class App extends Component {
               exact
               path={'/welcome/:userType/:class'}
               component={StartPage}
-            />
+              />
+
             <Route
               exact
               path={'/homework/:userType/:class/:homework'}
               component={HomeworkItem}
+              />
+            
+            <Route
+              exact
+              path={'/homework/add-comment/:pageToCommentOn'}
+              component={AddComment}
               />
 
             <Route
@@ -74,10 +86,35 @@ class App extends Component {
               path={'/latest/:userType/:class/:updates'}
               component={UpdatesItem}
               />
+
+            <Route
+              exact
+              path={'/latest/add-update/:class'}
+              component={AddUpdate}
+              />
+
+            <Route
+              exact
+              path={'/add-homework/:class/:homework'}
+              component={AddHomework}
+              />
+
+            <Route
+              exact
+              path={'/edit-homework/:class/:homework/:id'}
+              component={EditHomework}
+              />
+
+              <Route
+                exact
+                path={'/edit-update/:class/:updates'}
+                component={EditUpdate}
+                />
             
             <Route
               exact
-              path={'/add-comment/:pageToCommentOn'}
+              path={'/latest/add-comment/:pageToCommentOn'}
+              component={AddComment}
               />
         
         </main>

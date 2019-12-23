@@ -1,5 +1,6 @@
 import React from 'react';
-import ClassesContext from '../../contexts/ClassesContexts'
+import {withRouter} from 'react-router'
+import ClassesContext from '../../contexts/ClassesContext'
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -28,10 +29,11 @@ class LoginForm extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
-      const {class_name} = e.target
+      const {class_name, user_type} = e.target
       const class_id = class_name.value
+      const user = user_type.value
       console.log('submit login form: ' + class_id)
-      this.props.history.push(`/welcome/${class_id}`) 
+      this.props.history.push(`/welcome/${user}/${class_id}`) 
       
     }
 
@@ -86,7 +88,7 @@ class LoginForm extends React.Component {
             />
         </div>
         <div className="class-select">
-            <label htmlFor="class_name">Select a class: *</label>
+            <label htmlFor="class_name">Select a class: </label>
             <select
                 name="class_name"
                 id="class_name"
@@ -125,4 +127,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

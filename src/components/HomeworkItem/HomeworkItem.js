@@ -47,7 +47,7 @@ class HomeworkItem extends React.Component {
                 {userType === "teacher" && (
                     <button
                         type="button"
-                        className="editHomework">
+                        className="teacher-only-buttons">
                             <Link
                                 to={`/edit-homework/${homework.class_id}/${homework.homework_id}/${homework.id}`}>
                             Edit
@@ -58,7 +58,7 @@ class HomeworkItem extends React.Component {
                 {userType === "teacher" && (
                     <button
                         type="button"
-                        className="deleteHomework"
+                        className="teacher-only-buttons"
                         onClick={this.deleteRequest}>
                             Delete
                         </button>
@@ -84,29 +84,29 @@ class HomeworkItem extends React.Component {
 
         return (
             <div className="homework-item">
+                <button 
+                        type="button"
+                        className="backButton"
+                        onClick={() => this.props.history.push(`/welcome/${userType}/${classId}`)}>
+                            Back
+                        </button>
                 <h2>{homework[0].subject} homework for class {className[0].class_name}</h2>
-               {homeworkList}
-
+                {homeworkList}
                <div>
-               {userType === "teacher" && (
-               <button 
-                    type="button"
-                    className="addButton">
-                        <Link to={`/add-homework/${classId}/${homeworkId}`} 
-                              className="addHomeworkButton">
-                            Add Homework
-                        </Link>
-                    </button>)}
-                
+                {userType === "teacher" && (
+                <button 
+                        type="button"
+                        className="teacher-only-buttons">
+                            <Link to={`/add-homework/${classId}/${homeworkId}`} 
+                                className="addHomeworkButton">
+                                Add
+                            </Link>
+                        </button>)}
+                    
 
-                    <button 
-                    type="button"
-                    className="backButton"
-                    onClick={() => this.props.history.goBack()}>
-                        Back
-                    </button>
+                        
+                </div>
                 
-            </div>
             <div className="homework-comments">
                 <h3>Comments</h3>
                 <button 

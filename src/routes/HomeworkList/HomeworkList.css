@@ -1,0 +1,21 @@
+.homework-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.homework-list-subjects {
+    list-style: none;
+    font-size: 20px;
+}
+
+a:link { 
+    color:black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: darkgreen;
+}
+
+
+

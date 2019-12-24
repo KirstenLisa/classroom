@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
+import Comment from '../Comment/Comment'
 import './UpdatesItem.css'
 
 class UpdatesItem extends React.Component {
@@ -25,7 +26,17 @@ class UpdatesItem extends React.Component {
     const updateId = this.props.match.params.updates
     const classUpdates = this.context.updatesList.filter(update => update.class_id == classId)
     const updateItem = classUpdates.filter(update => update.update_id == updateId)
-    console.log(updateItem)
+    const commentsList = this.context.commentsList.filter(comment => comment.page_id == updateId)
+        const comment = commentsList.map(
+                        (comment, i) => 
+                        <li className="comment" id={comment.id} key={i}>
+                            <Comment 
+                                comment={comment.comment}
+                                date={format(new Date(), 'do MMM yyyy')}
+                                author={comment.user_name}
+                                id={comment.comment_id}
+                                />
+            </li>);
 
         return (
             <div>
@@ -71,9 +82,14 @@ class UpdatesItem extends React.Component {
             </div>
             <div className="updates-comments">
                 <h3>Comments</h3>
-                <ul>
-                    comments placeholder
-                </ul>
+                {comment.length > 0 && (
+                    <ul className="update-comments">
+                        {comment}   
+                    </ul>
+                )}
+                {!comment.length && (
+                    <p>No comments</p>
+                )}
             </div>
 
             </div>

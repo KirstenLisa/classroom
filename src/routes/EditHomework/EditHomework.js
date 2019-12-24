@@ -43,6 +43,7 @@ class EditHomework extends React.Component {
         this.setState({
             id: this.props.match.params.id,
             homework_id: this.props.match.params.homework,
+            subject: currentHomework[0].subject,
             homework: currentHomework[0].homework,
             due_date: currentHomework[0].due_date,
             teacher_id: currentHomework[0].teacher_id,
@@ -65,6 +66,7 @@ class EditHomework extends React.Component {
         const updatedHomework = {
             id: this.props.match.params.id,
             homework_id: this.props.match.params.homework,
+            subject: this.state.subject,
             homework: homework.value,
             due_date: due_date.value,
             teacher_id: teacher_id.value,

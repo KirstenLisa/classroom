@@ -1,0 +1,29 @@
+.updates-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.updates-list {
+    list-style: none;
+    font-size: 20px;
+}
+
+a:link { 
+    color:black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: darkgreen;
+}
+
+.add-update-button {
+    color: white;
+    font-size: 18px;
+    width: 40%;
+    align-self: center;
+}
+
+.add-update-button a:visited {
+    color: white;
+}

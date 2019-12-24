@@ -34,7 +34,7 @@ class UpdatesList extends React.Component {
             {userType === "teacher" && (
               <button
                 type="button"
-                className="addUpdate">
+                className="add-update-button">
                   <Link to={`/latest/add-update/${classId}`}>
                     Add Update
                   </Link>
@@ -48,5 +48,3 @@ class UpdatesList extends React.Component {
   }
 
 export default withRouter(UpdatesList);
-
-//<Link to={`/latest/add-update/${classId}`}>

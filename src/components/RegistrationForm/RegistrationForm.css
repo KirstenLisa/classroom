@@ -1,0 +1,29 @@
+.registration-form {
+    display: block;
+    font-size: 26px;
+}
+
+input {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin: 5px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+select {
+    font-size: 18px;
+}
+.registration-form-buttons {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: darkgreen;
+    color: white;
+    font-size: 20px;
+    border: 2px solid darkgreen;
+    border-radius: 3px;
+    margin: 10px;
+}

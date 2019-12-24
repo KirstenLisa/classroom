@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router'
 import ClassesContext from '../../contexts/ClassesContext'
+import './RegistrationForm.css'
 
  class RegistrationForm extends React.Component {
 
@@ -11,17 +12,17 @@ import ClassesContext from '../../contexts/ClassesContext'
 
   render() {
 
-    const classes = this
-          .context
-          .classList
-          .map(
-            (c, i) => <option value={c.id} key={i} id={c.id}>{c.name}</option>
-          );
+    const classList = this
+    .context
+    .classList
+    .map(
+        (c, i) => <option value={c.class_id} key={i} id={c.class_id}>{c.class_name}</option>
+      );
 
     const { error } = this.state
     return (
       <form
-        className='RegistrationForm'>
+        className="registration-form">
         <div role='alert'>
           {}
         </div>
@@ -66,23 +67,25 @@ import ClassesContext from '../../contexts/ClassesContext'
             />
         </div>
         <div className="class-select">
-            <label htmlFor="class">Select a class: *</label>
+            <label htmlFor="class">Select a class: </label>
             <select
                 name="class"
                 aria-required="true">
                     <option value={"None"}>Select a class...</option>
-                    {classes}
+                    {classList}
                     </select>
                 </div>
-       
+       <div className="registration-form-buttons">
         <button type='submit'>
-          Register
-        </button>
-        <button
-          type='button' 
-          onClick={() => this.props.history.push('/')}>
-          Cancel
-        </button>
+            Register
+          </button>
+          <button
+            type='button' 
+            onClick={() => this.props.history.push('/')}>
+            Cancel
+          </button>
+       </div>
+        
       </form>
     )
   }

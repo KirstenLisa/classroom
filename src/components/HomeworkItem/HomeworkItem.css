@@ -1,0 +1,25 @@
+.homework-item {
+    list-style: none;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+.teacher-only-buttons a:link {
+    color: darkgreen;
+}
+
+.teacher-only-buttons a:visited {
+    color: darkgreen;
+}
+
+.teacher-only-buttons {
+    color: darkgreen;
+    background-color: white;
+    border: 2px solid darkgreen;
+}

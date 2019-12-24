@@ -38,7 +38,7 @@ class HomeworkList extends Component {
       )
 
       return (
-          <div className="start-page">
+          <div className="homework-page">
               {homeworkList}
           </div>
         

@@ -15,6 +15,10 @@ nav {
     text-decoration: none;
   }
 
+  .Header a:visited {
+    color: black;
+  }
+
   .Header__not-logged-in {
     font-size: 20px;
     display: flex;

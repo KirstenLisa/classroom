@@ -41,7 +41,7 @@ addHomework = homework => {
 deleteHomework = homeworkId => {
   console.log('delete homework')
   let newHomeworkList = this.state.homeworkList.filter(homework => 
-    homework.id != homeworkId)
+    homework.homework_id != homeworkId)
     
     this.setState({
       homeworkList: newHomeworkList

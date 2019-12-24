@@ -2,11 +2,19 @@
     list-style: none;
 }
 
-a:link {
+.addCommentButton a:link {
     color: white;
 }
 
-a:visited {
+.addCommentButton a:visited {
+    color: white;
+}
+
+.backButton a:visited {
+    color: white;
+}
+
+.backButton a:link {
     color: white;
 }
 
@@ -23,3 +31,4 @@ a:visited {
     background-color: white;
     border: 2px solid darkgreen;
 }
+

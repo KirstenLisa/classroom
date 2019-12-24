@@ -13,8 +13,8 @@ class LoginForm extends React.Component {
       this.state = {
         username: {value: '', touched: false},
         password: {value: '', touched: false},
-        class_name: {value: '', touched: false},
-        user_type: {value: '', touched: false},
+        class_name: {value: 'None', touched: false},
+        user_type: {value: 'None', touched: false},
         error: null
       }}
 
@@ -27,6 +27,7 @@ class LoginForm extends React.Component {
     }
     
     updateClassName(class_name) {
+      console.log(class_name)
           this.setState({class_name: {value: class_name, touched: true}});  
           }
 
@@ -37,19 +38,19 @@ class LoginForm extends React.Component {
     }
 
     validateUserName() {
-      const userName = this.state.username.value.trim();
+      const userName = this.state.username.value;
       console.log(userName)
-        if (userName.length === 0) {
+        if (userName === undefined) {
           return 'Username is required';
         } else if (userName.length < 3) {
           return 'Username must be at least 3 characters long';
-        }
     }
+  }
 
     validatePassword() {
       console.log('password validation')
-      const password = this.state.password.value.trim();
-        if (password.length === 0) {
+      const password = this.state.password.value;
+        if (password === undefined) {
           return 'password is required';
         } else if (password.length < 5) {
           return 'Password must be at least 5 characters long';
@@ -59,7 +60,7 @@ class LoginForm extends React.Component {
     validateUserSelection() {
       const selectedUserType = this.state.user_type.value;
       console.log('selectedUserType:' + selectedUserType);
-      if(selectedUserType === "None" || selectedUserType === '') {
+      if(selectedUserType === "None" || selectedUserType === '' || selectedUserType === undefined) {
         return 'User Type is required';
       }
   }
@@ -67,22 +68,33 @@ class LoginForm extends React.Component {
   validateClassSelection() {
     const selectedClassName = this.state.class_name.value;
     console.log('selectedClass:' + selectedClassName);
-    if(selectedClassName === "None" || selectedClassName === '') {
+    if(selectedClassName === "None" || selectedClassName === '' || selectedClassName === undefined) {
       return 'Class is required';
     }
 }
 
-disableButton() {
-  if(this.validateUserName() ||this.validatePassword() || 
-  this.validateUserSelection() ||this.validateClassSelection()) {
-      return true
+validateForm() {
+  if (this.validateUserName()) {
+    this.setState({username: {touched:true}})
+  } else if (this.validatePassword()) {
+    this.setState({password: {touched: true}})
+  } else if (this.validateClassSelection()) {
+    this.setState({class_name: {touched: true}})
+  } else if (this.validateUserSelection()) {
+    this.setState({user_type: {touched: true}})
   }
 }
 
-
+ 
+      
 
     handleSubmit = (e) => {
       e.preventDefault();
+     
+      if (this.validateForm()) {
+        return false;
+      }
+  
       const {class_name, user_type} = e.target
       const class_id = class_name.value
       const user = user_type.value
@@ -108,7 +120,7 @@ disableButton() {
     const passwordError = this.validatePassword();
     const userTypeError = this.validateUserSelection();
     const classNameError = this.validateClassSelection();
-    const buttonDisabled = this.disableButton();
+    
     
 
         return (
@@ -186,7 +198,7 @@ disableButton() {
           <button 
             type="submit"
             className="login-button"
-            disabled={buttonDisabled}>
+            >
             Login
           </button>
           <button

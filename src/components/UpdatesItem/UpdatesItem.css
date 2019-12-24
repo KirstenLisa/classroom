@@ -1,0 +1,33 @@
+.homework-item {
+    list-style: none;
+}
+
+.addCommentButton a:link {
+    color: white;
+}
+
+.addCommentButton a:visited {
+    color: white;
+}
+
+.backButton a:visited {
+    color: white;
+}
+
+.backButton a:link {
+    color: white;
+}
+
+.editButton a:link {
+    color: darkgreen;
+}
+
+.editButton a:visited {
+    color: darkgreen;
+}
+
+.editButton, .deleteButton {
+    color: darkgreen;
+    background-color: white;
+    border: 2px solid darkgreen;
+}

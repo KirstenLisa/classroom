@@ -12,11 +12,13 @@ class HomeworkItem extends React.Component {
 
     deleteRequest = (e) => {
         e.preventDefault();
-        //const id = 
+        const homeworkId = this.props.match.params.homework
         const classId = this.props.match.params.class
-        //console.log(id)
-        //this.context.deleteHomework(id)
-        //this.props.history.push(`/welcome/teacher/${classId}`);
+        console.log(homeworkId)
+        this.context.deleteHomework(homeworkId)
+        this.props.history.push(`/welcome/teacher/${classId}`);
+        
+        
 
     }
 
@@ -29,9 +31,6 @@ class HomeworkItem extends React.Component {
         const homeworkId = this.props.match.params.homework
         const userType = this.props.match.params.userType
         const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
-        //const teacherId = homework.map(homework => homework.teacher_id)
-        //const teacherName = this.context.teachersList.filter(teacher => teacher.id == teacherId)
-        //console.log(teacherName)
         const homeworkList = homework.map(
             (homework, i) => 
                     <li className="homework" id={homework.homework_id} key={i}>
@@ -109,13 +108,7 @@ class HomeworkItem extends React.Component {
                 
             <div className="homework-comments">
                 <h3>Comments</h3>
-                <button 
-                    type="button"
-                    className="Button">
-                        <Link to={`/homework/add-comment/${homeworkId}`} className="addCommentButton">
-                            Comment
-                        </Link>
-                    </button>
+                
                 {comment.length > 0 && (
                     <ul className="homework-comments">
                         {comment}   
@@ -124,6 +117,13 @@ class HomeworkItem extends React.Component {
                 {!comment.length && (
                     <p>No comments</p>
                 )}
+                <button 
+                    type="button"
+                    className="addCommentButton">
+                        <Link to={`/homework/add-comment/${homeworkId}`} className="addCommentButton">
+                            Comment
+                        </Link>
+                    </button>
             </div>
             </div>
             

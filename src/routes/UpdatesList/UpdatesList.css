@@ -24,6 +24,10 @@ a:visited {
     align-self: center;
 }
 
+.add-update-button a:link {
+    color: white;
+}
+
 .add-update-button a:visited {
     color: white;
 }

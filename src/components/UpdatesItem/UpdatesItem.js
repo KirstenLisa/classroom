@@ -40,6 +40,13 @@ class UpdatesItem extends React.Component {
 
         return (
             <div>
+                  <button 
+                    type="button"
+                    className="backButton"
+                    onClick={() => this.props.history.goBack()}>
+                        Back
+                    </button>
+
                 <h2>Latest</h2>
                 <div className="updates-item">
                 <h3>{updateItem[0].headline}</h3>
@@ -51,7 +58,7 @@ class UpdatesItem extends React.Component {
             {userType === "teacher" && (
                     <button
                         type="button"
-                        className="editUpdate">
+                        className="editButton">
                             <Link to={`/edit-update/${classId}/${updateId}`}>
                             Edit
                             </Link>
@@ -61,24 +68,12 @@ class UpdatesItem extends React.Component {
                 {userType === "teacher" && (
                     <button
                         type="button"
-                        className="deleteUpdate"
+                        className="deleteButton"
                         onClick={this.deleteRequest}>
                             Delete
                         </button>
                     )}
-                <button 
-                    type="button"
-                    className="Button">
-                        <Link to={`/latest/add-comment/${updateId}`} className="addCommentButton">
-                            Comment
-                        </Link>
-                    </button>
-                    <button 
-                    type="button"
-                    className="backButton"
-                    onClick={() => this.props.history.goBack()}>
-                        Back
-                    </button>
+                
             </div>
             <div className="updates-comments">
                 <h3>Comments</h3>
@@ -90,6 +85,13 @@ class UpdatesItem extends React.Component {
                 {!comment.length && (
                     <p>No comments</p>
                 )}
+                <button 
+                    type="button"
+                    className="addCommentButton">
+                        <Link to={`/latest/add-comment/${updateId}`} className="addCommentButton">
+                            Comment
+                        </Link>
+                    </button>
             </div>
 
             </div>

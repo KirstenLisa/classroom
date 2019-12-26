@@ -91,9 +91,7 @@ validateForm() {
     handleSubmit = (e) => {
       e.preventDefault();
      
-      if (this.validateForm()) {
-        return false;
-      }
+      this.validateForm()
   
       const {class_name, user_type} = e.target
       const class_id = class_name.value

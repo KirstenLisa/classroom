@@ -1,5 +1,7 @@
 import React from 'react';
+import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
+import UpdateApiService from '../../services/update-api-services'
 import './AddUpdate.css'
 
 class AddUpdate extends React.Component {
@@ -14,7 +16,7 @@ class AddUpdate extends React.Component {
           content: '',
           class_id: '',
           author: '',
-          date: new Date(),
+          date: '',
           error: null
           }
         }
@@ -37,6 +39,7 @@ class AddUpdate extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+    
         console.log('submit update')
       
 
@@ -44,7 +47,7 @@ class AddUpdate extends React.Component {
         
 
         const newUpdate = {
-            update_id: 280,
+           
             headline: headline.value,
             content: content.value,
             author: author.value,
@@ -54,8 +57,14 @@ class AddUpdate extends React.Component {
 
         console.log(newUpdate)
 
-        this.context.addUpdate(newUpdate)
-        this.props.history.goBack()  
+    
+        UpdateApiService.postUpdate(newUpdate)
+              .then(this.context.addUpdate)
+              //need new update_id
+              .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+              .catch(this.context.setError)
+            
+         
     }
 
 

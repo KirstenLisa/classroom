@@ -1,5 +1,8 @@
 import React from 'react';
 import ClassesContext from '../../contexts/ClassesContext'
+import UsersApiService from '../../services/users-api-service'
+import UpdateApiService from '../../services/update-api-services'
+import HomeworkApiService from '../../services/homework-api-service'
 import './AddComment.css'
 
 class AddComment extends React.Component {
@@ -17,6 +20,16 @@ class AddComment extends React.Component {
           }
         }
 
+    
+
+    //componentDidMount() {
+       // this.context.clearError()
+      //  UsersApiService.getUsers()
+       //     .then(this.context.setUsersList)
+       //     .then(console.log(this.context.usersList))
+        //    .catch(this.context.setError)
+       //   }
+
 
     updateComment(comment) {
         this.setState({comment: comment})
@@ -29,6 +42,11 @@ class AddComment extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const userType = this.props.match.params.userType
+        const classId = this.props.match.params.class
+        console.log(classId)
+        const updateId = this.props.match.params.pageToCommentOn
+        //const userId = 
         console.log('submit comment')
       
 
@@ -39,17 +57,28 @@ class AddComment extends React.Component {
             comment: comment.value,
             user_name: user_name.value,
             date: new Date(),
+            user_id: 2, 
             page_id: this.props.match.params.pageToCommentOn   
         }
 
         console.log(newComment)
 
-        this.context.addComment(newComment)
-        this.props.history.goBack()  
+    //     UpdateApiService.postComment(newComment)
+    //         .then(this.context.addUpdateComment)
+    //         .then(this.props.history.goBack())
+    //         .catch(this.context.setError)
+
+    
+
+    HomeworkApiService.postComment(newComment)
+        .then(this.context.addHomeworkComment)
+        .then(this.props.history.goBack())
+        .catch(this.context.setError)
     }
 
 
     render() {
+
 
         const {error} = this.state;
 

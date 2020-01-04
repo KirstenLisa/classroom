@@ -2,17 +2,26 @@ import React from 'react'
 import {withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
+import UpdateApiService from '../../services/update-api-services'
 import './UpdatesList.css'
 
 class UpdatesList extends React.Component {
     static contextType = ClassesContext
 
+  componentDidMount() {
+      this.context.clearError()
+      UpdateApiService.getUpdates()
+        .then(this.context.setUpdatesList)
+        .catch(this.context.setError)
+    }
+
   
     render() {
 
+    //console.log('updates list:')
+    //onsole.log(this.context.updatesList)
     const userType = this.props.match.params.userType
     const classId = this.props.match.params.class
-    console.log(this.props.match)
     const classUpdates = this.context.updatesList.filter(
                         update => update.class_id == classId)
     const updatesList = classUpdates.map(

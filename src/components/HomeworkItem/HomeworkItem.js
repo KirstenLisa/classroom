@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
+import HomeworkApiService from '../../services/homework-api-service'
+import ClassApiService from '../../services/classes-api-service';
 import Homework from '../Homework/Homework'
 import Comment from '../Comment/Comment'
 import './HomeworkItem.css'
@@ -10,11 +12,27 @@ class HomeworkItem extends React.Component {
 
     static contextType = ClassesContext
 
+    componentDidMount() {
+        const homeworkId = this.props.match.params.homework
+        this.context.clearError()
+        ClassApiService.getClasses()
+          .then(this.context.setClassList)
+          .catch(this.context.setError)
+        HomeworkApiService.getHomework()
+          .then(this.context.setHomeworkList)
+          //.then(console.log(this.context.homeworkList))
+          .catch(this.context.setError)
+        HomeworkApiService.getHomeworkComments(homeworkId)
+          .then(this.context.setHomeworkCommentsList)
+          .then(console.log(this.props.match.params.homework))
+          .catch(this.context.setError)
+      }
+
     deleteRequest = (e) => {
         e.preventDefault();
         const homeworkId = this.props.match.params.homework
         const classId = this.props.match.params.class
-        console.log(homeworkId)
+        //console.log(homeworkId)
         this.context.deleteHomework(homeworkId)
         this.props.history.push(`/welcome/teacher/${classId}`);
         
@@ -27,10 +45,12 @@ class HomeworkItem extends React.Component {
 
         const classId = this.props.match.params.class
         const className = this.context.classList.filter(c => c.class_id == classId)
+        const subject = this.props.match.params.subject
         const classHomework = this.context.homeworkList.filter(homework => homework.class_id == classId)
         const homeworkId = this.props.match.params.homework
         const userType = this.props.match.params.userType
         const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
+       // console.log(this.context.homeworkList)
         const homeworkList = homework.map(
             (homework, i) => 
                     <li className="homework" id={homework.homework_id} key={i}>
@@ -66,7 +86,7 @@ class HomeworkItem extends React.Component {
                     </div>
                     </li>)
         
-        const commentsList = this.context.commentsList.filter(comment => comment.page_id == homeworkId)
+        const commentsList = this.context.homeworkCommentsList
         const comment = commentsList.map(
                         (comment, i) => 
                         <li className="comment" id={comment.id} key={i}>
@@ -96,7 +116,7 @@ class HomeworkItem extends React.Component {
                 <button 
                         type="button"
                         className="teacher-only-buttons">
-                            <Link to={`/add-homework/${classId}/${homeworkId}`} 
+                            <Link to={`/add-homework/${classId}/${homeworkId}/${subject}`} 
                                 className="addHomeworkButton">
                                 Add
                             </Link>
@@ -120,7 +140,7 @@ class HomeworkItem extends React.Component {
                 <button 
                     type="button"
                     className="addCommentButton">
-                        <Link to={`/homework/add-comment/${homeworkId}`} className="addCommentButton">
+                        <Link to={`/add-comment/homework/${userType}/${homeworkId}`} className="addCommentButton">
                             Comment
                         </Link>
                     </button>

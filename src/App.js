@@ -71,13 +71,13 @@ class App extends Component {
 
             <Route
               exact
-              path={'/homework/:userType/:class/:homework'}
+              path={'/homework/:userType/:class/:homework/:subject'}
               component={HomeworkItem}
               />
             
             <Route
               exact
-              path={'/homework/add-comment/:pageToCommentOn'}
+              path={'/add-comment/homework/:userType/:pageToCommentOn'}
               component={AddComment}
               />
 
@@ -95,7 +95,7 @@ class App extends Component {
 
             <Route
               exact
-              path={'/add-homework/:class/:homework'}
+              path={'/add-homework/:class/:homework/:subject'}
               component={AddHomework}
               />
 
@@ -113,7 +113,7 @@ class App extends Component {
             
             <Route
               exact
-              path={'/latest/add-comment/:pageToCommentOn'}
+              path={'/add-comment/latest/:userType/:pageToCommentOn'}
               component={AddComment}
               />
         

@@ -2,6 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router'
 import ClassesContext from '../../contexts/ClassesContext'
 import ValidationError from '../ValidationError'
+import TeacherApiService from '../../services/teachers-api-services'
+import ClassApiService from '../../services/classes-api-service'
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -18,6 +20,17 @@ class LoginForm extends React.Component {
         error: null
       }}
 
+    componentDidMount() {
+      this.context.clearError()
+      TeacherApiService.getTeachers()
+        .then(this.context.setTeacherList)
+        .catch(this.context.setError)
+      ClassApiService.getClasses()
+        .then(this.context.setClassList)
+        .catch(this.context.setError)
+      }
+      
+
     updateUsername(username) {
       this.setState({username: {value: username, touched: true}})
     }
@@ -27,7 +40,6 @@ class LoginForm extends React.Component {
     }
     
     updateClassName(class_name) {
-      console.log(class_name)
           this.setState({class_name: {value: class_name, touched: true}});  
           }
 
@@ -39,7 +51,6 @@ class LoginForm extends React.Component {
 
     validateUserName() {
       const userName = this.state.username.value;
-      console.log(userName)
         if (userName === undefined) {
           return 'Username is required';
         } else if (userName.length < 3) {
@@ -48,7 +59,6 @@ class LoginForm extends React.Component {
   }
 
     validatePassword() {
-      console.log('password validation')
       const password = this.state.password.value;
         if (password === undefined) {
           return 'password is required';
@@ -59,7 +69,6 @@ class LoginForm extends React.Component {
     
     validateUserSelection() {
       const selectedUserType = this.state.user_type.value;
-      console.log('selectedUserType:' + selectedUserType);
       if(selectedUserType === "None" || selectedUserType === '' || selectedUserType === undefined) {
         return 'User Type is required';
       }
@@ -67,7 +76,6 @@ class LoginForm extends React.Component {
 
   validateClassSelection() {
     const selectedClassName = this.state.class_name.value;
-    console.log('selectedClass:' + selectedClassName);
     if(selectedClassName === "None" || selectedClassName === '' || selectedClassName === undefined) {
       return 'Class is required';
     }
@@ -96,7 +104,7 @@ validateForm() {
       const {class_name, user_type} = e.target
       const class_id = class_name.value
       const user = user_type.value
-      console.log('submit login form: ' + class_id)
+      console.log('submit login form: ' + class_id, user)
       this.props.history.push(`/welcome/${user}/${class_id}`) 
       
     }

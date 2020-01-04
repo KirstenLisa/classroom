@@ -2,12 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
+import UpdateApiService from '../../services/update-api-services'
 import Comment from '../Comment/Comment'
 import './UpdatesItem.css'
 
 class UpdatesItem extends React.Component {
 
     static contextType = ClassesContext
+
+    componentDidMount() {
+        const updateId = this.props.match.params.updates
+        console.log(updateId)
+        this.context.clearError()
+        UpdateApiService.getUpdateComments(updateId)
+          .then(this.context.setUpdatesCommentsList)
+          .then(console.log(this.context))
+          .catch(this.context.setError)
+      }
 
     deleteRequest = (e) => {
         e.preventDefault();
@@ -26,11 +37,11 @@ class UpdatesItem extends React.Component {
     const updateId = this.props.match.params.updates
     const classUpdates = this.context.updatesList.filter(update => update.class_id == classId)
     const updateItem = classUpdates.filter(update => update.update_id == updateId)
-    const commentsList = this.context.commentsList.filter(comment => comment.page_id == updateId)
-        const comment = commentsList.map(
-                        (comment, i) => 
+    const commentsList = this.context.updatesCommentsList
+    const comment = commentsList.map(
+                       (comment, i) => 
                         <li className="comment" id={comment.id} key={i}>
-                            <Comment 
+                           <Comment 
                                 comment={comment.comment}
                                 date={format(new Date(), 'do MMM yyyy')}
                                 author={comment.user_name}
@@ -88,7 +99,7 @@ class UpdatesItem extends React.Component {
                 <button 
                     type="button"
                     className="addCommentButton">
-                        <Link to={`/latest/add-comment/${updateId}`} className="addCommentButton">
+                        <Link to={`/add-comment/latest/${userType}/${updateId}`} className="addCommentButton">
                             Comment
                         </Link>
                     </button>

@@ -3,8 +3,10 @@ import STORE from '../dummystore'
 
 
 const UpdatesContext = React.createContext({
-    updatesList: '',
-    error: null
+    updatesList: [],
+    error: null,
+    setError: () => {},
+    setUpdateList: () => {}
   })
   
 export default UpdatesContext

@@ -14,6 +14,9 @@ class UpdatesItem extends React.Component {
         const updateId = this.props.match.params.updates
         console.log(updateId)
         this.context.clearError()
+        UpdateApiService.getUpdates()
+            .then(this.context.setUpdatesList)
+            .catch(this.context.error)
         UpdateApiService.getUpdateComments(updateId)
           .then(this.context.setUpdatesCommentsList)
           .then(console.log(this.context))
@@ -25,8 +28,12 @@ class UpdatesItem extends React.Component {
         const updateId = this.props.match.params.updates
         const classId = this.props.match.params.class
         console.log(updateId)
-        this.props.history.push(`/welcome/teacher/${classId}`);
-        this.context.deleteUpdate(updateId)
+
+        UpdateApiService.deleteUpdate(updateId)
+            .then(this.context.deleteUpdate(updateId))
+            .then(this.props.history.push(`/welcome/teacher/${classId}`))
+            .catch(this.context.setError)
+        
 
     }
 

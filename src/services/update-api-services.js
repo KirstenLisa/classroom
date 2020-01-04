@@ -30,6 +30,21 @@ const UpdateApiService = {
       )
   },
 
+  deleteUpdate(updateId) {
+    console.log('api service')
+    return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
+      method: 'DELETE'
+      //headers: {
+      //  'authorization': `basic ${TokenService.getAuthToken()}`,
+     // },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
   postUpdate(newUpdate) {
     (console.log('inside post update'))
    

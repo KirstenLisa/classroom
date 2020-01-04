@@ -32,12 +32,12 @@ class HomeworkItem extends React.Component {
         e.preventDefault();
         const homeworkId = this.props.match.params.homework
         const classId = this.props.match.params.class
-        //console.log(homeworkId)
-        this.context.deleteHomework(homeworkId)
-        this.props.history.push(`/welcome/teacher/${classId}`);
-        
-        
 
+
+        HomeworkApiService.deleteHomework(homeworkId)
+            .then(this.context.deleteHomework(homeworkId))
+            .then(this.props.history.push(`/welcome/teacher/${classId}`))
+            .catch(this.context.setError)
     }
 
   

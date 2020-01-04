@@ -105,9 +105,7 @@ deleteHomework = homeworkId => {
   let newHomeworkList = this.state.homeworkList.filter(homework => 
     homework.homework_id != homeworkId)
     
-    this.setState({
-      homeworkList: newHomeworkList
-    })
+    this.setHomeworkList(newHomeworkList)
 }
 
 addUpdate = newUpdate => {
@@ -123,9 +121,8 @@ deleteUpdate = updateId => {
   let newUpdatesList = this.state.updatesList.filter(update => 
     update.update_id != updateId)
     
-    this.setState({
-      updatesList: newUpdatesList
-    })
+  this.setUpdatesList(newUpdatesList)
+      
 }
 
 addUpdateComment = newComment => {

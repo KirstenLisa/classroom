@@ -42,14 +42,9 @@ class AddComment extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const userType = this.props.match.params.userType
-        const classId = this.props.match.params.class
-        console.log(classId)
-        const updateId = this.props.match.params.pageToCommentOn
-        //const userId = 
-        console.log('submit comment')
       
-
+        console.log('submit comment')
+        const { path } = this.props.match
         const {comment, user_name} = e.target
         
 
@@ -62,18 +57,20 @@ class AddComment extends React.Component {
         }
 
         console.log(newComment)
+        
 
-    //     UpdateApiService.postComment(newComment)
-    //         .then(this.context.addUpdateComment)
-    //         .then(this.props.history.goBack())
-    //         .catch(this.context.setError)
-
+        if (path.includes('latest')) {
+        UpdateApiService.postComment(newComment)
+             .then(this.context.addUpdateComment)
+             .then(this.props.history.goBack())
+             .catch(this.context.setError)
+        } else {
+        HomeworkApiService.postComment(newComment)
+            .then(this.context.addHomeworkComment)
+            .then(this.props.history.goBack())
+            .catch(this.context.setError)
+        }
     
-
-    HomeworkApiService.postComment(newComment)
-        .then(this.context.addHomeworkComment)
-        .then(this.props.history.goBack())
-        .catch(this.context.setError)
     }
 
 
@@ -82,7 +79,7 @@ class AddComment extends React.Component {
 
         const {error} = this.state;
 
-        console.log(this.props.match.params.pageToCommentOn)
+        console.log(this.props.match.path)
 
 
 

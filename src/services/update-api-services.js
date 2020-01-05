@@ -45,6 +45,27 @@ const UpdateApiService = {
       )
   },
 
+  updateUpdate(updateId, updatedUpdate) {
+    console.log('inside patch update')
+
+    return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
+      method: 'PATCH',
+      headers: {
+      'content-type': 'application/json'
+   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+   },
+   body: JSON.stringify(
+     updatedUpdate
+   )
+  })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  
+  },
+
   postUpdate(newUpdate) {
     (console.log('inside post update'))
    

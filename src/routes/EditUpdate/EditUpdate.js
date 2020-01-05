@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassesContext from '../../contexts/ClassesContext'
+import UpdateApiService from '../../services/update-api-services'
 import './EditUpdate.css'
 
 class EditUpdate extends React.Component {
@@ -19,25 +20,27 @@ class EditUpdate extends React.Component {
           }
         }
 
+   
+    
+
     componentDidMount() {
         console.log('component did mount')
-        const update_id = this.props.match.params.updates
-        const currentUpdate = this.context.updatesList.filter(
-            u => u.update_id == update_id
-        )
-        console.log(currentUpdate[0].update_id)
-
-        this.setState({
-            update_id: this.props.match.params.updates,
-            headline: currentUpdate[0].headline,
-            content: currentUpdate[0].content,
-            author: currentUpdate[0].author,
-            date: new Date(),
-            class_id: this.props.match.params.class    
-    
+        const updateId = this.props.match.params.updates
+        console.log(updateId)
+        this.context.clearError()
+        UpdateApiService.getUpdate(updateId)
+            .catch(this.context.error)
+            .then(responseData => {
+                this.setState({
+                    id: responseData.id,
+                    headline: responseData.headline,
+                    content: responseData.content,
+                    class_id: responseData.class_id,
+                    author: responseData.author,
+                    date: responseData.date
+                })
             })
-        }
-    
+    }
 
     updateHeadline(headline) {
         this.setState({headline: headline})
@@ -56,6 +59,7 @@ class EditUpdate extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const updateId = this.props.match.params.updates
         console.log('submit update')
       
 
@@ -73,8 +77,10 @@ class EditUpdate extends React.Component {
 
         console.log(updatedUpdate)
 
-        this.context.updateUpdate(updatedUpdate)
-        this.props.history.goBack()  
+        UpdateApiService.updateUpdate(updateId, updatedUpdate)
+            .then(this.context.updateUpdate(updatedUpdate))
+            .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+            .catch(this.context.setError)
     }
 
 

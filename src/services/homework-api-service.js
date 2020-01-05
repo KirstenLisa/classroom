@@ -45,6 +45,27 @@ const HomeworkApiService = {
       )
   },
 
+  updateHomework(id, updatedHomework) {
+    console.log('inside patch update')
+
+    return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
+      method: 'PATCH',
+      headers: {
+      'content-type': 'application/json'
+   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+   },
+   body: JSON.stringify(
+     updatedHomework
+   )
+  })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  
+  },
+
   postHomework(newHomework) {
     (console.log('inside post homework'))
    

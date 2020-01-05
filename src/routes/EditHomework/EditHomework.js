@@ -1,6 +1,8 @@
 import React from 'react';
 import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
+import TeacherApiServices from '../../services/teachers-api-services'
+import HomeworkApiService from '../../services/homework-api-service'
 import './EditHomework.css'
 
 class EditHomework extends React.Component {
@@ -16,6 +18,31 @@ class EditHomework extends React.Component {
           teacher_id: '',
           error: null
           }
+        }
+    
+    componentDidMount() {
+        console.log('component did mount')
+        const id = this.props.match.params.id
+        //console.log(id)
+        this.context.clearError()
+
+        TeacherApiServices.getTeachers()
+            .then(this.context.setTeachersList)
+            .catch(this.context.setError)
+
+        HomeworkApiService.getHomeworkItem(id)
+            .catch(this.context.error)
+            .then(responseData => {
+                this.setState({
+                    id: responseData.id,
+                    homework_id: responseData.homework_id,
+                    subject: responseData.subject,
+                    homework: responseData.homework,
+                    due_date: responseData.due_date,
+                    teacher_id: responseData.teacher_id,
+                    teacher_name: responseData.teacher_name
+                    })
+                })
         }
 
 
@@ -33,30 +60,12 @@ class EditHomework extends React.Component {
         this.setState({teacher_id: teacher_id})
     }
 
-    componentDidMount() {
-        console.log('component did mount')
-        const id = this.props.match.params.id
-        const currentHomework = this.context.homeworkList.filter(h =>
-            h.id == id)
-        console.log(currentHomework[0].id)
-
-        this.setState({
-            id: this.props.match.params.id,
-            homework_id: this.props.match.params.homework,
-            subject: currentHomework[0].subject,
-            homework: currentHomework[0].homework,
-            due_date: currentHomework[0].due_date,
-            teacher_id: currentHomework[0].teacher_id,
-            teacher_name: currentHomework[0].teacher_name,
-            class_id: this.props.match.params.class   
-
-        })
-    }
 
 
     handleSubmit(e) {
         e.preventDefault();
         console.log('update homework')
+        const id = this.props.match.params.id
         const homework_id=this.props.match.params.homework
         const class_id=this.props.match.params.class
 
@@ -75,8 +84,12 @@ class EditHomework extends React.Component {
 
         console.log(updatedHomework)
 
-        this.context.updateHomework(updatedHomework)
-        this.props.history.push(`/homework/teacher/${class_id}/${homework_id}`)  
+
+        HomeworkApiService.updateHomework(id, updatedHomework)
+            .then(this.context.updateHomework(updatedHomework))
+            .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+            .catch(this.context.setError)
+            this.props.history.push(`/homework/teacher/${class_id}/${homework_id}`)  
     }
 
 
@@ -143,7 +156,7 @@ class EditHomework extends React.Component {
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
                         aria-required="true">
-                            <option value={date}>{this.state.due_date}</option>
+                            <option value={this.state.due_date}>{this.state.due_date}</option>
                             <option value={date}>{format(date, 'do MMM yyyy')}</option>
                             <option value={date}>{format(date.setDate(date.getDate() + 1), 'do MMM yyyy')}</option>
                             <option value={date}>{format(date.setDate(date.getDate() + 2), 'do MMM yyyy')}</option>

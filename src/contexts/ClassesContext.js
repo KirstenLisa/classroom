@@ -143,9 +143,9 @@ addHomeworkComment = newComment => {
 }
 
 updateHomework = updatedHomework => {
-  //console.log('update homework')
+  console.log('update homework')
   const newHomeworkList = this.state.homeworkList.map(homework => 
-    (homework.homework_id == updatedHomework.homework_id)
+    (homework.id == updatedHomework.id)
     ? updatedHomework
     : homework)
     this.setState({

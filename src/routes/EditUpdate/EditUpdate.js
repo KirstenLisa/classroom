@@ -27,12 +27,13 @@ class EditUpdate extends React.Component {
         console.log('component did mount')
         const updateId = this.props.match.params.updates
         console.log(updateId)
+        console.log(this.props.match.path)
         this.context.clearError()
         UpdateApiService.getUpdate(updateId)
             .catch(this.context.error)
             .then(responseData => {
                 this.setState({
-                    id: responseData.id,
+                    update_id: responseData.update_id,
                     headline: responseData.headline,
                     content: responseData.content,
                     class_id: responseData.class_id,

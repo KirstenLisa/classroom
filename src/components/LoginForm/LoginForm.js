@@ -5,6 +5,7 @@ import ValidationError from '../ValidationError'
 import TeacherApiService from '../../services/teachers-api-services'
 import ClassApiService from '../../services/classes-api-service'
 import TokenService from '../../services/token-service'
+import AuthApiService from '../../services/auth-api-service'
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -94,53 +95,58 @@ validateForm() {
   }
 }
 
- 
-      
 
-handleSubmitBasicAuth = (e) => {
+handleSubmitJwtAuth = (e) => {
       e.preventDefault();
+      this.setState({ error: null })
      
       this.validateForm()
 
       const {username, password, class_name, user_type} = e.target
-
-      
       console.log(username.value, password.value)
-      TokenService.saveAuthToken(
-        TokenService.makeBasicAuthToken(username.value, password.value)
-          )
-
       const class_id = class_name.value
       const user = user_type.value
-      console.log('submit login form: ' + class_id, user)
-      this.props.history.push(`/welcome/${user}/${class_id}`) 
+
+      AuthApiService.postLogin({
+        username: username.value,
+        password: password.value,
+        })
+          .then(res => {
+            username.value = ''
+            password.value = ''
+            TokenService.saveAuthToken(res.authToken)
+            this.props.history.push(`/welcome/${user}/${class_id}`)    
+          })
+          .catch(res => {
+            this.setState({ error: res.error })
+          })
+}
       
-    }
+      
+    
 
     render() {
+
+    const { error } = this.state
 
     console.log(this.props)
     console.log(this.context.classList)
 
-    const { error } = this.state
     const classList = this
         .context
         .classList
         .map(
             (c, i) => <option value={c.class_id} key={i} id={c.class_id}>{c.class_name}</option>
           );
-
     const userNameError = this.validateUserName();
     const passwordError = this.validatePassword();
     const userTypeError = this.validateUserSelection();
     const classNameError = this.validateClassSelection();
-    
-    
 
         return (
             <form
               className='loginForm'
-              onSubmit={this.handleSubmitBasicAuth}
+              onSubmit={this.handleSubmitJwtAuth}
       >
         <div role='alert'>
         {error && <p>{error.message}</p>}

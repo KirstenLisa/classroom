@@ -1,14 +1,14 @@
 import config from '../config'
 import { get } from 'http';
-//import TokenService from '../services/token-service'
+import TokenService from '../services/token-service'
 
 const UsersApiService = {
   getUsers() {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json'
-     // 'authorization': `basic ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -19,9 +19,9 @@ const UsersApiService = {
   },
   getUser(userId) {
     return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+       'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -36,8 +36,8 @@ const UsersApiService = {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {
-      'content-type': 'application/json'
-   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+      'content-type': 'application/json',
+      'authorization': `basic ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newUser

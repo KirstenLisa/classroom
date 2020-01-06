@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader';
-//import PrivateRoute from '../Utils/PrivateRoute'
-//import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
+import PrivateRoute from './utils/PrivateRoute'
+import PublicOnlyRoute from './utils/PublicOnlyRoute'
 import Header from './components/Header/Header'
 import LandingPage from './routes/LandingPage/LandingPage'
 import LoginPage from './routes/LoginPage/LoginPage'
@@ -48,70 +48,70 @@ class App extends Component {
         </header>
         <main className='App__main'>
           {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
-            <Route
+          <PublicOnlyRoute
               exact
               path={'/'}
               component={LandingPage}
             />
-            <Route
+            <PublicOnlyRoute
               exact
               path={'/login'}
               component={LoginPage}
             />
-            <Route
+            <PublicOnlyRoute
               exact
               path={'/register'}
               component={RegistrationPage}
             />
-            <Route
+            <PrivateRoute
               exact
               path={'/welcome/:userType/:class'}
               component={StartPage}
               />
 
-            <Route
+            <PrivateRoute
               exact
               path={'/homework/:userType/:class/:homework/:subject'}
               component={HomeworkItem}
               />
             
-            <Route
+            <PrivateRoute
               exact
               path={'/add-comment/homework/:userType/:pageToCommentOn'}
               component={AddComment}
               />
 
-            <Route
+            <PrivateRoute
               exact
               path={'/latest/:userType/:class/:updates'}
               component={UpdatesItem}
               />
 
-            <Route
+            <PrivateRoute
               exact
               path={'/latest/add-update/:class'}
               component={AddUpdate}
               />
 
-            <Route
+            <PrivateRoute
               exact
               path={'/add-homework/:class/:homework/:subject'}
               component={AddHomework}
               />
 
-            <Route
+            <PrivateRoute
               exact
               path={'/edit-homework/:class/:homework/:id'}
               component={EditHomework}
               />
 
-              <Route
+            <PrivateRoute
                 exact
                 path={'/edit-update/:class/:updates'}
                 component={EditUpdate}
                 />
             
-            <Route
+            <PrivateRoute
               exact
               path={'/add-comment/latest/:userType/:pageToCommentOn'}
               component={AddComment}

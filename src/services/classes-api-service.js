@@ -1,12 +1,11 @@
 import config from '../config'
-//import TokenService from '../services/token-service'
 
 const ClassApiService = {
   getClasses() {
     return fetch(`${config.API_ENDPOINT}/classes`, {
-      //headers: {
-     // 'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'content-type': 'application/json'
+      },
     })
       .then(res =>
         (!res.ok)
@@ -16,9 +15,9 @@ const ClassApiService = {
   },
   getClass(classId) {
     return fetch(`${config.API_ENDPOINT}/classes/${classId}`, {
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'content-type': 'application/json'
+     },
     })
       .then(res =>
         (!res.ok)

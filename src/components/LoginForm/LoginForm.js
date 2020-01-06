@@ -4,6 +4,7 @@ import ClassesContext from '../../contexts/ClassesContext'
 import ValidationError from '../ValidationError'
 import TeacherApiService from '../../services/teachers-api-services'
 import ClassApiService from '../../services/classes-api-service'
+import TokenService from '../../services/token-service'
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -96,12 +97,19 @@ validateForm() {
  
       
 
-    handleSubmit = (e) => {
+handleSubmitBasicAuth = (e) => {
       e.preventDefault();
      
       this.validateForm()
-  
-      const {class_name, user_type} = e.target
+
+      const {username, password, class_name, user_type} = e.target
+
+      
+      console.log(username.value, password.value)
+      TokenService.saveAuthToken(
+        TokenService.makeBasicAuthToken(username.value, password.value)
+          )
+
       const class_id = class_name.value
       const user = user_type.value
       console.log('submit login form: ' + class_id, user)
@@ -132,7 +140,7 @@ validateForm() {
         return (
             <form
               className='loginForm'
-              onSubmit={this.handleSubmit}
+              onSubmit={this.handleSubmitBasicAuth}
       >
         <div role='alert'>
         {error && <p>{error.message}</p>}

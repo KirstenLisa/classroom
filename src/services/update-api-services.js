@@ -1,14 +1,14 @@
 import config from '../config'
 import { get } from 'http';
-//import TokenService from '../services/token-service'
+import TokenService from '../services/token-service'
 
 const UpdateApiService = {
   getUpdates() {
     return fetch(`${config.API_ENDPOINT}/updates`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json'
-     // 'authorization': `basic ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -19,9 +19,9 @@ const UpdateApiService = {
   },
   getUpdate(updateId) {
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -33,10 +33,10 @@ const UpdateApiService = {
   deleteUpdate(updateId) {
     console.log('api service')
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
-      method: 'DELETE'
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      method: 'DELETE',
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -51,8 +51,8 @@ const UpdateApiService = {
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
       method: 'PATCH',
       headers: {
-      'content-type': 'application/json'
-   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+      'content-type': 'application/json',
+     'authorization': `basic ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      updatedUpdate
@@ -72,8 +72,8 @@ const UpdateApiService = {
     return fetch(`${config.API_ENDPOINT}/updates`, {
       method: 'POST',
       headers: {
-      'content-type': 'application/json'
-   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+      'content-type': 'application/json',
+      'authorization': `basic ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newUpdate
@@ -88,9 +88,9 @@ const UpdateApiService = {
 
   getUpdateComments(updateId) {
     return fetch(`${config.API_ENDPOINT}/updates-comments/${updateId}`, {
-     // headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-    //  },
+     headers: {
+      'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -103,7 +103,7 @@ const UpdateApiService = {
     return fetch(`${config.API_ENDPOINT}/updates-comments/`, {
       method: 'POST',
       headers: {
-       // 'authorization': `basic ${TokenService.getAuthToken()}`,
+       'authorization': `basic ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify(

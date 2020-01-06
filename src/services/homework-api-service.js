@@ -1,14 +1,14 @@
 import config from '../config'
 import { get } from 'http';
-//import TokenService from '../services/token-service'
+import TokenService from '../services/token-service'
 
 const HomeworkApiService = {
   getHomework() {
     return fetch(`${config.API_ENDPOINT}/homework`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json'
-     // 'authorization': `basic ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -19,9 +19,9 @@ const HomeworkApiService = {
   },
   getHomeworkItem(homeworkId) {
     return fetch(`${config.API_ENDPOINT}/homework/${homeworkId}`, {
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -33,10 +33,10 @@ const HomeworkApiService = {
   deleteHomework(id) {
     console.log('api service')
     return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
-      method: 'DELETE'
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      method: 'DELETE',
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -51,8 +51,8 @@ const HomeworkApiService = {
     return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
       method: 'PATCH',
       headers: {
-      'content-type': 'application/json'
-   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+      'content-type': 'application/json',
+      'authorization': `basic ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      updatedHomework
@@ -72,8 +72,8 @@ const HomeworkApiService = {
     return fetch(`${config.API_ENDPOINT}/homework`, {
       method: 'POST',
       headers: {
-      'content-type': 'application/json'
-   // 'authorization': `basic ${TokenService.getAuthToken()}`,
+      'content-type': 'application/json',
+      'authorization': `basic ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newHomework
@@ -87,9 +87,9 @@ const HomeworkApiService = {
 },
   getHomeworkComments(homeworkId) {
     return fetch(`${config.API_ENDPOINT}/homework-comments/${homeworkId}`, {
-     // headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-    //  },
+      headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
     })
       .then(res =>
         (!res.ok)
@@ -102,7 +102,7 @@ const HomeworkApiService = {
     return fetch(`${config.API_ENDPOINT}/homework-comments/`, {
       method: 'POST',
       headers: {
-       // 'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `basic ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify(

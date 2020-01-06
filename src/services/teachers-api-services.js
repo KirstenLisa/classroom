@@ -1,12 +1,11 @@
 import config from '../config'
-//import TokenService from '../services/token-service'
 
 const TeacherApiService = {
   getTeachers() {
     return fetch(`${config.API_ENDPOINT}/teachers`, {
-      //headers: {
-     // 'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'content-type': 'application/json'
+      },
     })
       .then(res =>
         (!res.ok)
@@ -16,9 +15,9 @@ const TeacherApiService = {
   },
   getTeacher(teacherId) {
     return fetch(`${config.API_ENDPOINT}/teachers/${teacherId}`, {
-      //headers: {
-      //  'authorization': `basic ${TokenService.getAuthToken()}`,
-     // },
+      headers: {
+        'content-type': 'application/json'
+      },
     })
       .then(res =>
         (!res.ok)

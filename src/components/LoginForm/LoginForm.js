@@ -64,8 +64,8 @@ class LoginForm extends React.Component {
       const password = this.state.password.value;
         if (password === undefined) {
           return 'password is required';
-        } else if (password.length < 5) {
-          return 'Password must be at least 5 characters long';
+        } else if (password.length < 9) {
+          return 'Password must be at least 8 characters long';
         }
     }
     
@@ -115,10 +115,16 @@ handleSubmitJwtAuth = (e) => {
             username.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
-            this.props.history.push(`/welcome/${user}/${class_id}`)    
+            this.props.history.push(`/welcome/${user}/${class_id}`)
+            this.context.setLogin()   
           })
           .catch(res => {
-            this.setState({ error: res.error })
+            console.log(res)
+            this.setState({
+              error: {
+                 message: res.error
+            }
+         })
           })
 }
       

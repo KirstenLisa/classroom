@@ -27,7 +27,9 @@ const ClassesContext = React.createContext({
     deleteUpdate: () => {},
     updateHomework: () => {},
     updateUpdate: () => {},
-    error: null
+    setLogin: () => {},
+    error: null,
+    isLoggedIn: false
   })
   
 export default ClassesContext
@@ -42,7 +44,8 @@ state = {
   updatesList: [],
   updatesCommentsList: [],
   homeworkCommentsList: [],
-  error: null
+  error: null,
+  isLoggedIn: false
 };
 
 setTeachersList = teachersList => {
@@ -162,6 +165,11 @@ updateUpdate = updatedUpdate => {
       updatesList: newUpdatesList
     })
 }
+setLogin = () => {
+  this.state.isLoggedIn
+  ? this.setState({isLoggedIn: false})
+  : this.setState({ isLoggedIn: true })
+}
 
 
 
@@ -197,7 +205,9 @@ render() {
       updateUpdate: this.updateUpdate,
       error: this.state.error,
       setError: this.setError,
-      clearError: this.clearError
+      clearError: this.clearError,
+      isLoggedIn: this.state.isLoggedIn,
+      setLogin: this.setLogin
     }
     return (
       <ClassesContext.Provider value={contextValue}>

@@ -8,7 +8,7 @@ const UsersApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -20,7 +20,7 @@ const UsersApiService = {
   getUser(userId) {
     return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
       headers: {
-       'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -37,7 +37,7 @@ const UsersApiService = {
       method: 'POST',
       headers: {
       'content-type': 'application/json',
-      'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newUser

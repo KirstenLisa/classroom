@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router'
 import ClassesContext from '../../contexts/ClassesContext'
+import UsersApiService from '../../services/users-api-service'
 import TeacherApiService from '../../services/teachers-api-services'
 import ClassApiService from '../../services/classes-api-service'
 import './RegistrationForm.css'
@@ -24,24 +25,29 @@ import './RegistrationForm.css'
     handleSubmit = (e) => {
       e.preventDefault();
       const { fullname, username, password, class_id, user_type } = e.target
-      const full_name = fullname.value
+      this.setState({ error: null })
+      console.log('registration form submitted')
+      console.log({ fullname, username, password, class_id, user_type })
+      UsersApiService.postUser({
+        fullname: fullname.value,
+        username: username.value,
+        password: password.value,
+        class_id: class_id.value,
+        user_type: user_type.value
+    })
+    .then(user => {
+      fullname.value = ''
       username.value = ''
       password.value = ''
       class_id.value = ''
       user_type.value = ''
-
-    console.log('registration form submitted')
-    console.log({ full_name, username, password, class_id, user_type })
-
-    fullname.value = ''
-    username.value = ''
-    password.value = ''
-    class_id.value = ''
-    user_type.value = ''
-    //this.props.history.push('/login') 
-  }
+      this.props.history.push('/login') 
+    })
+    .catch(res => {
+      this.setState({ error: res.error })
+    })
      
-  
+    }
      
 
   render() {

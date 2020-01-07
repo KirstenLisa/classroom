@@ -8,7 +8,7 @@ const UpdateApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -20,7 +20,7 @@ const UpdateApiService = {
   getUpdate(updateId) {
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -35,7 +35,7 @@ const UpdateApiService = {
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
       method: 'DELETE',
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -52,7 +52,7 @@ const UpdateApiService = {
       method: 'PATCH',
       headers: {
       'content-type': 'application/json',
-     'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      updatedUpdate
@@ -73,7 +73,7 @@ const UpdateApiService = {
       method: 'POST',
       headers: {
       'content-type': 'application/json',
-      'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newUpdate
@@ -89,7 +89,7 @@ const UpdateApiService = {
   getUpdateComments(updateId) {
     return fetch(`${config.API_ENDPOINT}/updates-comments/${updateId}`, {
      headers: {
-      'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -103,7 +103,7 @@ const UpdateApiService = {
     return fetch(`${config.API_ENDPOINT}/updates-comments/`, {
       method: 'POST',
       headers: {
-       'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify(

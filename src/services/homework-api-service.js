@@ -8,7 +8,7 @@ const HomeworkApiService = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
      },
     })
       .then(res =>
@@ -20,7 +20,7 @@ const HomeworkApiService = {
   getHomeworkItem(homeworkId) {
     return fetch(`${config.API_ENDPOINT}/homework/${homeworkId}`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -35,7 +35,7 @@ const HomeworkApiService = {
     return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
       method: 'DELETE',
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -52,7 +52,7 @@ const HomeworkApiService = {
       method: 'PATCH',
       headers: {
       'content-type': 'application/json',
-      'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      updatedHomework
@@ -73,7 +73,7 @@ const HomeworkApiService = {
       method: 'POST',
       headers: {
       'content-type': 'application/json',
-      'authorization': `basic ${TokenService.getAuthToken()}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
    },
    body: JSON.stringify(
      newHomework
@@ -88,7 +88,7 @@ const HomeworkApiService = {
   getHomeworkComments(homeworkId) {
     return fetch(`${config.API_ENDPOINT}/homework-comments/${homeworkId}`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -102,7 +102,7 @@ const HomeworkApiService = {
     return fetch(`${config.API_ENDPOINT}/homework-comments/`, {
       method: 'POST',
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify(

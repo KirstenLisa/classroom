@@ -46,11 +46,14 @@ class HomeworkItem extends React.Component {
 
         const classId = this.props.match.params.class
         const className = this.context.classList.filter(c => c.class_id == classId)
+        const currentClass = className.map(c =>  c.class_name)
+        console.log(currentClass[0])
         const subject = this.props.match.params.subject
         const classHomework = this.context.homeworkList.filter(homework => homework.class_id == classId)
         const homeworkId = this.props.match.params.homework
         const userType = this.props.match.params.userType
         const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
+    
        //console.log(this.context.homeworkList)
         const homeworkList = homework.map(
             (homework, i) => 
@@ -90,7 +93,7 @@ class HomeworkItem extends React.Component {
                             Back
                         </button>
 
-                <h2>{homework[0].subject} homework for class {className[0].class_name}</h2>
+                <h2>{subject} homework for class {currentClass[0]}</h2>
                 {homeworkList}
                <div>
                 {userType === "teacher" && (

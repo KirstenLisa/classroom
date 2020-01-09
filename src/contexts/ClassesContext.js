@@ -149,7 +149,6 @@ addHomeworkComment = newComment => {
 }
 
 updateHomework = updatedHomework => {
-  console.log('update homework')
   const newHomeworkList = this.state.homeworkList.map(homework => 
     (homework.id == updatedHomework.id)
     ? updatedHomework
@@ -167,6 +166,7 @@ updateUpdate = updatedUpdate => {
     this.setState({
       updatesList: newUpdatesList
     })
+
 }
 setLogin = () => {
   this.state.isLoggedIn

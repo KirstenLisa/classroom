@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
 import HomeworkApiService from '../../services/homework-api-service'
 import TeacherApiServices from '../../services/teachers-api-services'
@@ -15,15 +14,10 @@ class AddHomework extends React.Component {
         super(props);
         this.state = {
             homework: {value: '', touched: false},
-            
             subject: '',
-
             due_date: {value: '', touched: false},
-
             teacher_id: '',
-
             teacher_name: {value: 'None', touched: false},
-
             error: null
         }}
 

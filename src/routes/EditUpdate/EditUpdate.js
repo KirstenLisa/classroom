@@ -80,7 +80,7 @@ class EditUpdate extends React.Component {
 
         UpdateApiService.updateUpdate(updateId, updatedUpdate)
             .then(this.context.updateUpdate(updatedUpdate))
-            .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+            .then(this.props.history.goBack())
             .catch(this.context.setError)
     }
 

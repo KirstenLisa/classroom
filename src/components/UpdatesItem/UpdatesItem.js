@@ -45,13 +45,18 @@ class UpdatesItem extends React.Component {
     const updateId = this.props.match.params.updates
     const classUpdates = this.context.updatesList.filter(update => update.class_id == classId)
     const updateItem = classUpdates.filter(update => update.update_id == updateId)
+    const headline = updateItem.map(update => update.headline)
+    const content = updateItem.map(update => update.content)
+    const author = updateItem.map(update => update.author)
+    const date = updateItem.map(update => update.date)
+    console.log(date)
     const commentsList = this.context.updatesCommentsList
     const comment = commentsList.map(
                        (comment, i) => 
                         <li className="comment" id={comment.id} key={i}>
                            <Comment 
                                 comment={comment.comment}
-                                date={format(new Date(), 'do MMM yyyy')}
+                                date={format(new Date(comment.date), 'do MMM yyyy')}
                                 author={comment.user_name}
                                 id={comment.comment_id}
                                 />
@@ -68,10 +73,10 @@ class UpdatesItem extends React.Component {
 
                 <h2>Latest</h2>
                 <div className="updates-item">
-                <h3>{updateItem[0].headline}</h3>
-                <p>{updateItem[0].content}</p>
-                <p>{updateItem[0].author}</p>
-                <p>{format(new Date(updateItem[0].date), 'do MMM yyyy')}</p>
+                <h3>{headline[0]}</h3>
+                <p>{content[0]}</p>
+                <p>{author[0]}</p>
+                {/* <p>{format(new Date(date), 'do MMM yyyy')}</p> */}
             </div>
             <div className="updates-buttons">
             {userType === "teacher" && (

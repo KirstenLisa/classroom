@@ -13,6 +13,7 @@ class HomeworkItem extends React.Component {
     static contextType = ClassesContext
 
     componentDidMount() {
+        console.log('component did mount')
         const homeworkId = this.props.match.params.homework
         this.context.clearError()
         ClassApiService.getClasses()
@@ -24,7 +25,7 @@ class HomeworkItem extends React.Component {
           .catch(this.context.setError)
         HomeworkApiService.getHomeworkComments(homeworkId)
           .then(this.context.setHomeworkCommentsList)
-          .then(console.log(this.props.match.params.homework))
+          //.then(console.log(this.props.match.params.homework))
           .catch(this.context.setError)
       }
 
@@ -50,7 +51,7 @@ class HomeworkItem extends React.Component {
         const homeworkId = this.props.match.params.homework
         const userType = this.props.match.params.userType
         const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
-       // console.log(this.context.homeworkList)
+       //console.log(this.context.homeworkList)
         const homeworkList = homework.map(
             (homework, i) => 
                     <li className="homework" id={homework.homework_id} key={i}>
@@ -62,28 +63,7 @@ class HomeworkItem extends React.Component {
                                 teacher_name={homework.teacher_name}
                                 class_id={homework.class_id}
                                 />
-                                <div className="homework-buttons">
-                {userType === "teacher" && (
-                    <button
-                        type="button"
-                        className="teacher-only-buttons">
-                            <Link
-                                to={`/edit-homework/${homework.class_id}/${homework.homework_id}/${homework.id}`}>
-                            Edit
-                            </Link>
-                      
-                        </button>
-                    )}
-                {userType === "teacher" && (
-                    <button
-                        type="button"
-                        className="teacher-only-buttons"
-                        onClick={this.deleteRequest}>
-                            Delete
-                        </button>
-                    )}
                 
-                    </div>
                     </li>)
         
         const commentsList = this.context.homeworkCommentsList
@@ -109,6 +89,7 @@ class HomeworkItem extends React.Component {
                         onClick={() => this.props.history.push(`/welcome/${userType}/${classId}`)}>
                             Back
                         </button>
+
                 <h2>{homework[0].subject} homework for class {className[0].class_name}</h2>
                 {homeworkList}
                <div>

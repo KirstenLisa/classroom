@@ -54,7 +54,7 @@ export default class Header extends Component {
   
 
   render() {
-    console.log(this.context.isLoggedIn)
+    //console.log(this.context.isLoggedIn)
     return (
       <nav className='Header'>
         <h1>

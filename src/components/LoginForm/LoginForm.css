@@ -24,7 +24,7 @@ button {
     margin: 10px;
 }
 
-.error {
+.error, .loginError {
     color: red;
     font-size: 20px;
     font-weight: bold;

@@ -106,6 +106,7 @@ handleSubmitJwtAuth = (e) => {
       console.log(username.value, password.value)
       const class_id = class_name.value
       const user = user_type.value
+      const userName = username.value
 
       AuthApiService.postLogin({
         username: username.value,
@@ -116,7 +117,8 @@ handleSubmitJwtAuth = (e) => {
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
             this.props.history.push(`/welcome/${user}/${class_id}`)
-            this.context.setLogin()   
+            this.context.setLogin()
+            this.context.setUserName(userName)
           })
           .catch(res => {
             console.log(res)
@@ -154,7 +156,7 @@ handleSubmitJwtAuth = (e) => {
               className='loginForm'
               onSubmit={this.handleSubmitJwtAuth}
       >
-        <div role='alert'>
+        <div role='alert' className="loginError">
         {error && <p>{error.message}</p>}
         </div>
         <div className='username'>

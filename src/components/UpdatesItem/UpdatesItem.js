@@ -11,6 +11,7 @@ class UpdatesItem extends React.Component {
     static contextType = ClassesContext
 
     componentDidMount() {
+        console.log('component did mount')
         const updateId = this.props.match.params.updates
         console.log(updateId)
         this.context.clearError()

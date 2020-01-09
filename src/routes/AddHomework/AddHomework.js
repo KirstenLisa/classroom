@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
 import HomeworkApiService from '../../services/homework-api-service'
 import TeacherApiServices from '../../services/teachers-api-services'
+import ValidationError from '../../components/ValidationError'
 import './AddHomework.css'
 
 class AddHomework extends React.Component {
@@ -13,14 +14,18 @@ class AddHomework extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          homework: '',
-          subject: '',
-          due_date: '',
-          teacher_id: '',
-          teacher_name: '',
-          error: null
-          }
-        }
+            homework: {value: '', touched: false},
+            
+            subject: '',
+
+            due_date: {value: '', touched: false},
+
+            teacher_id: '',
+
+            teacher_name: {value: 'None', touched: false},
+
+            error: null
+        }}
 
     componentDidMount() {
         this.context.clearError()
@@ -31,28 +36,70 @@ class AddHomework extends React.Component {
 
 
     updateHomework(homework) {
-        this.setState({homework: homework})
+        this.setState({homework: {value: homework, touched: true}})
     }
 
 
     updateDate(due_date) {
-        this.setState({due_date: due_date})
+        this.setState({due_date: {value: due_date, touched: true}})
     }
 
 
     updateTeacherId(teacher_name) {
         const teacher = this.context.teachersList.filter(teacher => teacher.teacher_name == teacher_name)
         const teacher_id = teacher[0].id
-        this.setState({teacher_id: teacher_id})
+        this.setState({teacher_id})
     }
 
     updateTeacherName(teacher_name) {
-        this.setState({teacher_name: teacher_name})
+        this.setState({teacher_name: {value: teacher_name, touched: true}})
         this.updateTeacherId(teacher_name)
     }
 
+    validateHomework() {
+        console.log('validate homework')
+        const homework = this.state.homework.value;
+        if (homework === undefined) {
+            return 'Homework is required';
+          } else if (homework.length < 4) {
+                return 'Homework must be at least 4 characters long';
+          }
+    }
+
+    validateTeacher() {
+        console.log('validate teacher')
+        const selectedTeacher = this.state.teacher_name.value;
+        if(selectedTeacher === "None" || selectedTeacher === '' || selectedTeacher === undefined) {
+            return 'Teacher is required';
+      } 
+    }
+
+    validateDate() {
+        console.log('validate date')
+        const due_date = this.state.due_date.value;
+        if (due_date === undefined) {
+            return 'Due date is required';
+        }
+    }
+
+    validateForm() {
+        if (this.validateHomework()) {
+          this.setState({homework: {touched:true}})
+        } else if (this.validateTeacher()) {
+          this.setState({teacher_name: {touched: true}})
+        } else if (this.validateDate()) {
+          this.setState({due_date: {touched: true}})
+        }
+      }
+
     handleSubmit(e) {
         e.preventDefault();
+        this.validateForm()
+        const class_id = this.props.match.params.class 
+        const homework_id = this.props.match.params.homework
+        const subject = this.props.match.params.subject
+        
+        
         console.log('submit homework')
       
 
@@ -60,20 +107,20 @@ class AddHomework extends React.Component {
         
 
         const newHomework = {
-            homework_id: this.props.match.params.homework,
-            subject: this.props.match.params.subject,
+            homework_id: homework_id,
+            subject: subject,
             homework: homework.value,
-            due_date: new Date(),
+            due_date: due_date.value,
             teacher_id: this.state.teacher_id,
             teacher_name: teacher_name.value,
-            class_id: this.props.match.params.class   
+            class_id: class_id 
         }
 
         console.log(newHomework)
 
         HomeworkApiService.postHomework(newHomework)
             .then(this.context.addHomework)
-            .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}/${this.props.match.params.homework}`))
+            .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${subject}`))
             .catch(this.context.setError)
 
         
@@ -91,7 +138,10 @@ class AddHomework extends React.Component {
             (teacher, i) => <option value={teacher.teacher_name} key={i} id={teacher.teacher_id}>{teacher.teacher_name}</option>
           );
         
-        const date = new Date(); // Now
+        const homeworkError = this.validateHomework()
+        const teacherError = this.validateTeacher()
+        const dateError = this.validateDate()
+
          
 
 
@@ -103,17 +153,9 @@ class AddHomework extends React.Component {
                 <h2>Add more homework</h2>
 
                   
-                <div className="form-group">
-                    <label htmlFor="subject">Subject</label>
-                    <input
-                        type="text"
-                        className="registration_control"
-                        name="subject"
-                        id="subject"
-                        value={subject}
-                        aria-required="true" 
-                        />
-                </div>
+                <h3 className="subject">
+                    Subject: <span>{subject}</span> 
+                </h3>
                 
                 <div className="form-group">
                     <label htmlFor="homework">Homework</label>
@@ -125,6 +167,8 @@ class AddHomework extends React.Component {
                         onChange={e => this.updateHomework(e.target.value)}
                         aria-required="true" 
                         />
+                        {this.state.homework.touched && 
+                        (<ValidationError message={homeworkError} id="homeworkError" />)}
                 </div>
                
                 <div className="teacher-select">
@@ -136,22 +180,22 @@ class AddHomework extends React.Component {
                             <option value={"None"}>Teacher...</option>
                             {teachersList}
                     </select>
+                    {this.state.teacher_name.touched && 
+                    (<ValidationError message={teacherError} id="teacherError" />)}
                 </div>
 
                 <div className="date-select">
-                    <label htmlFor="due_date">Select: </label>
-                    <select
+                    <label htmlFor="due_date">Due Date </label>
+                    <input
+                        type="date"
+                        className="registration_control"
                         name="due_date"
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
-                        aria-required="true">
-                            <option value={"None"}>Due Date...</option>
-                            <option value={new Date(date.setDate(date.getDate() + 1))}>{format(new Date(), 'do MMM yyyy')}</option>
-                            <option value={date.setDate(date.getDate() + 1)}>{format(date.setDate(date.getDate() + 1), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 2), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 3), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 4), 'do MMM yyyy')}</option>
-                    </select>
+                        aria-required="true" 
+                        />
+                        {this.state.due_date.touched && 
+                        (<ValidationError message={dateError} id="dateError" />)}
                 </div>
 
        
@@ -163,7 +207,8 @@ class AddHomework extends React.Component {
            
                     <button
                         type="submit"
-                        className="save_button">
+                        className="save_button"
+                        >
                             Save
                     </button>
                 </div>
@@ -174,3 +219,4 @@ class AddHomework extends React.Component {
 }
 
 export default AddHomework;
+

@@ -60,7 +60,6 @@ class AddUpdate extends React.Component {
     
         UpdateApiService.postUpdate(newUpdate)
               .then(this.context.addUpdate)
-              //need new update_id
               .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
               .catch(this.context.setError)
             
@@ -71,8 +70,6 @@ class AddUpdate extends React.Component {
     render() {
 
         const {error} = this.state;
-
-        //console.log(this.props.match.params)
 
 
 

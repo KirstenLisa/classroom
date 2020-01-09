@@ -14,7 +14,6 @@ class AddComment extends React.Component {
         super(props);
         this.state = {
           comment: '',
-          user_name: '',
           date: new Date(),
           error: null
           }
@@ -22,13 +21,13 @@ class AddComment extends React.Component {
 
     
 
-    //componentDidMount() {
-       // this.context.clearError()
-      //  UsersApiService.getUsers()
-       //     .then(this.context.setUsersList)
-       //     .then(console.log(this.context.usersList))
-        //    .catch(this.context.setError)
-       //   }
+    componentDidMount() {
+       this.context.clearError()
+        UsersApiService.getUsers()
+            .then(this.context.setUsersList)
+            .then(console.log(this.context.usersList))
+            .catch(this.context.setError)
+          }
 
 
     updateComment(comment) {
@@ -45,14 +44,19 @@ class AddComment extends React.Component {
       
         console.log('submit comment')
         const { path } = this.props.match
-        const {comment, user_name} = e.target
+        const { comment } = e.target
+        const user_name = this.context.username
+        const user = (this.context.usersList.filter(user => user.username == user_name))
+        const user_id = user[0].user_id
+        
+
         
 
         const newComment = {
             comment: comment.value,
-            user_name: user_name.value,
+            user_name: user_name,
             date: new Date(),
-            user_id: 2, 
+            user_id: user_id, 
             page_id: this.props.match.params.pageToCommentOn   
         }
 
@@ -78,8 +82,8 @@ class AddComment extends React.Component {
 
 
         const {error} = this.state;
-
-        console.log(this.props.match.path)
+        const user_name = this.context.username
+        console.log(this.context.usersList)
 
 
 
@@ -89,19 +93,10 @@ class AddComment extends React.Component {
                 {error && <p>{error.message}</p>}
                 </div>
                 <h2>Write a comment</h2>
-                <div className="noteName">* required field</div>
                 
-                <div className="form-group">
-                    <label htmlFor="user_name">User Name</label>
-                    <input
-                        type="text"
-                        className="registration_control"
-                        name="user_name"
-                        id="user_name"
-                        onChange={e => this.updateUserName(e.target.value)}
-                        aria-required="true" 
-                        />
-                </div>
+                <h3 className="userName">
+                    User Name: <span>{user_name}</span>
+                    </h3>
                
                 <div className="form-group">
                     <label htmlFor="comment">Comment</label>

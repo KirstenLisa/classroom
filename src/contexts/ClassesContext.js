@@ -4,6 +4,7 @@ import { set } from 'date-fns/esm';
 
 
 const ClassesContext = React.createContext({
+    username: '',
     teachersList: [],
     classList: [],
     homeworkList: [],
@@ -28,6 +29,7 @@ const ClassesContext = React.createContext({
     updateHomework: () => {},
     updateUpdate: () => {},
     setLogin: () => {},
+    setUserName: () => {},
     error: null,
     isLoggedIn: false
   })
@@ -37,6 +39,7 @@ export default ClassesContext
 export class ClassesProvider extends Component {
 
 state = {
+  username: '',
   teachersList: [],
   classList: [],
   usersList: [],
@@ -171,6 +174,11 @@ setLogin = () => {
   : this.setState({ isLoggedIn: true })
 }
 
+setUserName = (username) => {
+  console.log(username)
+  this.setState({username})
+}
+
 
 
 render() {
@@ -180,6 +188,7 @@ render() {
   //console.log(this.state.updatesCommentsList)
 
     const contextValue = {
+      username: this.state.username,
       teachersList: this.state.teachersList,
       classList: this.state.classList,
       usersList: this.state.usersList,
@@ -207,7 +216,8 @@ render() {
       setError: this.setError,
       clearError: this.clearError,
       isLoggedIn: this.state.isLoggedIn,
-      setLogin: this.setLogin
+      setLogin: this.setLogin,
+      setUserName: this.setUserName
     }
     return (
       <ClassesContext.Provider value={contextValue}>

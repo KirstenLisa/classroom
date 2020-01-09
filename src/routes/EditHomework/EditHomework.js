@@ -70,16 +70,21 @@ class EditHomework extends React.Component {
         const class_id=this.props.match.params.class
 
         const {homework, due_date, teacher_id} = e.target
+        const teachersList = this.context.teachersList
+        const teacherId = teacher_id.value
+        const teacher = teachersList.filter(teacher => teacher.id == teacher_id.value)
+        const teacherName= teacher[0].teacher_name
         
 
         const updatedHomework = {
-            id: this.props.match.params.id,
-            homework_id: this.props.match.params.homework,
+            id: id,
+            homework_id: homework_id,
             subject: this.state.subject,
             homework: homework.value,
             due_date: due_date.value,
             teacher_id: teacher_id.value,
-            class_id: this.props.match.params.class   
+            teacher_name: teacherName,
+            class_id: class_id   
         }
 
         console.log(updatedHomework)
@@ -87,15 +92,12 @@ class EditHomework extends React.Component {
 
         HomeworkApiService.updateHomework(id, updatedHomework)
             .then(this.context.updateHomework(updatedHomework))
-            .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+            .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${this.state.subject}`))
             .catch(this.context.setError)
-            this.props.history.push(`/homework/teacher/${class_id}/${homework_id}`)  
     }
 
 
     render() {
-
-        console.log(this.props.match.params)
 
         const {error} = this.state;
         const teacherId = this.state.teacher_id
@@ -104,13 +106,6 @@ class EditHomework extends React.Component {
         .map(
             (teacher, i) => <option value={teacher.id} key={i} id={teacher.id}>{teacher.teacher_name}</option>
           );
-        
-        
-        
-        
-        //const uniqueTeachersList = teachersList.filter(teacher =>
-            
-        console.log(uniqueTeachersList)
         
 
         
@@ -144,25 +139,22 @@ class EditHomework extends React.Component {
                         name="teacher_id"
                         onChange={e => this.updateTeacher(e.target.value)}
                         aria-required="true">
-                            <option value={this.state.teacher_name}>{this.state.teacher_name}</option>
+                            <option value={this.state.teacher_id}>{this.state.teacher_name}</option>
                             {teachersList}
                     </select>
                 </div>
 
                 <div className="date-select">
                     <label htmlFor="due_date">Select: </label>
-                    <select
+                    <label htmlFor="due_date">Due Date </label>
+                    <input
+                        type="date"
+                        className="registration_control"
                         name="due_date"
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
-                        aria-required="true">
-                            <option value={this.state.due_date}>{this.state.due_date}</option>
-                            <option value={date}>{format(date, 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 1), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 2), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 3), 'do MMM yyyy')}</option>
-                            <option value={date}>{format(date.setDate(date.getDate() + 4), 'do MMM yyyy')}</option>
-                    </select>
+                        aria-required="true" 
+                        />
                 </div>
 
        

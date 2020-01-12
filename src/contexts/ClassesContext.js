@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import STORE from '../dummystore'
-import { set } from 'date-fns/esm';
-
 
 const ClassesContext = React.createContext({
     username: '',

@@ -1,6 +1,5 @@
   
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader';
 import PrivateRoute from './utils/PrivateRoute'
 import PublicOnlyRoute from './utils/PublicOnlyRoute'

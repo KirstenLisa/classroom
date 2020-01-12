@@ -1,5 +1,4 @@
 import config from '../config'
-import { get } from 'http';
 import TokenService from '../services/token-service'
 
 const UsersApiService = {
@@ -16,8 +15,8 @@ const UsersApiService = {
           : res.json()
       )
   },
-  getUser(userId) {
-    return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
+  getUser(username) {
+    return fetch(`${config.API_ENDPOINT}/users/${username}`, {
       headers: {
         'content-type': 'application/json',
       },

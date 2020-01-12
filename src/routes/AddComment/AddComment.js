@@ -45,7 +45,7 @@ class AddComment extends React.Component {
         console.log('submit comment')
         const { path } = this.props.match
         const { comment } = e.target
-        const user_name = this.context.username
+        const user_name = this.context.currentUser.username
         const user = (this.context.usersList.filter(user => user.username == user_name))
         const user_id = user[0].user_id
         
@@ -82,8 +82,7 @@ class AddComment extends React.Component {
 
 
         const {error} = this.state;
-        const user_name = this.context.username
-        console.log(this.context.usersList)
+        const user_name = this.context.currentUser.username
 
 
 

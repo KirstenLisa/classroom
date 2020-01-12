@@ -89,7 +89,7 @@ class HomeworkItem extends React.Component {
                 <button 
                         type="button"
                         className="backButton"
-                        onClick={() => this.props.history.push(`/welcome/${userType}/${classId}`)}>
+                        onClick={() => this.props.history.push(`/welcome/${classId}`)}>
                             Back
                         </button>
 

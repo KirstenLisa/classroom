@@ -92,7 +92,7 @@ class EditHomework extends React.Component {
 
         HomeworkApiService.updateHomework(id, updatedHomework)
             .then(this.context.updateHomework(updatedHomework))
-            .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${this.state.subject}`))
+            .then(this.props.history.push(`/homework/${class_id}/${homework_id}/${this.state.subject}`))
             .catch(this.context.setError)
     }
 

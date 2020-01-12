@@ -3,8 +3,9 @@ import {withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
 import HomeworkApiService from '../../services/homework-api-service'
+import UsersApiService from '../../services/users-api-service'
+import ClassApiService from '../../services/classes-api-service'
 import './HomeworkList.css'
-import ClassApiService from '../../services/classes-api-service';
 
 class HomeworkList extends Component {
     static contextType = ClassesContext
@@ -17,7 +18,11 @@ class HomeworkList extends Component {
       ClassApiService.getClasses()
         .then(this.context.setClassList)
         .catch(this.context.setError)
+      // UsersApiService.getUser()
+      //   .then(this.context.setCurrentUser)
+      //   .catch(this.context.setError)
     }
+
 
     getUnique = (arr, comp) => {
 
@@ -32,10 +37,18 @@ class HomeworkList extends Component {
     
        return unique;
     }
-  
+
+   
     render() {
 
-      const userType = this.props.match.params.userType
+      const currentUser = this.context.currentUser
+      console.log(currentUser)
+      //const currentUser = this.context.usersList.filter(user => user.username == username)
+      const userType = currentUser.user_type
+      console.log(userType)
+      
+
+      //const userType = this.props.match.params.userType
       const classId = this.props.match.params.class
       const homeworkForClass = this.context.homeworkList
       .filter(homework => homework.class_id == classId);

@@ -5,6 +5,7 @@ import { set } from 'date-fns/esm';
 
 const ClassesContext = React.createContext({
     username: '',
+    currentUser: [],
     teachersList: [],
     classList: [],
     homeworkList: [],
@@ -30,6 +31,7 @@ const ClassesContext = React.createContext({
     updateUpdate: () => {},
     setLogin: () => {},
     setUserName: () => {},
+    setCurrentUser: () => {},
     error: null,
     isLoggedIn: false
   })
@@ -39,7 +41,7 @@ export default ClassesContext
 export class ClassesProvider extends Component {
 
 state = {
-  username: '',
+  currentUser: [],
   teachersList: [],
   classList: [],
   usersList: [],
@@ -72,7 +74,6 @@ setUpdatesList = (updatesList) => {
 }
 
 setHomeworkCommentsList = homeworkCommentsList => {
-  console.log('set HOMEWORK COMMENTS list')
   this.setState({ homeworkCommentsList })
 }
 
@@ -166,17 +167,17 @@ updateUpdate = updatedUpdate => {
     this.setState({
       updatesList: newUpdatesList
     })
-
 }
+
 setLogin = () => {
   this.state.isLoggedIn
   ? this.setState({isLoggedIn: false})
   : this.setState({ isLoggedIn: true })
 }
 
-setUserName = (username) => {
-  console.log(username)
-  this.setState({username})
+setCurrentUser = (currentUser) => {
+  console.log(currentUser)
+  this.setState({currentUser})
 }
 
 
@@ -188,7 +189,7 @@ render() {
   //console.log(this.state.updatesCommentsList)
 
     const contextValue = {
-      username: this.state.username,
+      currentUser: this.state.currentUser,
       teachersList: this.state.teachersList,
       classList: this.state.classList,
       usersList: this.state.usersList,
@@ -217,7 +218,8 @@ render() {
       clearError: this.clearError,
       isLoggedIn: this.state.isLoggedIn,
       setLogin: this.setLogin,
-      setUserName: this.setUserName
+      setUserName: this.setUserName,
+      setCurrentUser: this.setCurrentUser
     }
     return (
       <ClassesContext.Provider value={contextValue}>

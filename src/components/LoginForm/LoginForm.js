@@ -4,6 +4,7 @@ import ClassesContext from '../../contexts/ClassesContext'
 import ValidationError from '../ValidationError'
 import TeacherApiService from '../../services/teachers-api-services'
 import ClassApiService from '../../services/classes-api-service'
+import UsersApiService from '../../services/users-api-service'
 import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service'
 import './LoginForm.css'
@@ -68,13 +69,6 @@ class LoginForm extends React.Component {
           return 'Password must be at least 8 characters long';
         }
     }
-    
-    validateUserSelection() {
-      const selectedUserType = this.state.user_type.value;
-      if(selectedUserType === "None" || selectedUserType === '' || selectedUserType === undefined) {
-        return 'User Type is required';
-      }
-  }
 
   validateClassSelection() {
     const selectedClassName = this.state.class_name.value;
@@ -90,11 +84,8 @@ validateForm() {
     this.setState({password: {touched: true}})
   } else if (this.validateClassSelection()) {
     this.setState({class_name: {touched: true}})
-  } else if (this.validateUserSelection()) {
-    this.setState({user_type: {touched: true}})
-  }
 }
-
+}
 
 handleSubmitJwtAuth = (e) => {
       e.preventDefault();
@@ -102,11 +93,12 @@ handleSubmitJwtAuth = (e) => {
      
       this.validateForm()
 
-      const {username, password, class_name, user_type} = e.target
+      const { username, password, class_name } = e.target
       console.log(username.value, password.value)
+      
       const class_id = class_name.value
-      const user = user_type.value
       const userName = username.value
+      
 
       AuthApiService.postLogin({
         username: username.value,
@@ -116,9 +108,10 @@ handleSubmitJwtAuth = (e) => {
             username.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
-            this.props.history.push(`/welcome/${user}/${class_id}`)
+            this.props.history.push(`/welcome/${class_id}`)
             this.context.setLogin()
-            this.context.setUserName(userName)
+            UsersApiService.getUser(userName)
+            .then(this.context.setCurrentUser)
           })
           .catch(res => {
             console.log(res)
@@ -148,7 +141,6 @@ handleSubmitJwtAuth = (e) => {
           );
     const userNameError = this.validateUserName();
     const passwordError = this.validatePassword();
-    const userTypeError = this.validateUserSelection();
     const classNameError = this.validateClassSelection();
 
         return (
@@ -206,21 +198,6 @@ handleSubmitJwtAuth = (e) => {
                     {this.state.class_name.touched && 
             (<ValidationError message={classNameError} id="userTypeError" />)}
                 </div>
-        <div className="user-select">
-          <label htmlFor="user_name">Log in as: </label>
-          <select
-            name="user_type"
-            id="user_type"
-            onChange={e => this.updateUserType(e.target.value)}
-            aria-required="true">
-            <option value={"None"}>Select a user type...</option>
-            <option value="teacher" key={1} id={1}>Teacher</option>
-            <option value="parent" key={2} id={2}>Parent</option>
-            <option value="student" key={3} id={3}>Student</option>
-          </select>
-          {this.state.user_type.touched && 
-            (<ValidationError message={userTypeError} id="userTypeError" />)}
-        </div>
 
         <div className="login-form-buttons">
           <button 

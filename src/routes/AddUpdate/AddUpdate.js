@@ -100,7 +100,7 @@ class AddUpdate extends React.Component {
     
         UpdateApiService.postUpdate(newUpdate)
               .then(this.context.addUpdate)
-              .then(this.props.history.push(`/welcome/teacher/${this.props.match.params.class}`))
+              .then(this.props.history.push(`/welcome/${this.props.match.params.class}`))
               .catch(this.context.setError)
             
          

@@ -65,7 +65,7 @@ class App extends Component {
             />
             <PrivateRoute
               exact
-              path={'/welcome/:userType/:class'}
+              path={'/welcome/:class'}
               component={StartPage}
               />
 

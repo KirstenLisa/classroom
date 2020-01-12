@@ -18,9 +18,8 @@ class UpdatesList extends React.Component {
   
     render() {
 
-    //console.log('updates list:')
-    //onsole.log(this.context.updatesList)
-    const userType = this.props.match.params.userType
+    const userType = this.context.currentUser.user_type
+    console.log(userType)
     const classId = this.props.match.params.class
     const classUpdates = this.context.updatesList.filter(
                         update => update.class_id == classId)

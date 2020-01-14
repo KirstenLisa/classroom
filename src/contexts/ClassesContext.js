@@ -162,8 +162,11 @@ updateUpdate = updatedUpdate => {
     ? updatedUpdate
     : update)
     this.setState({
-      updatesList: newUpdatesList
+      updatesList: [ ...newUpdatesList]
+    },() => {
+      console.log(this.state.updatesList, 'inside classes context')
     })
+
 }
 
 setLogin = () => {

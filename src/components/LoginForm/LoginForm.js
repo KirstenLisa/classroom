@@ -73,8 +73,9 @@ class LoginForm extends React.Component {
   validateClassSelection() {
     const selectedClassName = this.state.class_name.value;
     if(selectedClassName === "None" || selectedClassName === '' || selectedClassName === undefined) {
+      console.log('inside validate class')
       return 'Class is required';
-    }
+    } 
 }
 
 validateForm() {
@@ -91,7 +92,6 @@ handleSubmitJwtAuth = (e) => {
       e.preventDefault();
       this.setState({ error: null })
      
-      this.validateForm()
 
       const { username, password, class_name } = e.target
       console.log(username.value, password.value)
@@ -99,6 +99,9 @@ handleSubmitJwtAuth = (e) => {
       const class_id = class_name.value
       const userName = username.value
       
+      if (this.validatePassword() || this.validateClassSelection() || this.validateUserName()) {
+        return null
+      } else {
 
       AuthApiService.postLogin({
         username: username.value,
@@ -121,7 +124,7 @@ handleSubmitJwtAuth = (e) => {
             }
          })
           })
-}
+}}
       
       
     

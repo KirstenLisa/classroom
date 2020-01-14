@@ -39,7 +39,7 @@ class UpdatesItem extends React.Component {
     }
 
     render() {
-
+        console.log(this.context.updatesList, 'inside updatesItem')
     const userType = this.props.match.params.userType
     const classId = this.props.match.params.class
     const updateId = this.props.match.params.updates

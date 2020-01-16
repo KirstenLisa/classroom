@@ -32,7 +32,7 @@ class UpdatesItem extends React.Component {
 
         UpdateApiService.deleteUpdate(updateId)
             .then(this.context.deleteUpdate(updateId))
-            .then(this.props.history.push(`/welcome/teacher/${classId}`))
+            .then(this.props.history.push(`/welcome/${classId}`))
             .catch(this.context.setError)
         
 

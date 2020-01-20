@@ -3,15 +3,21 @@
     margin-right: auto;
     margin-left: auto;
     color: blue;
+    text-align: center;
 }
 
 h2 {
     font-size: 32px;
 }
 
+
 .register-link {
     font-size: 26px;
     text-decoration: none;
+}
+
+.register-link {
+  align-self: center;
 }
 
 .LoginPage a:hover {
@@ -19,7 +25,7 @@ h2 {
 }
 
 .green {
-    color: green;
+  color: rgb(52, 199, 33);
   }
 
   .blue {
@@ -31,7 +37,7 @@ h2 {
   }
 
   .red {
-    color: red;
+    color: rgb(247, 15, 216);
   }
 
   

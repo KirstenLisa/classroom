@@ -1,6 +1,7 @@
 .loginForm {
     display: block;
     font-size: 26px;
+    text-align: left;
 }
 
 input {
@@ -22,10 +23,10 @@ select {
 }
 
 button {
-    background-color: darkgreen;
+    background-color: rgb(52, 199, 33);
     color: white;
     font-size: 20px;
-    border: 2px solid darkgreen;
+    border: 2px solid  rgb(52, 199, 33);
     border-radius: 3px;
     margin: 10px;
 }
@@ -36,4 +37,43 @@ button {
     font-weight: bold;
     font-family: Roboto, sans-serif;
     
+}
+
+@media screen and (min-width: 720px) {
+
+    .loginForm {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        font-size: 38px;
+        margin-top: 40px;
+        border: 2px solid  rgb(252, 160, 239);
+        border-radius: 5px;
+    }
+
+    .username, .password, .class-select {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    input, select {
+        margin: 10px;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+    
+    button {
+        font-size: 36px;
+    }
+}
+  @media screen and (min-width: 980px) {
+
+    .input {
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        margin: 15px;
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
 }

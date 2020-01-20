@@ -4,6 +4,7 @@ import ClassesContext from '../../contexts/ClassesContext'
 import TokenService from '../../services/token-service'
 import {Hyph, Button} from '../../utils/utils'
 import './Header.css'
+import { School_logo } from '../../school_images/school_building.png'
 
 export default class Header extends Component {
 
@@ -62,6 +63,7 @@ export default class Header extends Component {
     //console.log(this.context.isLoggedIn)
     return (
       <nav className='Header'>
+        {/* <img src={School_logo} alt='school-logo'/> */}
         <h1>
           <Link className='main-link' to='/'>
             <span className='blue'>M</span>
@@ -71,7 +73,7 @@ export default class Header extends Component {
             <span className='red'>a</span>
             <span className='blue'>ss</span>
             <span className='yellow'>r</span>
-            <span className='blue'>oo</span>
+            <span className='green'>oo</span>
             <span className='red'>m</span>
           </Link>
         </h1>

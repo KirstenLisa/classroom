@@ -254,11 +254,14 @@ validateRegistrationForm() {
             (<ValidationError message={userTypeError} id="userTypeError" />)}
         </div>
        <div className="registration-form-buttons">
-        <button type='submit'>
+        <button 
+          type='submit'
+          className='submit-button'>
             Register
           </button>
           <button
-            type='button' 
+            type='button'
+            className='cancelButton' 
             onClick={() => this.props.history.push('/')}>
             Cancel
           </button>

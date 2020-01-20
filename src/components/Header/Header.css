@@ -12,11 +12,11 @@ nav {
   }
 
   .green {
-    color: green;
+    color: rgb(52, 199, 33);
   }
 
   .blue {
-    color: blue;
+   color: blue;
   }
 
   .yellow {
@@ -24,7 +24,7 @@ nav {
   }
 
   .red {
-    color: red;
+    color: rgb(247, 15, 216);
   }
   
   .Header a {
@@ -52,22 +52,38 @@ nav {
 
   .registration-link {
     margin-left: 10px;
-    color: green;
+    color:  rgb(52, 199, 33);
   }
  
   
   @media screen and (min-width: 720px) {
     .Header {
-      align-items: baseline;
+      align-items: center;
     }
   
     .Header h1 {
+      font-size: 56px;
+    }
+
+    .Header__not-logged-in {
       font-size: 30px;
+    }
+
+    .Header__not-logged-in a:hover {
+      font-size: 34px;
     }
   }
   
   @media screen and (min-width: 980px) {
     .Header h1 {
-        font-size: 22pt;
+        font-size: 60px;
+  }
+
+  .Header__not-logged-in {
+    font-size: 34px;
+  }
+  
+  .Header__not-logged-in a:hover {
+    font-size: 38px;
   }
 }

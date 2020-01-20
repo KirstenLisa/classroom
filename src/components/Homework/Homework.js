@@ -19,7 +19,7 @@ class Homework extends React.Component {
 
         HomeworkApiService.deleteHomework(id)
             .then(this.context.deleteHomework(id))
-            .then(this.props.history.push(`/welcome/teacher/${classId}`))
+            .then(this.props.history.push(`/welcome/${classId}`))
             .catch(this.context.setError)
     }
 

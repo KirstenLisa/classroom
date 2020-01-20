@@ -56,7 +56,7 @@ class HomeworkList extends Component {
 
       const homeworkList = uniqueHomework.map(
         (homework, i) => <li className="homework-list-subjects" key={i} id={homework.homework_id}>
-          <Link to={`/homework/${userType}/${classId}/${homework.homework_id}/${homework.subject}`}>
+          <Link className='homework-link' to={`/homework/${userType}/${classId}/${homework.homework_id}/${homework.subject}`}>
             {homework.subject}
           </Link>
         </li>

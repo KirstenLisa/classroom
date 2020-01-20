@@ -26,7 +26,7 @@ class UpdatesList extends React.Component {
     const updatesList = classUpdates.map(
               (update, i) => 
               <li id={i} key={i}>
-                <Link to={`/latest/${userType}/${classId}/${update.update_id}`}>
+                <Link className='updates-link' to={`/latest/${userType}/${classId}/${update.update_id}`}>
                   {update.headline}
                 </Link> 
               </li>

@@ -2,8 +2,36 @@
     display: block;
     margin-right: auto;
     margin-left: auto;
+    color: blue;
 }
 
 h2 {
     font-size: 32px;
 }
+
+.register-link {
+    font-size: 26px;
+    text-decoration: none;
+}
+
+.LoginPage a:hover {
+  font-size: 36px;
+}
+
+.green {
+    color: green;
+  }
+
+  .blue {
+    color: blue;
+  }
+
+  .yellow {
+    color: rgb(255, 217, 0);
+  }
+
+  .red {
+    color: red;
+  }
+
+  

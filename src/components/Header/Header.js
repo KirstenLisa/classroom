@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
 import TokenService from '../../services/token-service'
+import {Hyph, Button} from '../../utils/utils'
 import './Header.css'
 
 export default class Header extends Component {
@@ -39,11 +40,15 @@ export default class Header extends Component {
         <div className='Header__not-logged-in'>
           
             <Link
+              className='login-link'
               to='/login'>
               Log in
             </Link>
+
+            <Hyph/>
         
         <Link
+          className='registration-link'
           to='/register'>
           Register
         </Link>
@@ -58,8 +63,16 @@ export default class Header extends Component {
     return (
       <nav className='Header'>
         <h1>
-          <Link to='/'>
-            My Classroom
+          <Link className='main-link' to='/'>
+            <span className='blue'>M</span>
+            <span className='red'>y</span>
+            <span className='yellow'>C</span>
+            <span className='green'>l</span>
+            <span className='red'>a</span>
+            <span className='blue'>ss</span>
+            <span className='yellow'>r</span>
+            <span className='blue'>oo</span>
+            <span className='red'>m</span>
           </Link>
         </h1>
         

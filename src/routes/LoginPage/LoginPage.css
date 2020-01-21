@@ -12,7 +12,7 @@ h2 {
 
 
 .register-link {
-    font-size: 26px;
+    font-size: 28px;
     text-decoration: none;
 }
 
@@ -39,5 +39,22 @@ h2 {
   .red {
     color: rgb(247, 15, 216);
   }
+
+  .LoginPage p {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 720px) {
+    
+    .LoginPage p {
+      font-size: 28px;
+    }
+
+    .register-link {
+    font-size: 53px;
+  }
+}
+
+@media screen and (min-width: 980px) {}
 
   

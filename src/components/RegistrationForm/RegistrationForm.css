@@ -24,10 +24,8 @@ select {
 }
 
 button {
-    background-color:  rgb(52, 199, 33);
     color: white;
     font-size: 23px;
-    border: 2px solid  rgb(52, 199, 33);
     border-radius: 3px;
     margin: 10px;
 }
@@ -38,8 +36,8 @@ button {
 }
 
 .cancelButton {
-    background-color: rgb(247, 15, 216);
-    border: 2px solid  rgb(247, 15, 216);
+    background-color: red;
+    border: 2px solid  red;
 }
 
 .error, .registrationError {

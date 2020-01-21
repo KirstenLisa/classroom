@@ -7,9 +7,11 @@ class Comment extends React.Component {
 
         return(
             <div className="comment">
-                <h3>{this.props.comment}</h3>
-                    <p className="date">{this.props.date}</p>
-                    <p className="author">By  {this.props.author}</p>
+                <p className="comment-text">{this.props.comment}</p>
+                    <div className="comment-info">
+                        <p className="date">{this.props.date}</p>
+                        <p className="author">By  {this.props.author}</p>
+                        </div>      
             </div>
         )
     }

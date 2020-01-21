@@ -30,7 +30,9 @@ export default class Header extends Component {
           <Link
             onClick={this.handleLogoutClick}
             to='/'>
-            Logout
+              <button className='logout-button'>
+              Logout
+              </button>
           </Link>
         </div>
       )

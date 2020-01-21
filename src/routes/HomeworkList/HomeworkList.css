@@ -5,17 +5,32 @@
 
 .homework-list-subjects {
     list-style: none;
-    font-size: 20px;
+    font-size: 28px;
 }
 
-.homework-link a:link { 
-    color:black;
+.homework-page a:link { 
+    color: blue;
     text-decoration: none;
 }
 
-.homework-link a:visited {
-    color: darkgreen;
+.homework-page a:visited {
+    color: black;
 }
 
+@media screen and (min-width: 720px) {
+
+    .homework-list-subjects {
+        font-size: 32px;
+        flex-wrap: wrap;
+    }
+
+}
+
+
+ @media screen and (min-width: 980px) {
+
+
+
+ }
 
 

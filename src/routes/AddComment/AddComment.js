@@ -25,7 +25,6 @@ class AddComment extends React.Component {
        this.context.clearError()
         UsersApiService.getUsers()
             .then(this.context.setUsersList)
-            .then(console.log(this.context.usersList))
             .catch(this.context.setError)
           }
 
@@ -42,7 +41,6 @@ class AddComment extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
       
-        console.log('submit comment')
         const { path } = this.props.match
         const { comment } = e.target
         const user_name = this.context.currentUser.username
@@ -97,11 +95,11 @@ class AddComment extends React.Component {
                     User Name: <span>{user_name}</span>
                     </h3>
                
-                <div className="form-group">
+                <div className="comment">
                     <label htmlFor="comment">Comment</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="comment-input"
                         name="comment"
                         id="comment"
                         onChange={e => this.updateComment(e.target.value)}
@@ -110,13 +108,13 @@ class AddComment extends React.Component {
                 </div>
 
                 <div className="comment_button_group">
-                    <button type='button' onClick={() => this.props.history.goBack()}>
+                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="save_button">
+                        className="submitButton">
                             Post
                     </button>
                 </div>

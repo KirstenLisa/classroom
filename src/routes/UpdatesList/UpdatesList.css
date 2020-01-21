@@ -5,22 +5,28 @@
 
 .updates-list {
     list-style: none;
-    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0;
+    font-size: 24px;
+    text-align: center;
 }
 
-.updates-link a:link { 
-    color:black;
+.updates-list a { 
+    color:blue;
     text-decoration: none;
 }
 
-.updates-link a:visited {
-    color: darkgreen;
+.updates-list a:visited {
+    color: black;
 }
+
 
 .add-update-button {
     color: white;
-    font-size: 18px;
-    width: 40%;
+    font-size: 22px;
+    background-color: rgb(52, 199, 33);
+    border: 2px solid  rgb(52, 199, 33);
     align-self: center;
 }
 
@@ -31,3 +37,19 @@
 .add-update-button a:visited {
     color: white;
 }
+
+
+@media screen and (min-width: 720px) {
+
+    updates-list {
+        font-size: 28px;
+    }
+
+}
+
+
+ @media screen and (min-width: 980px) {
+
+
+    
+ }

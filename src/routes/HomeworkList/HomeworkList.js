@@ -42,13 +42,11 @@ class HomeworkList extends Component {
     render() {
 
       const currentUser = this.context.currentUser
-      console.log(currentUser)
-      //const currentUser = this.context.usersList.filter(user => user.username == username)
+      console.log(this.context.currentUser)
       const userType = currentUser.user_type
       console.log(userType)
       
 
-      //const userType = this.props.match.params.userType
       const classId = this.props.match.params.class
       const homeworkForClass = this.context.homeworkList
       .filter(homework => homework.class_id == classId);

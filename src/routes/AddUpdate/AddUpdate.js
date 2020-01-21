@@ -37,7 +37,6 @@ class AddUpdate extends React.Component {
     }
 
     validateHeadline() {
-        console.log('validate headline')
         const headline = this.state.headline.value;
         if (headline === undefined) {
             return 'Headline is required';
@@ -47,7 +46,6 @@ class AddUpdate extends React.Component {
     }
 
     validateContent() {
-        console.log('validate content')
         const content = this.state.content.value;
         if (content === undefined) {
             return 'Content is required';
@@ -57,7 +55,6 @@ class AddUpdate extends React.Component {
     }
 
     validateAuthor() {
-        console.log('validate author')
         const author = this.state.author.value;
         if (author === undefined) {
             return 'Author is required';
@@ -78,7 +75,9 @@ class AddUpdate extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.validateForm()
+        if(this.validateForm()) {
+            return null
+        } else {
     
         console.log('submit update')
       
@@ -104,7 +103,7 @@ class AddUpdate extends React.Component {
               .catch(this.context.setError)
             
          
-    }
+    }}
 
 
     render() {
@@ -124,7 +123,7 @@ class AddUpdate extends React.Component {
                     <label htmlFor="headline">Headline</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="add-update-headline"
                         name="headline"
                         id="headline"
                         onChange={e => this.updateHeadline(e.target.value)}
@@ -138,7 +137,7 @@ class AddUpdate extends React.Component {
                     <label htmlFor="content">Content</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="add-update-content"
                         name="content"
                         id="content"
                         onChange={e => this.updateContent(e.target.value)}
@@ -152,7 +151,7 @@ class AddUpdate extends React.Component {
                     <label htmlFor="author">Author</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="add-update-author"
                         name="author"
                         id="author"
                         onChange={e => this.updateAuthor(e.target.value)}
@@ -163,13 +162,13 @@ class AddUpdate extends React.Component {
                 </div>
 
                 <div className="update_button_group">
-                    <button type='button' onClick={() => this.props.history.goBack()}>
+                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="save_button">
+                        className="submitButton">
                             Save
                     </button>
                 </div>

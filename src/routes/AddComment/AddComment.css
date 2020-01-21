@@ -1,0 +1,88 @@
+.addCommentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 26px;
+}
+
+input, select {
+    display: block;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    margin: 5px;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.comment-input {
+    vertical-align: text-top;
+    height: 100px;
+}
+
+
+.comment_button_group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.submitButton {
+    background-color: rgb(52, 199, 33);
+    border: 2px solid  rgb(52, 199, 33);
+    width: 100px;
+}
+
+.cancelButton {
+    background-color: red;
+    border: 2px solid  red;
+    width: 100px;
+}
+
+
+
+.error {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif; 
+}
+
+
+@media screen and (min-width: 720px) {
+
+    .addCommentForm {
+        font-size: 34px;
+    }
+
+    .addCommentForm input, select {
+        width: 600px;
+    }
+
+    .submitButton {
+        width: 150px;
+    }
+    
+    .cancelButton {
+        width: 150px;
+    }
+
+    .addCommentForm input, select {
+        font-size: 32px
+    }
+
+}
+
+
+ @media screen and (min-width: 980px) {
+
+
+    
+ }
+
+
+
+
+

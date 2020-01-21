@@ -51,7 +51,6 @@ class AddHomework extends React.Component {
     }
 
     validateHomework() {
-        console.log('validate homework')
         const homework = this.state.homework.value;
         if (homework === undefined) {
             return 'Homework is required';
@@ -61,7 +60,6 @@ class AddHomework extends React.Component {
     }
 
     validateTeacher() {
-        console.log('validate teacher')
         const selectedTeacher = this.state.teacher_name.value;
         if(selectedTeacher === "None" || selectedTeacher === '' || selectedTeacher === undefined) {
             return 'Teacher is required';
@@ -69,7 +67,6 @@ class AddHomework extends React.Component {
     }
 
     validateDate() {
-        console.log('validate date')
         const due_date = this.state.due_date.value;
         if (due_date === undefined) {
             return 'Due date is required';
@@ -151,11 +148,11 @@ class AddHomework extends React.Component {
                     Subject: <span>{subject}</span> 
                 </h3>
                 
-                <div className="form-group">
+                <div className="homework">
                     <label htmlFor="homework">Homework</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="input-homework"
                         name="homework"
                         id="homework"
                         onChange={e => this.updateHomework(e.target.value)}
@@ -169,6 +166,7 @@ class AddHomework extends React.Component {
                     <label htmlFor="teacher_name">Select: </label>
                     <select
                         name="teacher_name"
+                        className='teacher-input'
                         onChange={e => this.updateTeacherName(e.target.value)}
                         aria-required="true">
                             <option value={"None"}>Teacher...</option>
@@ -182,7 +180,7 @@ class AddHomework extends React.Component {
                     <label htmlFor="due_date">Due Date </label>
                     <input
                         type="date"
-                        className="registration_control"
+                        className="date-input"
                         name="due_date"
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
@@ -194,14 +192,14 @@ class AddHomework extends React.Component {
 
        
 
-                <div className="update_button_group">
-                    <button type='button' onClick={() => this.props.history.goBack()}>
+                <div className="homework_button_group">
+                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="save_button"
+                        className='submitButton'
                         >
                             Save
                     </button>

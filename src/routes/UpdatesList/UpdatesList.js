@@ -18,7 +18,7 @@ class UpdatesList extends React.Component {
   
     render() {
 
-    const userType = this.context.currentUser.user_type
+    const userType = sessionStorage.getItem('userType')
     const classId = this.props.match.params.class
     const classUpdates = this.context.updatesList.filter(
                         update => update.class_id == classId)

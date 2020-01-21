@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TokenService from '../services/token-service';
 
 const ClassesContext = React.createContext({
     username: '',
@@ -113,7 +114,6 @@ deleteHomework = homeworkId => {
 }
 
 addUpdate = newUpdate => {
-  console.log('add update')
   this.setUpdatesList([
     ...this.state.updatesList,
     newUpdate
@@ -121,7 +121,6 @@ addUpdate = newUpdate => {
 }
 
 deleteUpdate = updateId => {
-  //console.log('delete update')
   let newUpdatesList = this.state.updatesList.filter(update => 
     update.update_id != updateId)
     
@@ -130,7 +129,6 @@ deleteUpdate = updateId => {
 }
 
 addUpdateComment = newComment => {
-  console.log('add comment')
   this.setUpdatesCommentsList([
     ...this.state.updatesCommentsList,
     newComment
@@ -139,7 +137,6 @@ addUpdateComment = newComment => {
 
 
 addHomeworkComment = newComment => {
-  console.log('add comment')
   this.setHomeworkCommentsList([
     ...this.state.homeworkCommentsList,
     newComment
@@ -176,8 +173,9 @@ setLogin = () => {
 }
 
 setCurrentUser = (currentUser) => {
-  console.log(currentUser)
+  console.log(currentUser.user_type)
   this.setState({currentUser})
+  TokenService.saveUser(currentUser.user_type)
 }
 
 

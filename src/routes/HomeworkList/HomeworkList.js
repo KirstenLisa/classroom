@@ -41,9 +41,7 @@ class HomeworkList extends Component {
    
     render() {
 
-      const currentUser = this.context.currentUser
-      console.log(this.context.currentUser)
-      const userType = currentUser.user_type
+      const userType = sessionStorage.getItem('userType')
       console.log(userType)
       
 

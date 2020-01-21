@@ -123,8 +123,6 @@ handleSubmitJwtAuth = (e) => {
           })
 }}
       
-      
-    
 
     render() {
 

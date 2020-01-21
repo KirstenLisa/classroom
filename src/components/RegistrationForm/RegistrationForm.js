@@ -58,7 +58,6 @@ import './RegistrationForm.css'
     if (fullName === undefined) {
       return 'Your full name is required';
     } else if (fullName.length < 3) {
-      console.log('inside validate fullname')
       return 'Full name must be at least 3 characters long';
 }
 
@@ -69,7 +68,6 @@ import './RegistrationForm.css'
         if (userName === undefined) {
           return 'Username is required';
         } else if (userName.length < 3) {
-          console.log('inside validate username')
           return 'Username must be at least 3 characters long';
     }
   }
@@ -86,7 +84,6 @@ import './RegistrationForm.css'
   validateClassSelection() {
     const selectedClassId = this.state.class_id.value;
     if(selectedClassId === "None" || selectedClassId === '' || selectedClassId === undefined) {
-      console.log('inside validate class')
       return 'Class is required';
     } 
 }
@@ -94,7 +91,6 @@ import './RegistrationForm.css'
 validateUserSelection() {
   const selectedUser = this.state.user_type.value;
   if(selectedUser === "None" || selectedUser === '' || selectedUser === undefined) {
-    console.log('inside validate user')
     return 'User type is required';
   } 
 }
@@ -142,7 +138,6 @@ validateRegistrationForm() {
       this.props.history.push('/login') 
     })
     .catch(res => {
-      console.log(res)
       this.setState({
         error: {
            message: res.error
@@ -173,9 +168,9 @@ validateRegistrationForm() {
       <form
         className="registration-form"
         onSubmit={this.handleSubmit}>
-         {/* <div role='alert' className="registrationError">
+        <div role='alert' className="registrationError">
         {error && <p>{error.message}</p>}
-        </div> */}
+        </div>
 
         <div className='fullname'>
           <label htmlFor='RegistrationForm__full_name'>

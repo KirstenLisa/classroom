@@ -72,7 +72,6 @@ class LoginForm extends React.Component {
   validateClassSelection() {
     const selectedClassName = this.state.class_name.value;
     if(selectedClassName === "None" || selectedClassName === '' || selectedClassName === undefined) {
-      console.log('inside validate class')
       return 'Class is required';
     } 
 }
@@ -93,7 +92,6 @@ handleSubmitJwtAuth = (e) => {
      
 
       const { username, password, class_name } = e.target
-      console.log(username.value, password.value)
       
       const class_id = class_name.value
       const userName = username.value
@@ -117,7 +115,6 @@ handleSubmitJwtAuth = (e) => {
             .then(this.context.setCurrentUser)
           })
           .catch(res => {
-            console.log(res)
             this.setState({
               error: {
                  message: res.error
@@ -132,9 +129,6 @@ handleSubmitJwtAuth = (e) => {
     render() {
 
     const { error } = this.state
-
-    console.log(this.props)
-    console.log(this.context.classList)
 
     const classList = this
         .context

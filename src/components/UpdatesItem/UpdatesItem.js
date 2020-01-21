@@ -11,16 +11,13 @@ class UpdatesItem extends React.Component {
     static contextType = ClassesContext
 
     componentDidMount() {
-        console.log('component did mount')
         const updateId = this.props.match.params.updates
-        console.log(updateId)
         this.context.clearError()
         UpdateApiService.getUpdates()
             .then(this.context.setUpdatesList)
             .catch(this.context.error)
         UpdateApiService.getUpdateComments(updateId)
           .then(this.context.setUpdatesCommentsList)
-          .then(console.log(this.context))
           .catch(this.context.setError)
       }
 
@@ -28,7 +25,6 @@ class UpdatesItem extends React.Component {
         e.preventDefault();
         const updateId = this.props.match.params.updates
         const classId = this.props.match.params.class
-        console.log(updateId)
 
         UpdateApiService.deleteUpdate(updateId)
             .then(this.context.deleteUpdate(updateId))
@@ -39,7 +35,7 @@ class UpdatesItem extends React.Component {
     }
 
     render() {
-        console.log(this.context.updatesList, 'inside updatesItem')
+        
     const userType = this.props.match.params.userType
     const classId = this.props.match.params.class
     const updateId = this.props.match.params.updates
@@ -49,7 +45,7 @@ class UpdatesItem extends React.Component {
     const content = updateItem.map(update => update.content)
     const author = updateItem.map(update => update.author)
     const date = updateItem.map(update => update.date)
-    console.log(date)
+    
     const commentsList = this.context.updatesCommentsList
     const comment = commentsList.map(
                        (comment, i) => 

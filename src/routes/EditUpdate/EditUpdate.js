@@ -89,9 +89,6 @@ class EditUpdate extends React.Component {
 
         const {error} = this.state;
 
-        //console.log(this.props.match.params)
-
-
 
         return(
             <form className="addUpdateForm" onSubmit={e => this.handleSubmit(e)}>

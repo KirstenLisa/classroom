@@ -28,8 +28,6 @@ class StartPage extends React.Component {
             <UpdatesList />
           </div>
             
-           
-            
         </div>
       
     )

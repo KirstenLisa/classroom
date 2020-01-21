@@ -62,7 +62,7 @@ export default class Header extends Component {
   
 
   render() {
-    //console.log(this.context.isLoggedIn)
+    
     return (
       <nav className='Header'>
         {/* <img src={School_logo} alt='school-logo'/> */}

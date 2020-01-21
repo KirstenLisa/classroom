@@ -14,8 +14,6 @@ class Homework extends React.Component {
         e.preventDefault();
         const id = this.props.id
         const classId = this.props.match.params.class
-        console.log(id)
-
 
         HomeworkApiService.deleteHomework(id)
             .then(this.context.deleteHomework(id))
@@ -27,7 +25,6 @@ class Homework extends React.Component {
 
         const userType = this.props.match.params.userType
         const homework_id = this.props.match.params.homework
-        console.log(homework_id)
 
         return(
             

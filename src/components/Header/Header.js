@@ -60,16 +60,27 @@ export default class Header extends Component {
         </div>
       )
     }
-  
 
-  render() {
-    const classId = sessionStorage.getItem('classId')
-    console.log(classId)
-    return (
-      <nav className='Header'>
-        <img className="logo" src={School_logo} alt='school-logo'/>
-        {classId && 
-        <h1>
+    renderHomeLink() {
+      return (
+      <h1>
+      <Link className='main-link' to='/'>
+        <span className='blue'>M</span>
+        <span className='red'>y</span>
+        <span className='yellow'>C</span>
+        <span className='green'>l</span>
+        <span className='red'>a</span>
+        <span className='blue'>ss</span>
+        <span className='yellow'>r</span>
+        <span className='green'>oo</span>
+        <span className='red'>m</span>
+      </Link>
+    </h1>
+      )}
+
+    renderWelcomeLink(classId) {
+      return (
+      <h1>
           <Link className='main-link' to={`/welcome/${classId}`}>
             <span className='blue'>M</span>
             <span className='red'>y</span>
@@ -81,7 +92,21 @@ export default class Header extends Component {
             <span className='green'>oo</span>
             <span className='red'>m</span>
           </Link>
-        </h1>}
+        </h1>
+      )}
+  
+
+  render() {
+    const classId = sessionStorage.getItem('classId')
+    console.log(classId)
+    return (
+      <nav className='Header'>
+        <img className="logo" src={School_logo} alt='school-logo'/>
+        {classId
+          ? this.renderWelcomeLink(classId)
+          : this.renderHomeLink()
+        }
+       
         
       {TokenService.hasAuthToken()
           ? this.renderLogoutLink()

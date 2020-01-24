@@ -5,7 +5,7 @@
     font-size: 26px;
 }
 
-input, select {
+.comment_input {
     display: block;
     border: 1px solid lightgrey;
     border-radius: 3px;
@@ -14,7 +14,7 @@ input, select {
     font-size: 22px;
 }
 
-.comment-input {
+.comment_input {
     vertical-align: text-top;
     height: 100px;
 }
@@ -57,8 +57,10 @@ input, select {
         font-size: 34px;
     }
 
-    .addCommentForm input, select {
+    .comment_input {
         width: 600px;
+        font-size: 32px;
+        height: 150px;
     }
 
     .submitButton {
@@ -68,17 +70,15 @@ input, select {
     .cancelButton {
         width: 150px;
     }
-
-    .addCommentForm input, select {
-        font-size: 32px
-    }
-
 }
 
 
  @media screen and (min-width: 980px) {
 
-
+    .comment_input {
+        font-size: 34px;
+        height: 200px;
+    }
     
  }
 

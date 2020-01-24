@@ -119,46 +119,52 @@ class AddUpdate extends React.Component {
                 </div>
                 <h2>Add Update</h2>
                 
-                <div className="form-group">
+                <div className="add-update">
                     <label htmlFor="headline">Headline</label>
                     <input
                         type="text"
-                        className="add-update-headline"
+                        className="update_input"
                         name="headline"
                         id="headline"
                         onChange={e => this.updateHeadline(e.target.value)}
                         aria-required="true" 
                         />
+                        <div className="update_error">
                         {this.state.headline.touched && 
                         (<ValidationError message={this.validateHeadline()} id="headlineError" />)}
                 </div>
+                </div>
                
-                <div className="form-group">
+                <div className="add-update">
                     <label htmlFor="content">Content</label>
-                    <input
+                    <textarea
                         type="text"
-                        className="add-update-content"
+                        className="update_textarea"
                         name="content"
                         id="content"
                         onChange={e => this.updateContent(e.target.value)}
                         aria-required="true" 
                         /> 
+                        <div className="update_error">
                         {this.state.content.touched && 
                         (<ValidationError message={this.validateContent()} id="contentError" />)}  
                 </div>
+                </div>
 
-                <div className="form-group">
+                <div className="add-update">
                     <label htmlFor="author">Author</label>
                     <input
                         type="text"
-                        className="add-update-author"
+                        className="update_input"
                         name="author"
                         id="author"
                         onChange={e => this.updateAuthor(e.target.value)}
                         aria-required="true" 
-                        />  
+                        /> 
+                        <div className="update_error"> 
                         {this.state.author.touched && 
                         (<ValidationError message={this.validateAuthor()} id="authorError" />)} 
+                </div>
                 </div>
 
                 <div className="update_button_group">

@@ -60,14 +60,17 @@ class UpdatesItem extends React.Component {
 
         return (
             <div>
-                  <button 
+                 
+
+                <h2>Latest</h2>
+                <div className="no-headline">
+                    <div className="update-items-all">
+                <button 
                     type="button"
                     className="backButton"
                     onClick={() => this.props.history.goBack()}>
                         Back
                     </button>
-
-                <h2>Latest</h2>
                 <div className="updates-item">
                 <h3>{headline[0]}</h3>
                 <p>{content[0]}</p>
@@ -93,12 +96,14 @@ class UpdatesItem extends React.Component {
                             Delete
                         </button>
                     )}
+                    </div>
+                    
                 
             </div>
             <div className="updates-comments">
                 <h3>Comments</h3>
                 {comment.length > 0 && (
-                    <ul className="update-comments">
+                    <ul className="update-comments-inner">
                         {comment}   
                     </ul>
                 )}
@@ -108,10 +113,11 @@ class UpdatesItem extends React.Component {
                 <button 
                     type="button"
                     className="addCommentButton">
-                        <Link to={`/add-comment/latest/${userType}/${updateId}`} className="addCommentButton">
+                        <Link to={`/add-comment/latest/${userType}/${updateId}`} className="addCommentButtonLink">
                             Comment
                         </Link>
                     </button>
+            </div>
             </div>
 
             </div>

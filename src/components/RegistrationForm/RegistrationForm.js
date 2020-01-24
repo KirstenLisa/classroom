@@ -178,39 +178,45 @@ validateRegistrationForm() {
           </label>
           <input
             type='text'
-            className="login_control"
+            className="registration_input"
             name='fullname'
             id='fullname'
             onChange={e => this.updateFullname(e.target.value)}
             aria-required="true"
             placeholder="Full Name">
           </input>
+          <div className="registration_error">
           {this.state.fullname.touched && 
           (<ValidationError message={fullNameError} id="fullNameError" />)}
-        </div>
+          </div>
+          </div>
+       
         <div className='user_name'>
-          <label htmlFor='LoginForm__user_name'>
+          <label htmlFor='RegistrationForm__user_name'>
             User name
           </label>
           <input
             type="text"
-            className="login_control"
+            className="registration_input"
             name="username"
             id="username"
             onChange={e => this.updateUsername(e.target.value)}
             aria-required="true"
             placeholder="User Name" 
             />
+            <div className="registration_error">
             {this.state.username.touched && 
           (<ValidationError message={userNameError} id="userNameError" />)}
+          </div>
+            
         </div>
         <div className='password'>
-          <label htmlFor='LoginForm__password'>
+          <label htmlFor='RegistrationForm__password'>
             Password
           </label>
           <input
             type="text"
-            className="login_control"
+            className="registration_input"
             name="password"
             id="password"
             type="password"
@@ -218,26 +224,32 @@ validateRegistrationForm() {
             aria-required="true" 
             placeholder="Password"
             />
+             <div className="registration_error">
             {this.state.password.touched && 
             (<ValidationError message={passwordError} id="passwordError" />)}
+            </div>
         </div>
         <div className="class-select">
-            <label htmlFor="class_id">Select a class: </label>
+            <label htmlFor="class_id">Select class: </label>
             <select
                 name="class_id"
+                className="registration_select"
                 onChange={e => this.updateClassId(e.target.value)}
                 aria-required="true">
-                    <option value={"None"}>Select a class...</option>
+                    <option value={"None"}>Select class...</option>
                     {classList}
                     </select>
+                    <div className="registration_error">
                     {this.state.class_id.touched && 
             (<ValidationError message={classIdError} id="classIdError" />)}
+            </div>
                 </div>
                 <div className="user-select">
           <label htmlFor="user_name"> Register as: </label>
           <select
             name="user_type"
             id="user_type"
+            className="registration_select"
             onChange={e => this.updateUserType(e.target.value)}
             aria-required="true">
             <option value={"None"}>Select... </option>
@@ -245,13 +257,15 @@ validateRegistrationForm() {
             <option value="parent" key={2} id={2}>Parent</option>
             <option value="student" key={3} id={3}>Student</option>
           </select>
+          <div className="registration_error">
           {this.state.user_type.touched && 
             (<ValidationError message={userTypeError} id="userTypeError" />)}
+        </div>
         </div>
        <div className="registration-form-buttons">
         <button 
           type='submit'
-          className='submit-button'>
+          className='submitButton'>
             Register
           </button>
           <button

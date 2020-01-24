@@ -1,20 +1,25 @@
 .registration-form {
     display: block;
     font-size: 26px;
+    color: #104D73;
+    background-color: rgb(242, 184, 72, 0.5);
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #F2B84B;
+    border-radius: 5px;
 }
 
-input {
+
+.registration_input, .registration_select {
     display: block;
-    border: 1px solid lightgrey;
+    border: 1px solid #104D73;
     border-radius: 3px;
-    margin: 5px;
-    margin-bottom: 20px;
+    margin: 5px 0px 20px 5px;
     font-size: 20px;
+    background-color: white;
+    width: 95%;
 }
 
-select {
-    font-size: 18px;
-}
 .registration-form-buttons {
     display: flex;
     flex-direction: row;
@@ -31,17 +36,17 @@ button {
 }
 
 .submitButton {
-    background-color: rgb(52, 199, 33);
-    border: 2px solid  rgb(52, 199, 33);
+    background-color: #208C65;
+    border: 2px solid  #208C65;
 }
 
 .cancelButton {
-    background-color: red;
-    border: 2px solid  red;
+    background-color: #F20F38;
+    border: 2px solid  #F20F38;
 }
 
 .error, .registrationError {
-    color: red;
+    color: #F20F38;
     font-size: 20px;
     font-weight: bold;
     font-family: Roboto, sans-serif;
@@ -53,36 +58,58 @@ button {
     .registration-form {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
         padding: 15px;
-        font-size: 38px;
+        font-size: 26px;
+        margin-left: 70px;
+        margin-right: 70px;
         margin-top: 40px;
-        border: 2px solid  rgb(252, 160, 239);
         border-radius: 5px;
     }
 
     .fullname, .user_name, .password, .class-select, .user-select {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
-    input, select {
+    label {
+        flex: 1;
+    }
+
+    .registration_input, .registration_select {
         margin: 10px;
         margin-bottom: 20px;
-        font-size: 28px;
+        padding-left: 5px;
+        font-size: 24px;
+        width: 60%;
+        flex: 2;
+        height: 40px;
+    }
+
+    .registration_error {
+        width: 100%;
     }
     
     button {
-        font-size: 36px;
+        font-size: 20px;
+        width: 70px;
     }
+
+
+    .error, .registrationError{
+        font-size: 29px;
 }
+
+}
+
   @media screen and (min-width: 980px) {
 
-    .input {
-        border: 1px solid lightgrey;
-        border-radius: 3px;
+    .registration_input {
         margin: 15px;
         margin-bottom: 20px;
-        font-size: 32px;
+        font-size: 30px;
     }
 }

@@ -3,11 +3,11 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    color: blue;
 }
 
 h2 {
     text-align: center;
+    color: #2484BF;
 }
 
 @media screen and (min-width: 720px) {
@@ -16,12 +16,13 @@ h2 {
         margin-top: 40px;
     }
 
-   h2 {
-    font-size: 40px;
+   .RegistrationPage > h2 {
+    font-size: 32px;
+    text-align: center;
    }
 }
   @media screen and (min-width: 980px) {
-    h2 {
+    .RegistrationPage > h2 {
         font-size: 46px;
        }
 }

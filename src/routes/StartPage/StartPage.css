@@ -1,16 +1,45 @@
-h2 {
+.start-page > h2 {
     margin: 5px;
     margin-top: 15px;
-    font-size: 38px;
-    color: blue;
+    font-size: 30px;
+    color: #2484BF;
 }
 
 
 @media screen and (min-width: 720px) {
 
-  h2 {
-      font-size: 52px;
+  .start-page > h2 {
+      font-size: 45px;
       margin-bottom: 15px;
+      text-align: left;
+  }
+
+  .start-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .schedule-section {
+    width: 100%;
+  }
+
+  .homework-section, .updates-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    flex: 1;
+    margin-top: 50px;
+    align-items: flex-start;
+  }
+
+  .homework-section {
+    margin-left: 60px;
+  }
+
+  .updates-section {
+    margin-right: 60px;
   }
 
 }

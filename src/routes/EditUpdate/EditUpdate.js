@@ -91,17 +91,17 @@ class EditUpdate extends React.Component {
 
 
         return(
-            <form className="addUpdateForm" onSubmit={e => this.handleSubmit(e)}>
-                <div className='addUpdate_error' role='alert'>
+            <form className="editUpdateForm" onSubmit={e => this.handleSubmit(e)}>
+                <div className='editUpdate_error' role='alert'>
                 {error && <p>{error.message}</p>}
                 </div>
                 <h2>Edit Update</h2>
                 
-                <div className="form-group">
+                <div className="edit-update">
                     <label htmlFor="headline">Headline</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="edit_update_input"
                         name="headline"
                         id="headline"
                         value={this.state.headline}
@@ -110,11 +110,11 @@ class EditUpdate extends React.Component {
                         />
                 </div>
                
-                <div className="form-group">
+                <div className="edit-update">
                     <label htmlFor="content">Content</label>
-                    <input
+                    <textarea
                         type="text"
-                        className="registration_control"
+                        className="edit_update_textarea"
                         name="content"
                         id="content"
                         value={this.state.content}
@@ -123,11 +123,11 @@ class EditUpdate extends React.Component {
                         />   
                 </div>
 
-                <div className="form-group">
+                <div className="edit-update">
                     <label htmlFor="author">Author</label>
                     <input
                         type="text"
-                        className="registration_control"
+                        className="edit_update_input"
                         name="author"
                         id="author"
                         value={this.state.author}
@@ -137,13 +137,13 @@ class EditUpdate extends React.Component {
                 </div>
 
                 <div className="update_button_group">
-                    <button type='button' onClick={() => this.props.history.goBack()}>
+                    <button className="cancelButton" type='button' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="save_button">
+                        className="submitButton">
                             Save
                     </button>
                 </div>

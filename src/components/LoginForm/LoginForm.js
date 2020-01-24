@@ -113,6 +113,8 @@ handleSubmitJwtAuth = (e) => {
             this.context.setLogin()
             UsersApiService.getUser(userName)
             .then(this.context.setCurrentUser)
+            TokenService.saveClass(class_id)
+            TokenService.saveUsername(userName)
           })
           .catch(res => {
             this.setState({
@@ -152,15 +154,17 @@ handleSubmitJwtAuth = (e) => {
           </label>
           <input
             type="text"
-            className="login_control"
+            className="login_input"
             name="username"
             id="username"
             onChange={e => this.updateUsername(e.target.value)}
             aria-required="true"
             placeholder="User Name" 
             />
+            <div className="login_error">
           {this.state.username.touched && 
           (<ValidationError message={userNameError} id="userNameError" />)}
+          </div>
             
         </div>
 
@@ -170,7 +174,7 @@ handleSubmitJwtAuth = (e) => {
           </label>
           <input
             type="text"
-            className="login_control"
+            className="login_input"
             name="password"
             id="password"
             type="password"
@@ -178,32 +182,38 @@ handleSubmitJwtAuth = (e) => {
             aria-required="true" 
             placeholder="Password"
             />
+            <div className="login_error">
             {this.state.password.touched && 
             (<ValidationError message={passwordError} id="passwordError" />)}
         </div>
+        </div>
         <div className="class-select">
-            <label htmlFor="class_name">Select a class: </label>
+            <label htmlFor="class_name">Select class: </label>
             <select
                 name="class_name"
                 id="class_name"
+                className="login_select"
                 onChange={e => this.updateClassName(e.target.value)}
                 aria-required="true">
-                    <option value={"None"}>Select a class...</option>
+                    <option value={"None"}>Select class...</option>
                     {classList}
                     </select>
+                    <div className="login_error">
                     {this.state.class_name.touched && 
             (<ValidationError message={classNameError} id="userTypeError" />)}
+                </div>
                 </div>
 
         <div className="login-form-buttons">
           <button 
             type="submit"
-            className="login-button"
+            className="loginButton"
             >
             Login
           </button>
           <button
             type='button' 
+            className="cancelButton"
             onClick={() => this.props.history.push('/')}>
             Cancel
           </button>

@@ -148,49 +148,53 @@ class AddHomework extends React.Component {
                     Subject: <span>{subject}</span> 
                 </h3>
                 
-                <div className="homework">
+                <div className="add-homework-input">
                     <label htmlFor="homework">Homework</label>
-                    <input
+                    <textarea
                         type="text"
-                        className="input-homework"
+                        className="homework_textarea"
                         name="homework"
                         id="homework"
                         onChange={e => this.updateHomework(e.target.value)}
                         aria-required="true" 
                         />
+                        <div className="homework_error">
                         {this.state.homework.touched && 
                         (<ValidationError message={homeworkError} id="homeworkError" />)}
                 </div>
+                </div>
                
-                <div className="teacher-select">
+                <div className="add-homework-input">
                     <label htmlFor="teacher_name">Select: </label>
                     <select
                         name="teacher_name"
-                        className='teacher-input'
+                        className='homework_select'
                         onChange={e => this.updateTeacherName(e.target.value)}
                         aria-required="true">
                             <option value={"None"}>Teacher...</option>
                             {teachersList}
                     </select>
+                    <div className="homework_error">
                     {this.state.teacher_name.touched && 
                     (<ValidationError message={teacherError} id="teacherError" />)}
                 </div>
+                </div>
 
-                <div className="date-select">
+                <div className="add-homework-input">
                     <label htmlFor="due_date">Due Date </label>
                     <input
                         type="date"
-                        className="date-input"
+                        className="homework_input"
                         name="due_date"
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
                         aria-required="true" 
                         />
+                        <div className="homework_error">
                         {this.state.due_date.touched && 
                         (<ValidationError message={dateError} id="dateError" />)}
                 </div>
-
-       
+                </div>
 
                 <div className="homework_button_group">
                     <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>

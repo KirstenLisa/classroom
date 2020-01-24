@@ -1,0 +1,98 @@
+.editHomeworkForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 26px;
+    color: #104D73;
+}
+
+.edit_homework_input, .edit_homework_select {
+    background-color: white;
+    border: 1px solid #104D73;
+    border-radius: 3px;
+    margin: 5px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    font-size: 22px;
+    font-family: 'Schoolbell', cursive;
+    height: 40px;
+    width: 90%;
+}
+
+.edit-homework, .teacher-select, .date-select {
+    width: 100%;
+}
+
+.edit_homework_input{
+    height: 80px;
+}
+
+.update_button_group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.submitButton {
+    background-color: #208C65;
+    border: 2px solid  #208C65;
+    width: 100px;
+}
+
+.cancelButton {
+    background-color: #F20F38;
+    border: 2px solid  #F20F38;
+    width: 100px;
+}
+
+
+
+@media screen and (min-width: 720px) {
+
+    .editHomeworkForm {
+        font-size: 34px;
+    }
+
+    .edit-homework, .teacher-select, .date-select {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    label {
+        flex: 1;
+    }
+
+    .edit_homework_input, .edit_homework_select {
+        margin: 10px;
+        margin-bottom: 20px;
+        padding-left: 5px;
+        width: 60%;
+        flex: 2;
+        height: 50px;
+    }
+
+    .submitButton {
+        width: 150px;
+    }
+    
+    .cancelButton {
+        width: 150px;
+    }
+
+}
+
+
+ @media screen and (min-width: 980px) {
+
+    .edit_homework_input, .edit_homework_select {
+        flex: 3;
+    }
+    
+ }
+    

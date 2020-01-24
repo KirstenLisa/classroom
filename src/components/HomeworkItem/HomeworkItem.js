@@ -82,16 +82,21 @@ class HomeworkItem extends React.Component {
 
 
         return (
-            <div className="homework-item">
+            <div className="homework-item-page">
+                <h2>{subject} homework for class {currentClass[0]}</h2>
+            
+            <div className="no-headline">
+                <div className="homework-item-all">
                 <button 
                         type="button"
                         className="backButton"
                         onClick={() => this.props.history.push(`/welcome/${classId}`)}>
                             Back
                         </button>
-
-                <h2>{subject} homework for class {currentClass[0]}</h2>
-                {homeworkList}
+                        <div className="homework-list">
+                        {homeworkList}
+                        </div>
+                
                <div>
                 {userType === "teacher" && (
                 <button 
@@ -101,13 +106,11 @@ class HomeworkItem extends React.Component {
                                 className="addHomeworkButton">
                                 Add
                             </Link>
-                        </button>)}
-                    
-
-                        
+                        </button>)}                   
+                </div>
                 </div>
                 
-            <div className="homework-comments">
+            <div className="homework-comments-all">
                 <h3>Comments</h3>
                 
                 {comment.length > 0 && (
@@ -121,10 +124,11 @@ class HomeworkItem extends React.Component {
                 <button 
                     type="button"
                     className="addCommentButton">
-                        <Link to={`/add-comment/homework/${userType}/${homeworkId}`} className="addCommentButton">
+                        <Link to={`/add-comment/homework/${userType}/${homeworkId}`} className="addCommentButtonLink">
                             Comment
                         </Link>
                     </button>
+            </div>
             </div>
             </div>
             

@@ -9,18 +9,18 @@
 }
 
 .homework-page a:link { 
-    color: blue;
+    color: #104D73;
     text-decoration: none;
 }
 
 .homework-page a:visited {
-    color: black;
+    color: #208C65;
 }
 
 @media screen and (min-width: 720px) {
 
     .homework-list-subjects {
-        font-size: 32px;
+        font-size: 26px;
         flex-wrap: wrap;
     }
 

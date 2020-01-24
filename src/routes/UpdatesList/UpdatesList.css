@@ -13,20 +13,20 @@
 }
 
 .updates-list a { 
-    color:blue;
+    color:#104D73;
     text-decoration: none;
 }
 
 .updates-list a:visited {
-    color: black;
+    color: #208C65;
 }
 
 
 .add-update-button {
     color: white;
-    font-size: 22px;
-    background-color: rgb(52, 199, 33);
-    border: 2px solid  rgb(52, 199, 33);
+    font-size: 20px;
+    background-color: #208C65;
+    border: 2px solid  #208C65;
     align-self: center;
 }
 
@@ -41,14 +41,26 @@
 
 @media screen and (min-width: 720px) {
 
-    updates-list {
-        font-size: 28px;
+    .updates-list {
+        text-align: left;
+        font-size: 26px;
+    }
+
+    .add-update-button {
+        margin-top: 20px;
+        width: 140px;
+        height: 45px;
+        align-self: left;
     }
 
 }
 
 
  @media screen and (min-width: 980px) {
+
+    .add-update-button {
+        align-self: left;
+    }
 
 
     

@@ -26,6 +26,7 @@ export default class Header extends Component {
   
     renderLogoutLink() {
       return (
+        
         <div className='Header__logged-in'>
           <Link
             onClick={this.handleLogoutClick}
@@ -62,12 +63,14 @@ export default class Header extends Component {
   
 
   render() {
-    
+    const classId = sessionStorage.getItem('classId')
+    console.log(classId)
     return (
       <nav className='Header'>
         <img className="logo" src={School_logo} alt='school-logo'/>
+        {classId && 
         <h1>
-          <Link className='main-link' to='/'>
+          <Link className='main-link' to={`/welcome/${classId}`}>
             <span className='blue'>M</span>
             <span className='red'>y</span>
             <span className='yellow'>C</span>
@@ -78,7 +81,7 @@ export default class Header extends Component {
             <span className='green'>oo</span>
             <span className='red'>m</span>
           </Link>
-        </h1>
+        </h1>}
         
       {TokenService.hasAuthToken()
           ? this.renderLogoutLink()

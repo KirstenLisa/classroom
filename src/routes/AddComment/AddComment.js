@@ -43,7 +43,7 @@ class AddComment extends React.Component {
       
         const { path } = this.props.match
         const { comment } = e.target
-        const user_name = this.context.currentUser.username
+        const user_name = sessionStorage.getItem('username')
         const user = (this.context.usersList.filter(user => user.username == user_name))
         const user_id = user[0].user_id
         
@@ -80,7 +80,8 @@ class AddComment extends React.Component {
 
 
         const {error} = this.state;
-        const user_name = this.context.currentUser.username
+        const user_name = sessionStorage.getItem('username')
+        console.log(user_name)
 
 
 
@@ -97,9 +98,9 @@ class AddComment extends React.Component {
                
                 <div className="comment">
                     <label htmlFor="comment">Comment</label>
-                    <input
+                    <textarea
                         type="text"
-                        className="comment-input"
+                        className="comment_input"
                         name="comment"
                         id="comment"
                         onChange={e => this.updateComment(e.target.value)}

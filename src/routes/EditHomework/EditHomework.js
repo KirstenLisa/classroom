@@ -71,7 +71,6 @@ class EditHomework extends React.Component {
 
         const {homework, due_date, teacher_id} = e.target
         const teachersList = this.context.teachersList
-        const teacherId = teacher_id.value
         const teacher = teachersList.filter(teacher => teacher.id == teacher_id.value)
         const teacherName= teacher[0].teacher_name
         
@@ -92,7 +91,7 @@ class EditHomework extends React.Component {
 
         HomeworkApiService.updateHomework(id, updatedHomework)
             .then(this.context.updateHomework(updatedHomework))
-            .then(this.props.history.push(`/homework/${class_id}/${homework_id}/${this.state.subject}`))
+            .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${this.state.subject}`))
             .catch(this.context.setError)
     }
 
@@ -114,17 +113,17 @@ class EditHomework extends React.Component {
 
 
         return(
-            <form className="addHomeworkForm" onSubmit={e => this.handleSubmit(e)}>
-                <div className='addHomework_error' role='alert'>
+            <form className="editHomeworkForm" onSubmit={e => this.handleSubmit(e)}>
+                <div className='editHomework_error' role='alert'>
                 {error && <p>{error.message}</p>}
                 </div>
                 <h2>Edit homework</h2>
                 
-                <div className="form-group">
+                <div className="edit-homework">
                     <label htmlFor="">Homework</label>
-                    <input
+                    <textarea
                         type="text"
-                        className="registration_control"
+                        className="edit_homework_input"
                         name="homework"
                         id="homework"
                         value={this.state.homework}
@@ -137,6 +136,7 @@ class EditHomework extends React.Component {
                     <label htmlFor="teacher_name">Select: </label>
                     <select
                         name="teacher_id"
+                        className="edit_homework_select"
                         onChange={e => this.updateTeacher(e.target.value)}
                         aria-required="true">
                             <option value={this.state.teacher_id}>{this.state.teacher_name}</option>
@@ -145,11 +145,10 @@ class EditHomework extends React.Component {
                 </div>
 
                 <div className="date-select">
-                    <label htmlFor="due_date">Select: </label>
                     <label htmlFor="due_date">Due Date </label>
                     <input
                         type="date"
-                        className="registration_control"
+                        className="edit_homework_select"
                         name="due_date"
                         id="due_date"
                         onChange={e => this.updateDate(e.target.value)}
@@ -160,13 +159,13 @@ class EditHomework extends React.Component {
        
 
                 <div className="update_button_group">
-                    <button type='button' onClick={() => this.props.history.goBack()}>
+                    <button className="cancelButton" type='button' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="save_button">
+                        className="submitButton">
                             Save
                     </button>
                 </div>

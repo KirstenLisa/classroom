@@ -2,12 +2,15 @@
     display: block;
     margin-right: auto;
     margin-left: auto;
-    color: blue;
+    color: #2484BF;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 h2 {
     font-size: 32px;
+    text-align: center;
+    color: #2484BF;
 }
 
 
@@ -25,36 +28,41 @@ h2 {
 }
 
 .green {
-  color: rgb(52, 199, 33);
-  }
+  color: #208C65;
+}
 
-  .blue {
-    color: blue;
-  }
+.blue {
+ color: #2484BF;
+}
 
-  .yellow {
-    color: rgb(255, 217, 0);
-  }
+.yellow {
+  color: #F2B84B;
+}
 
-  .red {
-    color: rgb(247, 15, 216);
-  }
+.red {
+  color: #F20F38;
+}
 
   .LoginPage p {
     font-size: 20px;
+    margin-bottom: 5px;
   }
 
   @media screen and (min-width: 720px) {
     
     .LoginPage p {
-      font-size: 28px;
+      font-size: 24px;
     }
 
     .register-link {
-    font-size: 53px;
+    font-size: 40px;
   }
 }
 
-@media screen and (min-width: 980px) {}
+@media screen and (min-width: 980px) {
+  .register-link {
+    font-size: 42px;
+  }
+}
 
   

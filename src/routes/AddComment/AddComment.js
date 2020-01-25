@@ -109,13 +109,13 @@ class AddComment extends React.Component {
                 </div>
 
                 <div className="comment_button_group">
-                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
+                    <button type='button' className='cancelCommentButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="submitButton">
+                        className="submitCommentButton">
                             Post
                     </button>
                 </div>

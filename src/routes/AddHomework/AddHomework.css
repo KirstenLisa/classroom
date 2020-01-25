@@ -10,6 +10,10 @@
     font-size: 34px;
 }
 
+.addHomeworkForm > h3 {
+    color: #F20F38;
+}
+
 .homework_input, .homework_textarea, .homework_select {
     background-color: white;
     border: 1px solid #104D73;
@@ -40,13 +44,13 @@
     margin-bottom: 30px;
 }
 
-.submitButton {
+.submitHomeworkButton {
     background-color: #208C65;
     border: 2px solid  #208C65;
     width: 100px;
 }
 
-.cancelButton {
+.cancelHomeworkButton {
     background-color: #F20F38;
     border: 2px solid  #F20F38;
     width: 100px;
@@ -55,6 +59,10 @@
 
 
 @media screen and (min-width: 720px) {
+
+    h2 {
+        margin: 0px;
+    }
 
     .add-homework-input {
         display: flex;
@@ -69,13 +77,12 @@
     }
 
     .homework_input, .homework_select {
-        margin: 10px;
         margin-bottom: 20px;
         padding-left: 5px;
         font-size: 28px;
         width: 60%;
         flex: 2;
-        height: 50px;
+        height: 40px;
     }
 
     .homework_textarea {
@@ -93,17 +100,19 @@
         flex-direction: column;
         justify-content: space-around;
         padding: 15px;
-        font-size: 38px;
-        margin-top: 40px;
+        font-size: 30px;
+        margin: 0px 70px 70px 70px;
+        border: 2px solid  #208C65;
         border-radius: 5px;
     }
 
-    .submitButton {
+    .submitHomeworkButton {
         width: 150px;
     }
     
-    .cancelButton {
+    .cancelHomeworkButton {
         width: 150px;
+        margin-left: 182px;
     }
 
     .homework_error {
@@ -115,6 +124,10 @@
 
 
  @media screen and (min-width: 980px) {
+
+    .addHomeworkForm {
+        margin: 0px 150px 150px 150px;
+    }
 
     .homework_input, .homework_textarea, .homework_select {
         margin: 15px;

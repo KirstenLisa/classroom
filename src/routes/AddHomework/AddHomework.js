@@ -197,13 +197,13 @@ class AddHomework extends React.Component {
                 </div>
 
                 <div className="homework_button_group">
-                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
+                    <button type='button' className='cancelHomeworkButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className='submitButton'
+                        className='submitHomeworkButton'
                         >
                             Save
                     </button>

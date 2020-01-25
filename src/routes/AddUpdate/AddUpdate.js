@@ -168,13 +168,13 @@ class AddUpdate extends React.Component {
                 </div>
 
                 <div className="update_button_group">
-                    <button type='button' className='cancelButton' onClick={() => this.props.history.goBack()}>
+                    <button type='button' className='cancelUpdateButton' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="submitButton">
+                        className="submitUpdateButton">
                             Save
                     </button>
                 </div>

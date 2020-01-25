@@ -28,6 +28,18 @@ const TokenService = {
   saveClass(classId) {
     console.log(classId)
     return window.sessionStorage.setItem('classId', classId)
+  },
+
+  clearUser() {
+    return window.sessionStorage.removeItem('userType')
+  },
+
+  clearUsername() {
+    return window.sessionStorage.removeItem('username')
+  },
+
+  clearClass() {
+    return window.sessionStorage.removeItem('classId')
   }
 }
 

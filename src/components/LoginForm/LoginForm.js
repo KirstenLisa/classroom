@@ -45,11 +45,6 @@ class LoginForm extends React.Component {
           this.setState({class_name: {value: class_name, touched: true}});  
           }
 
-    // updateUserType(user_type) {
-    //   this.setState({
-    //     user_type: {value: user_type, touched: true}
-    //   })
-    // }
 
     validateUserName() {
       const userName = this.state.username.value;
@@ -95,9 +90,12 @@ handleSubmitJwtAuth = (e) => {
       
       const class_id = class_name.value
       const userName = username.value
-      
-      //if (this.validatePassword() || this.validateClassSelection() || this.validateUserName()) {
+
       if (this.validateForm()) {
+        return null 
+      
+      } else if (this.validatePassword() || this.validateClassSelection() || this.validateUserName()) {
+      
         return null
       } else {
 

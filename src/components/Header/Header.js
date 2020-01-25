@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
 import TokenService from '../../services/token-service'
-import {Hyph, Button} from '../../utils/utils'
+import {Hyph} from '../../utils/utils'
 import './Header.css'
 import  School_logo from '../../school_images/school_building.png'
 
@@ -22,6 +22,9 @@ export default class Header extends Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
     this.context.setLogin()
+    TokenService.clearUser()
+    TokenService.clearUsername()
+    TokenService.clearClass()
     }
   
     renderLogoutLink() {

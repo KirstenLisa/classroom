@@ -12,8 +12,19 @@ class StartPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        width: 0,
         minWidth: window.innerHeight > 630,
     };
+}
+
+updateDimensions = () => {
+  this.setState({ width: window.innerWidth });
+}
+componentDidMount() {
+  window.addEventListener('resize', this.updateDimensions);
+}
+componentWillUnmount() {
+  window.removeEventListener('resize', this.updateDimensions);
 }
 
 
@@ -22,7 +33,7 @@ class StartPage extends React.Component {
 
     const minWidth = this.state.minWidth
     console.log(minWidth)
-    console.log(window.innerHeight)
+    console.log(this.state.width)
 
     return (
         <div className="start-page">

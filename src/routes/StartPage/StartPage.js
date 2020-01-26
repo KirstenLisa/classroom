@@ -53,7 +53,7 @@ componentWillUnmount() {
             { width > 630 ? (
                   <div><Schedule /></div>
               ) : (
-                  <div>No schedule</div>
+                  <div>If you cannot see the schedule rotate your device</div>
               )}
           </div>
           <div className="homework-section">

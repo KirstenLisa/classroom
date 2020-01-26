@@ -1,15 +1,31 @@
-.start-page > h2 {
+
+.startpage-headline-red {
     margin: 5px;
-    margin-top: 15px;
+    margin-top: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: #F20F38;
+}
+
+.startpage-headline-blue {
+    margin: 5px;
+    margin-top: 30px;
     font-size: 30px;
     color: #2484BF;
+}
+
+.startpage-headline-green {
+    margin: 5px;
+    margin-top: 30px;
+    font-size: 30px;
+    color: #208C65;
 }
 
 
 @media screen and (min-width: 720px) {
 
-  .start-page > h2 {
-      font-size: 45px;
+  .startpage-headline-red {
+      font-size: 32px;
       margin-bottom: 15px;
       text-align: left;
   }

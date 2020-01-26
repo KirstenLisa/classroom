@@ -1,3 +1,25 @@
 .app-explanation {
     font-size: 26px;
+    color: #104D73;
+}
+
+.landingpage-headline {
+    text-align: center;
+    font-size: 24px;
+}
+
+@media screen and (min-width: 720px) {
+
+    .landingpage-headline {
+        font-size: 36px;
+    }
+
+}
+
+@media screen and (min-width: 980px) {
+
+    .landingpage-headline {
+        font-size: 40px;
+    }
+
 }

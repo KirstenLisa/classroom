@@ -1,4 +1,5 @@
 import React from 'react'
+import './LandingPage.css'
 
 class LandingPage extends React.Component{
 
@@ -6,10 +7,37 @@ class LandingPage extends React.Component{
 
         return (
             <div>
-                <h2>LANDING PAGE</h2>
+                <h1 className="landingpage-headline">
+                <span className='blue'>W</span>
+                <span className='red'>e</span>
+                <span className='yellow'>l</span>
+                <span className='green'>c</span>
+                <span className='red'>o</span>
+                <span className='blue'>m</span>
+                <span className='yellow'>e </span>
+                <span className='green'>t</span>
+                <span className='red'>o </span>
+
+                <span className='blue'>M</span>
+                <span className='red'>y</span>
+                <span className='yellow'>C</span>
+                <span className='green'>l</span>
+                <span className='red'>a</span>
+                <span className='blue'>ss</span>
+                <span className='yellow'>r</span>
+                <span className='green'>oo</span>
+                <span className='red'>m</span>
+                </h1>
                 <div className="app-explanation">
-                    EXPLANATION
-                    <p>There are three user types: teacher, student and parents. Parents and students cannot add or edit updates or add or edit homework. </p>
+                    <p>The app features three user types:</p>
+                        <ul>
+                            <li>Teacher</li>
+                            <li>Parent</li>
+                            <li>Student</li>
+                        </ul>
+                        
+                    <p>Teachers can add, edit and delete updates as well as homework. They can also write comments.</p>
+                    <p>Parents and students are only able to add comments.</p>
                     <h3>Test Users</h3>
                     <ul>
                         <li>

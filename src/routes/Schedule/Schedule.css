@@ -1,0 +1,31 @@
+.schedule-container {
+    display: flex;
+    color: #104D73;
+    width: 90%;
+    margin-top: 20px;
+
+}
+
+#schedule {
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid #104D73;
+    width: 90%;
+  }
+  
+  #schedule td, #schedule th {
+    border: 1px solid #104D73;
+    padding: 8px;
+  }
+  
+  #schedule tr:nth-child(4){background-color: #F2B84B;}
+  
+  #schedule th, #schedule td:hover {background-color: #208C65; color: white; font-size: 28px;}
+  
+  #schedule th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #2484BF;
+    color: white;
+  }

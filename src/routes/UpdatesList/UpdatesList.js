@@ -1,6 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
 import ClassesContext from '../../contexts/ClassesContext'
 import UpdateApiService from '../../services/update-api-services'
 import './UpdatesList.css'
@@ -17,7 +18,7 @@ class UpdatesList extends React.Component {
 
   
     render() {
-
+     
     const userType = sessionStorage.getItem('userType')
     const classId = this.props.match.params.class
     const classUpdates = this.context.updatesList.filter(
@@ -28,6 +29,7 @@ class UpdatesList extends React.Component {
                 <Link className='updates-link' to={`/latest/${userType}/${classId}/${update.update_id}`}>
                   {update.headline}
                 </Link> 
+                <p className='update-date'>{format(new Date(update.date), 'do MMM yyyy')}</p>
               </li>
 
     )

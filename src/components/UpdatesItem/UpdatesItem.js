@@ -45,6 +45,7 @@ class UpdatesItem extends React.Component {
     const content = updateItem.map(update => update.content)
     const author = updateItem.map(update => update.author)
     const date = updateItem.map(update => update.date)
+    console.log(date)
     
     const commentsList = this.context.updatesCommentsList
     const comment = commentsList.map(
@@ -75,7 +76,7 @@ class UpdatesItem extends React.Component {
                 <h3>{headline[0]}</h3>
                 <p>{content[0]}</p>
                 <p>{author[0]}</p>
-                {/* <p>{format(new Date(date), 'do MMM yyyy')}</p> */}
+                {<p>{format(new Date(date), 'do MMM yyyy')}</p>}
             </div>
             <div className="updates-buttons">
             {userType === "teacher" && (

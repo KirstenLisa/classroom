@@ -47,7 +47,7 @@
     }
 
     .updates-item > h3 {
-        font-size: 32px;
+        font-size: 30px;
     }
 
 
@@ -87,9 +87,6 @@
 
  @media screen and (min-width: 980px) {
 
-    .updates-item > h2 {
-        font-size: 56px;
-    }
 
     .addCommentButton {
         font-size: 20px;
@@ -97,7 +94,7 @@
     }
 
     .updates-item > h3 {
-        font-size: 40px;
+        font-size: 34px;
     }
     
  }

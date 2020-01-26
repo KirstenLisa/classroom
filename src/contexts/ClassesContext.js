@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TokenService from '../services/token-service';
 
 const ClassesContext = React.createContext({
+    randomNumber: '',
     username: '',
     currentUser: [],
     teachersList: [],
@@ -39,6 +40,7 @@ export default ClassesContext
 export class ClassesProvider extends Component {
 
 state = {
+  randomNumber: [],
   currentUser: [],
   teachersList: [],
   classList: [],
@@ -149,7 +151,8 @@ updateHomework = updatedHomework => {
     ? updatedHomework
     : homework)
     this.setState({
-      homeworkList: newHomeworkList
+      homeworkList: [ ...newHomeworkList],
+      randomNumber: Math.random() 
     })
 }
 
@@ -159,11 +162,9 @@ updateUpdate = updatedUpdate => {
     ? updatedUpdate
     : update)
     this.setState({
-      updatesList: [ ...newUpdatesList]
-    },() => {
-      console.log(this.state.updatesList, 'inside classes context')
+      updatesList: [ ...newUpdatesList],
+      randomNumber: Math.random() 
     })
-
 }
 
 setLogin = () => {
@@ -187,6 +188,7 @@ render() {
   //console.log(this.state.updatesCommentsList)
 
     const contextValue = {
+      randomNumber: this.state.randomNumber,
       currentUser: this.state.currentUser,
       teachersList: this.state.teachersList,
       classList: this.state.classList,

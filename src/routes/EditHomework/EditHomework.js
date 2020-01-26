@@ -1,5 +1,5 @@
 import React from 'react';
-import { format } from 'date-fns'
+import ValidationError from '../../components/ValidationError'
 import ClassesContext from '../../contexts/ClassesContext'
 import TeacherApiServices from '../../services/teachers-api-services'
 import HomeworkApiService from '../../services/homework-api-service'
@@ -13,17 +13,17 @@ class EditHomework extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          homework: '',
-          due_date: '',
+          homework: {value:'', touched: false},
+          due_date: {value:'',touched:false},
           teacher_id: '',
           error: null
           }
         }
     
     componentDidMount() {
-        console.log('component did mount')
+        console.log('edit homework mounted')
         const id = this.props.match.params.id
-        //console.log(id)
+        console.log(id)
         this.context.clearError()
 
         TeacherApiServices.getTeachers()
@@ -37,7 +37,7 @@ class EditHomework extends React.Component {
                     id: responseData.id,
                     homework_id: responseData.homework_id,
                     subject: responseData.subject,
-                    homework: responseData.homework,
+                    homework: {value:responseData.homework, touched: false},
                     due_date: responseData.due_date,
                     teacher_id: responseData.teacher_id,
                     teacher_name: responseData.teacher_name
@@ -45,20 +45,46 @@ class EditHomework extends React.Component {
                 })
         }
 
+  
+ validateHomework() {
+      const homework = this.state.homework;
+        if (homework === undefined) {
+          return 'Content is required';
+        } else if (homework.value.length < 3) {
+          return 'Homework must be at least 3 characters long';
+        }
+    }
+
+
+validateDate() {
+    const due_date = this.state.due_date.value;
+    console.log('validate date')
+    if(due_date === "None" || due_date === '' || due_date === undefined) {
+      return 'Date is required';
+    }
+} 
 
     updateHomework(homework) {
-        this.setState({homework: homework})
+        this.setState({homework: {value: homework, touched: true}})
     }
 
 
     updateDate(due_date) {
-        this.setState({due_date: due_date})
+        this.setState({due_date: {value: due_date, touched:true}})
     }
 
 
     updateTeacher(teacher_id) {
-        this.setState({teacher_id: teacher_id})
+        this.setState({teacher_id: {value:teacher_id, touched:true}})
     }
+
+    validateForm() {
+        if (this.validateHomework()) {
+          this.setState({homework: {touched:true}})
+        } else if (this.validateDate()) {
+          this.setState({due_date: {touched: true}})
+      }
+      }
 
 
 
@@ -88,27 +114,31 @@ class EditHomework extends React.Component {
 
         console.log(updatedHomework)
 
+        if (this.validateForm()) {
+            return null 
+          
+          } else if (this.validateHomework() || this.validateDate()) {
+          
+            return null
+          } else {
 
         HomeworkApiService.updateHomework(id, updatedHomework)
             .then(this.context.updateHomework(updatedHomework))
             .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${this.state.subject}`))
             .catch(this.context.setError)
     }
-
+    }
 
     render() {
 
         const {error} = this.state;
         const teacherId = this.state.teacher_id
+        console.log(this.state)
         const uniqueTeachersList = this.context.teachersList.filter(teacher => teacher.id !== teacherId)
         const teachersList = uniqueTeachersList
         .map(
             (teacher, i) => <option value={teacher.id} key={i} id={teacher.id}>{teacher.teacher_name}</option>
           );
-        
-
-        
-        const date = new Date(); // Now
          
 
 
@@ -126,10 +156,14 @@ class EditHomework extends React.Component {
                         className="edit_homework_input"
                         name="homework"
                         id="homework"
-                        value={this.state.homework}
+                        value={this.state.homework.value}
                         onChange={e => this.updateHomework(e.target.value)}
                         aria-required="true" 
                         />
+                </div>
+                <div className="homework-error">
+                {this.state.homework.touched && 
+                (<ValidationError message={this.validateHomework()} id="homeworkError" />)}
                 </div>
                
                 <div className="teacher-select">
@@ -155,17 +189,20 @@ class EditHomework extends React.Component {
                         aria-required="true" 
                         />
                 </div>
+                <div className="date-error">
+                {this.state.due_date.touched && 
+                (<ValidationError message={this.validateDate()} id="dateError" />)}
+                </div>
 
-       
 
                 <div className="update_button_group">
-                    <button className="cancelButton" type='button' onClick={() => this.props.history.goBack()}>
+                    <button className="cancelEditHomework" type='button' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="submitButton">
+                        className="submitEditHomework">
                             Save
                     </button>
                 </div>

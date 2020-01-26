@@ -75,9 +75,13 @@ class AddUpdate extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if(this.validateForm()) {
+        if (this.validateForm()) {
+            return null 
+          
+          } else if (this.validateHeadline() || this.validateContent() || this.validateAuthor()) {
+          
             return null
-        } else {
+          } else {
     
         console.log('submit update')
       

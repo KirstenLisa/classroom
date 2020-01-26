@@ -107,12 +107,12 @@ handleSubmitJwtAuth = (e) => {
             username.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
-            this.props.history.push(`/welcome/${class_id}`)
-            this.context.setLogin()
             UsersApiService.getUser(userName)
             .then(this.context.setCurrentUser)
             TokenService.saveClass(class_id)
             TokenService.saveUsername(userName)
+            this.props.history.push(`/welcome/${class_id}`)
+            this.context.setLogin()  
           })
           .catch(res => {
             this.setState({

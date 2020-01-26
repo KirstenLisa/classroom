@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassesContext from '../../contexts/ClassesContext'
+import ValidationError from '../../components/ValidationError'
 import UsersApiService from '../../services/users-api-service'
 import UpdateApiService from '../../services/update-api-services'
 import HomeworkApiService from '../../services/homework-api-service'
@@ -13,7 +14,7 @@ class AddComment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          comment: '',
+          comment: {value: '', touched: false},
           date: new Date(),
           error: null
           }
@@ -28,18 +29,41 @@ class AddComment extends React.Component {
             .catch(this.context.setError)
           }
 
+    validateContent() {
+        console.log('validate comment')
+      const content = this.state.comment.value;
+        if (content === undefined) {
+          return 'Content is required';
+        } else if (content.length < 3) {
+          return 'Comment must be at least 3 characters long';
+    }
+  }
 
     updateComment(comment) {
-        this.setState({comment: comment})
+        this.setState({comment: {value: comment, touched: true}})
     }
     
     updateUserName(user_name) {
         this.setState({user_name: user_name});
     }
 
+    validateForm() {
+        if (this.validateContent()) {
+          this.setState({comment: {touched:true}})
+        }
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();
+
+        if (this.validateForm()) {
+            return null 
+          
+          } else if (this.validateContent()) {
+          
+            return null
+          } else {
       
         const { path } = this.props.match
         const { comment } = e.target
@@ -72,7 +96,7 @@ class AddComment extends React.Component {
             .then(this.props.history.goBack())
             .catch(this.context.setError)
         }
-    
+          }
     }
 
 
@@ -106,6 +130,10 @@ class AddComment extends React.Component {
                         onChange={e => this.updateComment(e.target.value)}
                         aria-required="true" 
                         />   
+                </div>
+                <div className="comment_error">
+                        {this.state.comment.touched && 
+                        (<ValidationError message={this.validateContent()} id="commentError" />)}
                 </div>
 
                 <div className="comment_button_group">

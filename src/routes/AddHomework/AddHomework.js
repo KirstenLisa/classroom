@@ -68,9 +68,10 @@ class AddHomework extends React.Component {
 
     validateDate() {
         const due_date = this.state.due_date.value;
-        if (due_date === undefined) {
-            return 'Due date is required';
-        }
+        console.log(due_date)
+        if(due_date === "None" || due_date === '' || due_date === undefined) {
+            return 'Date is required';
+          }
     }
 
     validateForm() {
@@ -85,7 +86,14 @@ class AddHomework extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.validateForm()
+        if (this.validateForm()) {
+            return null 
+          
+          } else if (this.validateHomework() || this.validateTeacher() || this.validateDate()) {
+          
+            return null
+          } else {
+
         const class_id = this.props.match.params.class 
         const homework_id = this.props.match.params.homework
         const subject = this.props.match.params.subject
@@ -114,7 +122,7 @@ class AddHomework extends React.Component {
             .then(this.props.history.push(`/homework/teacher/${class_id}/${homework_id}/${subject}`))
             .catch(this.context.setError)
 
-        
+    }   
     }
 
 

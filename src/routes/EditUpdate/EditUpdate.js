@@ -1,6 +1,7 @@
 import React from 'react';
 import ClassesContext from '../../contexts/ClassesContext'
 import UpdateApiService from '../../services/update-api-services'
+import ValidationError from '../../components/ValidationError'
 import './EditUpdate.css'
 
 class EditUpdate extends React.Component {
@@ -11,10 +12,10 @@ class EditUpdate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          headline: '',
-          content: '',
+          headline: {value: '', touched: false},
+          content: {value: '', touched: false},
           class_id: '',
-          author: '',
+          author: {value: '', touched: false},
           date: new Date(),
           error: null
           }
@@ -34,28 +35,58 @@ class EditUpdate extends React.Component {
             .then(responseData => {
                 this.setState({
                     update_id: responseData.update_id,
-                    headline: responseData.headline,
-                    content: responseData.content,
+                    headline: {value: responseData.headline, touched: false},
+                    content: {value: responseData.content, touched: false},
                     class_id: responseData.class_id,
-                    author: responseData.author,
+                    author: {value: responseData.author, touched: false},
                     date: responseData.date
                 })
             })
     }
 
+
+ validateHeadline() {
+    const headline = this.state.headline;
+      if (headline === undefined) {
+        return 'Headline is required';
+      } else if (headline.value.length < 3) {
+        return 'Headline must be at least 3 characters long';
+      }
+  }
+
+  validateContent() {
+    const content = this.state.content;
+      if (content === undefined) {
+        return 'Content is required';
+      } else if (content.value.length < 3) {
+        return 'Content must be at least 3 characters long';
+      }
+  }
+
+  validateAuthor() {
+    const author = this.state.author;
+      if (author === undefined) {
+        return 'Author is required';
+      } else if (author.value.length < 3) {
+        return 'Author must be at least 3 characters long';
+      }
+  }
+
     updateHeadline(headline) {
-        this.setState({headline: headline})
+        this.setState({headline: {value: headline, touched: true}})
     }
 
 
     updateContent(content) {
-        this.setState({content: content})
+        this.setState({content: {value: content, touched: true}})
     }
 
 
     updateAuthor(author) {
-        this.setState({author: author})
+        this.setState({author: {value: author, touched: true}})
     }
+
+
 
 
     handleSubmit(e) {
@@ -104,10 +135,14 @@ class EditUpdate extends React.Component {
                         className="edit_update_input"
                         name="headline"
                         id="headline"
-                        value={this.state.headline}
+                        value={this.state.headline.value}
                         onChange={e => this.updateHeadline(e.target.value)}
                         aria-required="true" 
                         />
+                </div>
+                <div className="headline-error">
+                {this.state.headline.touched && 
+                (<ValidationError message={this.validateHeadline()} id="headlineError" />)}
                 </div>
                
                 <div className="edit-update">
@@ -117,10 +152,14 @@ class EditUpdate extends React.Component {
                         className="edit_update_textarea"
                         name="content"
                         id="content"
-                        value={this.state.content}
+                        value={this.state.content.value}
                         onChange={e => this.updateContent(e.target.value)}
                         aria-required="true" 
                         />   
+                </div>
+                <div className="content-error">
+                {this.state.content.touched && 
+                (<ValidationError message={this.validateContent()} id="contentError" />)}
                 </div>
 
                 <div className="edit-update">
@@ -130,20 +169,24 @@ class EditUpdate extends React.Component {
                         className="edit_update_input"
                         name="author"
                         id="author"
-                        value={this.state.author}
+                        value={this.state.author.value}
                         onChange={e => this.updateAuthor(e.target.value)}
                         aria-required="true" 
                         />   
                 </div>
+                <div className="author-error">
+                {this.state.author.touched && 
+                (<ValidationError message={this.validateAuthor()} id="authorHomework" />)}
+                </div>
 
                 <div className="update_button_group">
-                    <button className="cancelButton" type='button' onClick={() => this.props.history.goBack()}>
+                    <button className="cancelEditUpdate" type='button' onClick={() => this.props.history.goBack()}>
                         Cancel
                     </button>
            
                     <button
                         type="submit"
-                        className="submitButton">
+                        className="submitEditUpdate">
                             Save
                     </button>
                 </div>

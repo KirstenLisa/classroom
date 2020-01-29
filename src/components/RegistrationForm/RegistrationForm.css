@@ -35,12 +35,12 @@ button {
     margin: 10px;
 }
 
-.submitButton {
+.submitRegistration {
     background-color: #208C65;
     border: 2px solid  #208C65;
 }
 
-.cancelButton {
+.cancelRegistration {
     background-color: #F20F38;
     border: 2px solid  #F20F38;
 }
@@ -89,15 +89,17 @@ button {
         height: 40px;
     }
 
+    .submitRegistration {
+        width: 100px;
+    }
+    
+    .cancelRegistration {
+        width: 100px;
+    }
+
     .registration_error {
         width: 100%;
     }
-    
-    button {
-        font-size: 20px;
-        width: 70px;
-    }
-
 
     .error, .registrationError{
         font-size: 29px;
@@ -107,9 +109,22 @@ button {
 
   @media screen and (min-width: 980px) {
 
+    .registrationForm {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .registration_input, .registration_select {
+        flex: 3;
+    }
+
     .registration_input {
         margin: 15px;
         margin-bottom: 20px;
-        font-size: 30px;
+        font-size: 26px;
+    }
+
+    .registration-form-buttons {
+        justify-content: flex-end;
     }
 }

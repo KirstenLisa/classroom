@@ -31,6 +31,7 @@ const ClassesContext = React.createContext({
     setLogin: () => {},
     setUserName: () => {},
     setCurrentUser: () => {},
+    clearError: () => {},
     error: null,
     isLoggedIn: false
   })

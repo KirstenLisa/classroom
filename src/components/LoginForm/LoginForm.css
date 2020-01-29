@@ -97,7 +97,7 @@
     }
 
     .loginButton, .cancelButton {
-        width: 70px;
+        width: 100px;
     }
 
     .error, .login_error{
@@ -106,9 +106,22 @@
 }
   @media screen and (min-width: 980px) {
 
+    .loginForm {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .login_input, .login_select {
+        flex: 3;
+    }
+
     .login_input {
         margin: 15px;
         margin-bottom: 20px;
         font-size: 26px;
+    }
+
+    .login-form-buttons {
+        justify-content: flex-end;
     }
 }

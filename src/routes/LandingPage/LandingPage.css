@@ -10,6 +10,10 @@
 
 @media screen and (min-width: 720px) {
 
+    .app-explanation {
+        padding: 40px;
+    }
+
     .landingpage-headline {
         font-size: 36px;
     }
@@ -17,6 +21,10 @@
 }
 
 @media screen and (min-width: 980px) {
+
+    .app-explanation {
+        padding: 40px;
+    }
 
     .landingpage-headline {
         font-size: 40px;

@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
 import Schedule from '../Schedule/Schedule'
 import HomeworkList from '../HomeworkList/HomeworkList'
 import UpdatesList from '../UpdatesList/UpdatesList'
 import './StartPage.css'
-import { thisExpression } from '@babel/types';
 
 class StartPage extends React.Component {
 
@@ -13,19 +13,16 @@ class StartPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        width: 0,
-        minWidth: window.innerHeight > 720,
+        width: 0
     };
 }
 
 updateDimensions = () => {
-  console.log('update dimension')
   this.setState({ width: window.innerWidth });
   this.updateMinWidth()
 }
 
 updateMinWidth() {
-  console.log('update min width')
   this.setState({ minWidth: window.innerheight > 720})
 }
 
@@ -40,20 +37,27 @@ componentWillUnmount() {
 
   render() {
 
-    const minWidth = this.state.minWidth
     const width = this.state.width
-    console.log(minWidth)
-    console.log(this.state.width)
-    console.log(this.state.minWidth)
+    const classId = window.sessionStorage.getItem('classId')
+    const classInfo = this.context.classList.filter(c => c.class_id == classId)
+    const classTeacher = classInfo.map(c =>  c.class_teacher)
+    const userType = window.sessionStorage.getItem('userType')
+    console.log(classTeacher, userType)
 
     return (
         <div className="start-page">
+          { userType === 'parent' && (
+            <div className='email-link'>
+              <Link to='/email'>Write {classTeacher}</Link>
+            </div>
+          )}
+          
           <div className="schedule-section">
             <h2 className="startpage-headline-blue">SCHEDULE</h2>
             { width > 630 ? (
                   <div><Schedule /></div>
               ) : (
-                  <div>If you cannot see the schedule rotate your device</div>
+                  <div className="alt-schedule">If you cannot see the schedule rotate your device</div>
               )}
           </div>
           <div className="homework-section">

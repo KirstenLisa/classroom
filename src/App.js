@@ -11,6 +11,7 @@ import StartPage from './routes/StartPage/StartPage'
 import HomeworkItem from './components/HomeworkItem/HomeworkItem'
 import UpdatesItem from './components/UpdatesItem/UpdatesItem'
 import AddComment from './routes/AddComment/AddComment'
+import Email from './routes/Email/Email'
 import AddUpdate from './routes/AddUpdate/AddUpdate'
 import AddHomework from './routes/AddHomework/AddHomework'
 import EditHomework from './routes/EditHomework/EditHomework'
@@ -69,6 +70,12 @@ class App extends Component {
               exact
               path={'/welcome/:class'}
               component={StartPage}
+              />
+
+            <PrivateRoute
+              exact
+              path={'/email'}
+              component={Email}
               />
 
             <PrivateRoute

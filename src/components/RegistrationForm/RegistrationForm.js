@@ -121,7 +121,6 @@ validateRegistrationForm() {
         return null
       } else {
       console.log('registration form submitted')
-      console.log({ fullname, username, password, class_id, user_type })
       UsersApiService.postUser({
         fullname: fullname.value,
         username: username.value,
@@ -265,12 +264,12 @@ validateRegistrationForm() {
        <div className="registration-form-buttons">
         <button 
           type='submit'
-          className='submitButton'>
+          className='submitRegistration'>
             Register
           </button>
           <button
             type='button'
-            className='cancelButton' 
+            className='cancelRegistration' 
             onClick={() => this.props.history.push('/')}>
             Cancel
           </button>

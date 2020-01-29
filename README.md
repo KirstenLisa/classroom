@@ -1,68 +1,133 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>My Classroom</h1>
 
-## Available Scripts
+<h2>Live: kirstens-classroom-app.now.sh</h2>
 
-In the project directory, you can run:
 
-### `npm start`
+<h1>Description</h1>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+'My Classroom' helps teachers, parents and students to organize everyday school life. Students and parents can look up homework, announcements, and general information concerning the class and either comment on it or contact the class teacher directly. Teachers have the possibilty to add or change homework as well as communication changes to the schedule or set dates for class trips, parents days etc.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<h1>Motivation</h1>
 
-### `npm test`
+There is nothing more frustrating than coming to school early in the morning only to find out that the first lessons are canceled. So why not creating an easy way to inform parents and kids BEFORE they get on their way to school like a digital black board. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<h1>Features</h1>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The App consists of three basic features:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Schedule
+2. Homework
+3. Updates
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+and has three different user types: teacher, parent and student
 
-### `npm run eject`
+Students: can comment on homework and latest updates
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Parents: can additionally contact the class teacher
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Teachers: are able to add, change and delete existing content whether it is homework or updates
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<h1>Start page:</h1>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ <img src="screenshots/startpage_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+ <img src="screenshots/startpage_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h1>Registration:</h1>
 
-### Code Splitting
+<img src="screenshots/registration_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/registration_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+<h1>Login:</h1>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+<img src="screenshots/login_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/login_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+<h1>Dashboard:</h1>
 
-### Advanced Configuration
+<img src="screenshots/dashboard_desktop.png" width="700px" display="block" alt="screenshot desktop">
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+<h3>Schedule on mobile version is only displayed in widescreen mode</h3>
 
-### Deployment
+<img src="screenshots/daschboard_mobile.png" width="200px" display="inline-block" alt="screenshot mobile">
+<img src="screenshots/daschboard_mobile_wide.png" width="400px" display="inline-block" alt="screenshot mobile wide>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+<h3>Parent (email-link) and teacher (add update button) version:<h3>
 
-### `npm run build` fails to minify
+<img src="screenshots/dashboard_desktop_parent.png" width="300px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/dashboard_desktop_teacher.png" width="300px" display="inline-block" alt="screenshot desktop>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+<h1>Homework:</h1>:
+
+Teacher view:
+
+<img src="screenshots/homework_desktop_teacher.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/homework_mobile_teacher.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Parent/student view:
+
+<img src="screenshots/homework_desktop_parent.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/homework_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Teacher only: add homework
+
+<img src="screenshots/add_homework_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/add_homework_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Teacher only: edit homework
+
+<img src="screenshots/edit_homework_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/edit_homework_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+
+<h1>Update:</h1>
+
+Teacher view:
+
+<img src="screenshots/update_desktop_teacher.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/update_mobile-teacher.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Parent/student view:
+
+<img src="screenshots/update_desktop_parents.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/update_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Teacher only: add update
+<img src="screenshots/add_update_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/add_update_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+Teacher only: edit update
+
+<img src="screenshots/edit_update_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/edit_update_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+<h1>Add Comment:</h1>
+
+<img src="screenshots/add_comment_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/add_comment_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+<h1>Parent only: write email</h1>
+
+<img src="screenshots/email_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
+<img src="screenshots/email_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+
+
+
+
+
+Built with:
+
+Open UV API
+Google Geocoding API
+
+HTML
+CSS
+JS
+jQuery
+
+

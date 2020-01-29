@@ -13,17 +13,12 @@ class StartPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        width: 0
+        width: window.innerWidth
     };
 }
 
 updateDimensions = () => {
   this.setState({ width: window.innerWidth });
-  this.updateMinWidth()
-}
-
-updateMinWidth() {
-  this.setState({ minWidth: window.innerheight > 720})
 }
 
 componentDidMount() {
@@ -38,6 +33,7 @@ componentWillUnmount() {
   render() {
 
     const width = this.state.width
+    console.log(width)
     const classId = window.sessionStorage.getItem('classId')
     const classInfo = this.context.classList.filter(c => c.class_id == classId)
     const classTeacher = classInfo.map(c =>  c.class_teacher)

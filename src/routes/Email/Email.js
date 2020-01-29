@@ -1,40 +1,11 @@
 import React from 'react';
 import ClassesContext from '../../contexts/ClassesContext'
-import UsersApiService from '../../services/users-api-service'
 import './Email.css'
 
 class Email extends React.Component {
 
 
     static contextType = ClassesContext;
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          comment: {value: '', touched: false},
-          date: new Date(),
-          error: null
-          }
-        }
-
-    
-
-    componentDidMount() {
-       this.context.clearError()
-        UsersApiService.getUsers()
-            .then(this.context.setUsersList)
-            .catch(this.context.setError)
-          }
-
-  
-
-
-    handleSubmit(e) {
-        e.preventDefault();
-        
-        
-    }
-
 
     render() {
 

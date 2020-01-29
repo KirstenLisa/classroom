@@ -1,5 +1,4 @@
 import config from '../config'
-import { get } from 'http';
 import TokenService from '../services/token-service'
 
 const HomeworkApiService = {
@@ -31,7 +30,6 @@ const HomeworkApiService = {
   },
 
   deleteHomework(id) {
-    console.log('api service')
     return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
       method: 'DELETE',
       headers: {
@@ -46,7 +44,6 @@ const HomeworkApiService = {
   },
 
   updateHomework(id, updatedHomework) {
-    console.log('inside patch update')
 
     return fetch(`${config.API_ENDPOINT}/homework/${id}`, {
       method: 'PATCH',
@@ -67,7 +64,6 @@ const HomeworkApiService = {
   },
 
   postHomework(newHomework) {
-    (console.log('inside post homework'))
    
     return fetch(`${config.API_ENDPOINT}/homework`, {
       method: 'POST',

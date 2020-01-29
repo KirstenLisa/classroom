@@ -20,11 +20,9 @@ class HomeworkItem extends React.Component {
           .catch(this.context.setError)
         HomeworkApiService.getHomework()
           .then(this.context.setHomeworkList)
-          //.then(console.log(this.context.homeworkList))
           .catch(this.context.setError)
         HomeworkApiService.getHomeworkComments(homeworkId)
           .then(this.context.setHomeworkCommentsList)
-          //.then(console.log(this.props.match.params.homework))
           .catch(this.context.setError)
       }
 

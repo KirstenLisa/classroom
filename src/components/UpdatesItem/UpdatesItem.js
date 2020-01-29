@@ -45,7 +45,6 @@ class UpdatesItem extends React.Component {
     const content = updateItem.map(update => update.content)
     const author = updateItem.map(update => update.author)
     const date = updateItem.map(update => update.date)
-    console.log(date)
     
     const commentsList = this.context.updatesCommentsList
     const comment = commentsList.map(

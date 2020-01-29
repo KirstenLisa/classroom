@@ -20,15 +20,10 @@ class EditUpdate extends React.Component {
           error: null
           }
         }
-
-   
     
 
     componentDidMount() {
-        console.log('component did mount')
         const updateId = this.props.match.params.updates
-        console.log(updateId)
-        console.log(this.props.match.path)
         this.context.clearError()
         UpdateApiService.getUpdate(updateId)
             .catch(this.context.error)
@@ -92,9 +87,7 @@ class EditUpdate extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const updateId = this.props.match.params.updates
-        console.log('submit update')
       
-
         const {headline, content, author} = e.target
         
 
@@ -106,8 +99,6 @@ class EditUpdate extends React.Component {
             date: new Date(),
             class_id: this.props.match.params.class   
         }
-
-        console.log(updatedUpdate)
 
         UpdateApiService.updateUpdate(updateId, updatedUpdate)
             .then(this.context.updateUpdate(updatedUpdate))

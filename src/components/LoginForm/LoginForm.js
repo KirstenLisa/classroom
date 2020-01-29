@@ -171,7 +171,6 @@ handleSubmitJwtAuth = (e) => {
             Password
           </label>
           <input
-            type="text"
             className="login_input"
             name="password"
             id="password"

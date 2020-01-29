@@ -30,7 +30,6 @@ class AddComment extends React.Component {
           }
 
     validateContent() {
-        console.log('validate comment')
       const content = this.state.comment.value;
         if (content === undefined) {
           return 'Content is required';
@@ -81,8 +80,6 @@ class AddComment extends React.Component {
             user_id: user_id, 
             page_id: this.props.match.params.pageToCommentOn   
         }
-
-        console.log(newComment)
         
 
         if (path.includes('latest')) {
@@ -105,9 +102,6 @@ class AddComment extends React.Component {
 
         const {error} = this.state;
         const user_name = sessionStorage.getItem('username')
-        console.log(user_name)
-
-
 
         return(
             <form className="addCommentForm" onSubmit={e => this.handleSubmit(e)}>

@@ -17,16 +17,13 @@ const TokenService = {
     return window.btoa(`${userName}:${password}`)
   },
   saveUser(value) {
-    console.log(value)
     return window.sessionStorage.setItem('userType', value)
   },
   saveUsername(username) {
-    console.log(username)
     return window.sessionStorage.setItem('username', username)
   },
 
   saveClass(classId) {
-    console.log(classId)
     return window.sessionStorage.setItem('classId', classId)
   },
 

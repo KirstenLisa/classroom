@@ -1,5 +1,4 @@
 import config from '../config'
-import TokenService from '../services/token-service'
 
 const UsersApiService = {
   getUsers() {
@@ -29,7 +28,6 @@ const UsersApiService = {
   },
 
   postUser(newUser) {
-    (console.log('inside post update'))
    
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',

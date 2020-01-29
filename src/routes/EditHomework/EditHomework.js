@@ -21,9 +21,7 @@ class EditHomework extends React.Component {
         }
     
     componentDidMount() {
-        console.log('edit homework mounted')
         const id = this.props.match.params.id
-        console.log(id)
         this.context.clearError()
 
         TeacherApiServices.getTeachers()
@@ -58,7 +56,6 @@ class EditHomework extends React.Component {
 
 validateDate() {
     const due_date = this.state.due_date.value;
-    console.log('validate date')
     if(due_date === "None" || due_date === '' || due_date === undefined) {
       return 'Date is required';
     }
@@ -90,7 +87,6 @@ validateDate() {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('update homework')
         const id = this.props.match.params.id
         const homework_id=this.props.match.params.homework
         const class_id=this.props.match.params.class
@@ -112,8 +108,6 @@ validateDate() {
             class_id: class_id   
         }
 
-        console.log(updatedHomework)
-
         if (this.validateForm()) {
             return null 
           
@@ -133,7 +127,6 @@ validateDate() {
 
         const {error} = this.state;
         const teacherId = this.state.teacher_id
-        console.log(this.state)
         const uniqueTeachersList = this.context.teachersList.filter(teacher => teacher.id !== teacherId)
         const teachersList = uniqueTeachersList
         .map(

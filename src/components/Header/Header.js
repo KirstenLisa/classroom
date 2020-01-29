@@ -101,7 +101,6 @@ export default class Header extends Component {
 
   render() {
     const classId = sessionStorage.getItem('classId')
-    console.log(classId)
     return (
       <nav className='Header'>
         <img className="logo" src={School_logo} alt='school-logo'/>

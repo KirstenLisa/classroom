@@ -119,6 +119,8 @@ Teacher only: edit update
 
 Built with:
 
-React
+Client side: React, JavaScript, Zeit, HTML and CSS.
+
+Server side: Express.js, Node.js, PostgreSQL and Heroku.
 
 

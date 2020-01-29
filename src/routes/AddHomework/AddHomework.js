@@ -68,7 +68,6 @@ class AddHomework extends React.Component {
 
     validateDate() {
         const due_date = this.state.due_date.value;
-        console.log(due_date)
         if(due_date === "None" || due_date === '' || due_date === undefined) {
             return 'Date is required';
           }
@@ -98,13 +97,8 @@ class AddHomework extends React.Component {
         const homework_id = this.props.match.params.homework
         const subject = this.props.match.params.subject
         
-        
-        console.log('submit homework')
-      
-
         const {homework, due_date, teacher_name} = e.target
         
-
         const newHomework = {
             homework_id: homework_id,
             subject: subject,
@@ -114,8 +108,6 @@ class AddHomework extends React.Component {
             teacher_name: teacher_name.value,
             class_id: class_id 
         }
-
-        console.log(newHomework)
 
         HomeworkApiService.postHomework(newHomework)
             .then(this.context.addHomework)

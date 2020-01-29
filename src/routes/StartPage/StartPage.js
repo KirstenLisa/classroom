@@ -42,7 +42,6 @@ componentWillUnmount() {
     const classInfo = this.context.classList.filter(c => c.class_id == classId)
     const classTeacher = classInfo.map(c =>  c.class_teacher)
     const userType = window.sessionStorage.getItem('userType')
-    console.log(classTeacher, userType)
 
     return (
         <div className="start-page">

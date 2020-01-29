@@ -83,9 +83,7 @@ class AddUpdate extends React.Component {
             return null
           } else {
     
-        console.log('submit update')
       
-
         const {headline, content, author} = e.target
         
 
@@ -97,8 +95,6 @@ class AddUpdate extends React.Component {
             date: new Date(),
             class_id: this.props.match.params.class   
         }
-
-        console.log(newUpdate)
 
     
         UpdateApiService.postUpdate(newUpdate)

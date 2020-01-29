@@ -1,5 +1,4 @@
 import config from '../config'
-import { get } from 'http';
 import TokenService from '../services/token-service'
 
 const UpdateApiService = {
@@ -31,7 +30,6 @@ const UpdateApiService = {
   },
 
   deleteUpdate(updateId) {
-    console.log('api service')
     return fetch(`${config.API_ENDPOINT}/updates/${updateId}`, {
       method: 'DELETE',
       headers: {

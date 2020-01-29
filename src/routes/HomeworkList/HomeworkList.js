@@ -3,7 +3,6 @@ import {withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
 import ClassesContext from '../../contexts/ClassesContext'
 import HomeworkApiService from '../../services/homework-api-service'
-import UsersApiService from '../../services/users-api-service'
 import ClassApiService from '../../services/classes-api-service'
 import './HomeworkList.css'
 
@@ -18,9 +17,6 @@ class HomeworkList extends Component {
       ClassApiService.getClasses()
         .then(this.context.setClassList)
         .catch(this.context.setError)
-      // UsersApiService.getUser()
-      //   .then(this.context.setCurrentUser)
-      //   .catch(this.context.setError)
     }
 
 
@@ -43,7 +39,6 @@ class HomeworkList extends Component {
 
       const userType = sessionStorage.getItem('userType')
       const classId = sessionStorage.getItem('classId')
-      console.log(userType, classId)
       
       const homeworkForClass = this.context.homeworkList
       .filter(homework => homework.class_id == classId);

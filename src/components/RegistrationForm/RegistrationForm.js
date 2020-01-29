@@ -120,7 +120,6 @@ validateRegistrationForm() {
       if (this.validateRegistrationForm()) {
         return null
       } else {
-      console.log('registration form submitted')
       UsersApiService.postUser({
         fullname: fullname.value,
         username: username.value,
@@ -214,7 +213,6 @@ validateRegistrationForm() {
             Password
           </label>
           <input
-            type="text"
             className="registration_input"
             name="password"
             id="password"

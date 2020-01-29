@@ -18,8 +18,6 @@ import EditHomework from './routes/EditHomework/EditHomework'
 import EditUpdate from './routes/EditUpdate/EditUpdate'
 import './App.css'
 
-{/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon"></link> */}
 
 class App extends Component {
   state = { hasError: false }

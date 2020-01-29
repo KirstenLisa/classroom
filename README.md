@@ -30,15 +30,15 @@ Teachers: are able to add, change and delete existing content whether it is home
 
 <h1>Start page:</h1>
 
- <img src="screenshots/startpage_desktop.png" width="400px" display="inline" alt="screenshot desktop">
- <img src="screenshots/startpage_mobile.png" width="150px" display="inline" alt="screenshot mobile>
+ <kbd><img src="screenshots/startpage_desktop.png" width="200px" display="inline-block" alt="screenshot desktop"></kbd>
+ <img src="screenshots/startpage_mobile.png" width="150px" display="inline-block" alt="screenshot mobile>
 
 
 
 <h1>Registration:</h1>
 
-<img src="screenshots/registration_desktop.png" width="400px" display="inline" alt="screenshot desktop">
-<img src="screenshots/registration_mobile.png" width="150px" display="inline" alt="screenshot mobile>
+<img src="screenshots/registration_desktop.png" width="200px"  alt="screenshot desktop">
+<img src="screenshots/registration_mobile.png" width="150px"  alt="screenshot mobile>
 
 
 <h1>Login:</h1>

@@ -30,21 +30,21 @@ Teachers: are able to add, change and delete existing content whether it is home
 
 <h1>Start page:</h1>
 
- <img src="screenshots/startpage_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
- <img src="screenshots/startpage_mobile.png" width="100px" display="inline-block" alt="screenshot mobile>
+ <img src="screenshots/startpage_desktop.png" width="400px" display="inline" alt="screenshot desktop">
+ <img src="screenshots/startpage_mobile.png" width="150px" display="inline" alt="screenshot mobile>
 
 
 
 <h1>Registration:</h1>
 
-<img src="screenshots/registration_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
-<img src="screenshots/registration_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+<img src="screenshots/registration_desktop.png" width="400px" display="inline" alt="screenshot desktop">
+<img src="screenshots/registration_mobile.png" width="150px" display="inline" alt="screenshot mobile>
 
 
 <h1>Login:</h1>
 
 <img src="screenshots/login_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
-<img src="screenshots/login_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+<img src="screenshots/login_mobile.png" width="150px" display="inline-block" alt="screenshot mobile>
 
 
 <h1>Dashboard:</h1>
@@ -53,8 +53,8 @@ Teachers: are able to add, change and delete existing content whether it is home
 
 <h3>Schedule on mobile version is only displayed in widescreen mode</h3>
 
-<img src="screenshots/daschboard_mobile.png" width="200px" display="inline-block" alt="screenshot mobile">
-<img src="screenshots/daschboard_mobile_wide.png" width="400px" display="inline-block" alt="screenshot mobile wide>
+<img src="screenshots/daschboard_mobile.png" width="150px" display="inline-block" alt="screenshot mobile">
+<img src="screenshots/daschboard_mobile_wide.png" width="300px" display="inline-block" alt="screenshot mobile wide>
 
 <h3>Parent (email-link) and teacher (add update button) version:<h3>
 

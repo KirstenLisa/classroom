@@ -31,7 +31,7 @@ Teachers: are able to add, change and delete existing content whether it is home
 <h1>Start page:</h1>
 
  <img src="screenshots/startpage_desktop.png" width="400px" display="inline-block" alt="screenshot desktop">
- <img src="screenshots/startpage_mobile.png" width="200px" display="inline-block" alt="screenshot mobile>
+ <img src="screenshots/startpage_mobile.png" width="100px" display="inline-block" alt="screenshot mobile>
 
 
 

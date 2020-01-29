@@ -31,20 +31,20 @@ Teachers: are able to add, change and delete existing content whether it is home
 <h1>Start page:</h1>
 
  <img src="screenshots/startpage_desktop.png"  display="block" alt="screenshot desktop">
- <img src="screenshots/startpage_mobile.png" width="150px" display="block" alt="screenshot mobile">
+ <img src="screenshots/startpage_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 
 <h1>Registration:</h1>
 
 <img src="screenshots/registration_desktop.png"  alt="screenshot desktop">
-<img src="screenshots/registration_mobile.png" width="150px" alt="screenshot mobile">
+<img src="screenshots/registration_mobile.png" width="200px" alt="screenshot mobile">
 
 
 <h1>Login:</h1>
 
 <img src="screenshots/login_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/login_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/login_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Dashboard:</h1>
@@ -53,7 +53,7 @@ Teachers: are able to add, change and delete existing content whether it is home
 
 <h3>Schedule on mobile version is only displayed in widescreen mode</h3>
 
-<img src="screenshots/daschboard_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/daschboard_mobile.png" width="200px" display="block" alt="screenshot mobile">
 <img src="screenshots/daschboard_mobile_wide.png" width="300px" display="block" alt="screenshot mobile wide">
 
 <h3>Parent (email-link) and teacher (add update button) version:<h3>
@@ -62,27 +62,27 @@ Teachers: are able to add, change and delete existing content whether it is home
 <img src="screenshots/dashboard_desktop_teacher.png"  display="block" alt="screenshot desktop">
 
 
-<h1>Homework:</h1>:
+<h1>Homework:</h1>
 
 Teacher view:
 
 <img src="screenshots/homework_desktop_teacher.png" display="block" alt="screenshot desktop">
-<img src="screenshots/homework_mobile_teacher.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/homework_mobile_teacher.png" width="200px" display="block" alt="screenshot mobile">
 
 Parent/student view:
 
 <img src="screenshots/homework_desktop_parent.png" display="block" alt="screenshot desktop">
-<img src="screenshots/homework_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/homework_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 Teacher only: add homework
 
 <img src="screenshots/add_homework_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/add_homework_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/add_homework_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 Teacher only: edit homework
 
 <img src="screenshots/edit_homework_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/edit_homework_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/edit_homework_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 <h1>Update:</h1>
@@ -90,31 +90,31 @@ Teacher only: edit homework
 Teacher view:
 
 <img src="screenshots/update_desktop_teacher.png" display="block" alt="screenshot desktop">
-<img src="screenshots/update_mobile-teacher.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/update_mobile-teacher.png" width="200px" display="block" alt="screenshot mobile">
 
 Parent/student view:
 
-<img src="screenshots/update_desktop_parents.png" display="block" alt="screenshot desktop">
-<img src="screenshots/update_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/update_desktop_parent.png" display="block" alt="screenshot desktop">
+<img src="screenshots/update_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 Teacher only: add update
 <img src="screenshots/add_update_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/add_update_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/add_update_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 Teacher only: edit update
 
 <img src="screenshots/edit_update_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/edit_update_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/edit_update_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 <h1>Add Comment:</h1>
 
 <img src="screenshots/add_comment_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/add_comment_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/add_comment_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 <h1>Parent only: write email</h1>
 
 <img src="screenshots/email_desktop.png" display="block" alt="screenshot desktop">
-<img src="screenshots/email_mobile.png" width="150px" display="block" alt="screenshot mobile">
+<img src="screenshots/email_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 
 Built with:

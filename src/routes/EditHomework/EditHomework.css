@@ -99,6 +99,10 @@
     .edit_homework_input, .edit_homework_select {
         flex: 3;
     }
+
+    .edit_homework_input {
+        height: 150px;
+    }
     
  }
     

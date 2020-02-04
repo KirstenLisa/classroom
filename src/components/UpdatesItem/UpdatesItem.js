@@ -6,11 +6,11 @@ import UpdateApiService from '../../services/update-api-services';
 import Comment from '../Comment/Comment';
 import './UpdatesItem.css';
 
+
 class UpdatesItem extends React.Component {
   static contextType = ClassesContext;
 
   componentDidMount() {
-    console.log('hello')
     const updateId = this.props.match.params.updates;
     this.context.clearError();
     UpdateApiService.getUpdates()
@@ -46,8 +46,7 @@ class UpdatesItem extends React.Component {
     const content = updateItem.map(update => update.content);
     const author = updateItem.map(update => update.author);
     const date = updateItem.map(update => update.date);
-    console.log(date)
-    console.log(this.context)
+
 
     const commentsList = this.context.updatesCommentsList;
     const comment = commentsList.map((comment, i) => (
@@ -77,8 +76,10 @@ class UpdatesItem extends React.Component {
               <h3>{headline[0]}</h3>
               <p>{content[0]}</p>
               <p>{author[0]}</p>
-              {/* <p>{date}</p> */}
-              <p>{format(new Date(date), 'do MMM yyyy')}</p>
+              {date == undefined || date == [] || date == ''? 
+              (<p>no date</p>)
+              :
+              (<p>{format(new Date(date), 'do MMM yyyy')}</p>)}
             </div>
             <div className='updates-buttons'>
               {userType === 'teacher' && (

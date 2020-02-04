@@ -1,54 +1,54 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { format } from 'date-fns'
-import ClassesContext from '../../contexts/ClassesContext'
-import HomeworkApiService from '../../services/homework-api-service'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+import ClassesContext from '../../contexts/ClassesContext';
+import HomeworkApiService from '../../services/homework-api-service';
 import ClassApiService from '../../services/classes-api-service';
-import Homework from '../Homework/Homework'
-import Comment from '../Comment/Comment'
-import './HomeworkItem.css'
+import Homework from '../Homework/Homework';
+import Comment from '../Comment/Comment';
+import './HomeworkItem.css';
 
 class HomeworkItem extends React.Component {
 
-    static contextType = ClassesContext
+    static contextType = ClassesContext;
 
     componentDidMount() {
-        const homeworkId = this.props.match.params.homework
-        this.context.clearError()
+        const homeworkId = this.props.match.params.homework;
+        this.context.clearError();
         ClassApiService.getClasses()
           .then(this.context.setClassList)
-          .catch(this.context.setError)
+          .catch(this.context.setError);
         HomeworkApiService.getHomework()
           .then(this.context.setHomeworkList)
-          .catch(this.context.setError)
+          .catch(this.context.setError);
         HomeworkApiService.getHomeworkComments(homeworkId)
           .then(this.context.setHomeworkCommentsList)
-          .catch(this.context.setError)
+          .catch(this.context.setError);
       }
 
     deleteRequest = (e) => {
         e.preventDefault();
-        const homeworkId = this.props.match.params.homework
-        const classId = this.props.match.params.class
+        const homeworkId = this.props.match.params.homework;
+        const classId = this.props.match.params.class;
 
 
         HomeworkApiService.deleteHomework(homeworkId)
             .then(this.context.deleteHomework(homeworkId))
             .then(this.props.history.push(`/welcome/teacher/${classId}`))
-            .catch(this.context.setError)
+            .catch(this.context.setError);
     }
 
   
     render() {
 
-        const classId = this.props.match.params.class
-        const className = this.context.classList.filter(c => c.class_id == classId)
-        const currentClass = className.map(c =>  c.class_name)
-        const subject = this.props.match.params.subject
-        const classHomework = this.context.homeworkList.filter(homework => homework.class_id == classId)
-        const homeworkId = this.props.match.params.homework
-        const userType = this.props.match.params.userType
-        const homework = classHomework.filter(homework => homework.homework_id == homeworkId)
+        const classId = this.props.match.params.class;
+        const className = this.context.classList.filter(c => c.class_id == classId);
+        const currentClass = className.map(c =>  c.class_name);
+        const subject = this.props.match.params.subject;
+        const classHomework = this.context.homeworkList.filter(homework => homework.class_id == classId);
+        const homeworkId = this.props.match.params.homework;
+        const userType = this.props.match.params.userType;
+        const homework = classHomework.filter(homework => homework.homework_id == homeworkId);
     
         const homeworkList = homework.map(
             (homework, i) => 
@@ -62,9 +62,9 @@ class HomeworkItem extends React.Component {
                                 class_id={homework.class_id}
                                 />
                 
-                    </li>)
+                    </li>);
         
-        const commentsList = this.context.homeworkCommentsList
+        const commentsList = this.context.homeworkCommentsList;
         const comment = commentsList.map(
                         (comment, i) => 
                         <li className="comment" id={comment.id} key={i}>

@@ -1,193 +1,168 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import TokenService from '../services/token-service';
 
 const ClassesContext = React.createContext({
-    randomNumber: '',
-    username: '',
-    currentUser: [],
-    teachersList: [],
-    classList: [],
-    homeworkList: [],
-    updatesList:[],
-    usersList: [],
-    updatesCommentsList: [],
-    homeworkCommentsList: [],
-    setTeachersList: () => {},
-    setClassList: () => {},
-    setUsersList: () => {},
-    setHomeworkList: () => {},
-    setUpdatesList: () => {},
-    setHomeworkCommentsList: () => {},
-    setUpdatesCommentsList: () => {},
-    addUser: () => {},
-    addHomework: () => {},
-    addUpdate: () => {},
-    addUpdateComment: () => {},
-    addHomeworkComment: () => {},
-    deleteHomework: () => {},
-    deleteUpdate: () => {},
-    updateHomework: () => {},
-    updateUpdate: () => {},
-    setLogin: () => {},
-    setUserName: () => {},
-    setCurrentUser: () => {},
-    clearError: () => {},
-    error: null,
-    isLoggedIn: false
-  })
-  
-export default ClassesContext
-
-export class ClassesProvider extends Component {
-
-state = {
-  randomNumber: [],
+  randomNumber: '',
+  username: '',
   currentUser: [],
   teachersList: [],
   classList: [],
-  usersList: [],
   homeworkList: [],
   updatesList: [],
+  usersList: [],
   updatesCommentsList: [],
   homeworkCommentsList: [],
+  setTeachersList: () => {},
+  setClassList: () => {},
+  setUsersList: () => {},
+  setHomeworkList: () => {},
+  setUpdatesList: () => {},
+  setHomeworkCommentsList: () => {},
+  setUpdatesCommentsList: () => {},
+  addUser: () => {},
+  addHomework: () => {},
+  addUpdate: () => {},
+  addUpdateComment: () => {},
+  addHomeworkComment: () => {},
+  deleteHomework: () => {},
+  deleteUpdate: () => {},
+  updateHomework: () => {},
+  updateUpdate: () => {},
+  setLogin: () => {},
+  setUserName: () => {},
+  setCurrentUser: () => {},
+  clearError: () => {},
   error: null,
   isLoggedIn: false
-};
+});
 
-setTeachersList = teachersList => {
-  this.setState({ teachersList })
-}
+export default ClassesContext;
 
-setClassList = classList => {
-  this.setState({ classList })
-}
+export class ClassesProvider extends Component {
+  state = {
+    randomNumber: [],
+    currentUser: [],
+    teachersList: [],
+    classList: [],
+    usersList: [],
+    homeworkList: [],
+    updatesList: [],
+    updatesCommentsList: [],
+    homeworkCommentsList: [],
+    error: null,
+    isLoggedIn: false
+  };
 
-setUsersList = usersList => {
-  this.setState({ usersList })
-}
+  setTeachersList = teachersList => {
+    this.setState({ teachersList });
+  };
 
-setHomeworkList = homeworkList => {
-  this.setState({ homeworkList })
-}
+  setClassList = classList => {
+    this.setState({ classList });
+  };
 
-setUpdatesList = (updatesList) => {
-  this.setState({ updatesList })
-}
+  setUsersList = usersList => {
+    this.setState({ usersList });
+  };
 
-setHomeworkCommentsList = homeworkCommentsList => {
-  this.setState({ homeworkCommentsList })
-}
+  setHomeworkList = homeworkList => {
+    this.setState({ homeworkList });
+  };
 
-setUpdatesCommentsList = updatesCommentsList => {
-  //console.log('set update COMMENTS list')
-  this.setState({ updatesCommentsList })
-}
+  setUpdatesList = updatesList => {
+    this.setState({ updatesList });
+  };
 
-setError = error => {
-  //console.error(error)
-  this.setState({ error })
-}
+  setHomeworkCommentsList = homeworkCommentsList => {
+    this.setState({ homeworkCommentsList });
+  };
 
-clearError = () => {
-  this.setState({ error: null })
-}
+  setUpdatesCommentsList = updatesCommentsList => {
+    this.setState({ updatesCommentsList });
+  };
 
-addUser = newUser => {
-  console.log('add user')
-  this.setUsersList([
-    ...this.state.usersList,
-    newUser
-  ])
-}
+  setError = error => {
+    this.setState({ error });
+  };
 
-addHomework = newHomework => {
-  console.log('add homework')
-  this.setHomeworkList([
-    ...this.state.homeworkList,
-    newHomework
-  ])
-}
+  clearError = () => {
+    this.setState({ error: null });
+  };
 
-deleteHomework = homeworkId => {
-  //console.log('delete homework')
-  let newHomeworkList = this.state.homeworkList.filter(homework => 
-    homework.homework_id != homeworkId)
-    
-    this.setHomeworkList(newHomeworkList)
-}
+  addUser = newUser => {
+    this.setUsersList([...this.state.usersList, newUser]);
+  };
 
-addUpdate = newUpdate => {
-  this.setUpdatesList([
-    ...this.state.updatesList,
-    newUpdate
-  ])
-}
+  addHomework = newHomework => {
+    this.setHomeworkList([...this.state.homeworkList, newHomework]);
+  };
 
-deleteUpdate = updateId => {
-  let newUpdatesList = this.state.updatesList.filter(update => 
-    update.update_id != updateId)
-    
-  this.setUpdatesList(newUpdatesList)
-      
-}
+  deleteHomework = homeworkId => {
+    const newHomeworkList = this.state.homeworkList.filter(
+      homework => homework.homework_id != homeworkId
+    );
 
-addUpdateComment = newComment => {
-  this.setUpdatesCommentsList([
-    ...this.state.updatesCommentsList,
-    newComment
-  ])
-}
+    this.setHomeworkList(newHomeworkList);
+  };
 
+  addUpdate = newUpdate => {
+    this.setUpdatesList([...this.state.updatesList, newUpdate]);
+  };
 
-addHomeworkComment = newComment => {
-  this.setHomeworkCommentsList([
-    ...this.state.homeworkCommentsList,
-    newComment
-  ])
-}
+  deleteUpdate = updateId => {
+    const newUpdatesList = this.state.updatesList.filter(
+      update => update.update_id != updateId
+    );
 
-updateHomework = updatedHomework => {
-  const newHomeworkList = this.state.homeworkList.map(homework => 
-    (homework.id == updatedHomework.id)
-    ? updatedHomework
-    : homework)
+    this.setUpdatesList(newUpdatesList);
+  };
+
+  addUpdateComment = newComment => {
+    this.setUpdatesCommentsList([
+      ...this.state.updatesCommentsList,
+      newComment
+    ]);
+  };
+
+  addHomeworkComment = newComment => {
+    this.setHomeworkCommentsList([
+      ...this.state.homeworkCommentsList,
+      newComment
+    ]);
+  };
+
+  updateHomework = updatedHomework => {
+    const newHomeworkList = this.state.homeworkList.map(homework =>
+      homework.id == updatedHomework.id ? updatedHomework : homework
+    );
     this.setState({
-      homeworkList: [ ...newHomeworkList],
-      randomNumber: Math.random() 
-    })
-}
+      homeworkList: [...newHomeworkList],
+      randomNumber: Math.random()
+    });
+  };
 
-updateUpdate = updatedUpdate => {
-  const newUpdatesList = this.state.updatesList.map(update => 
-    (update.update_id == updatedUpdate.update_id)
-    ? updatedUpdate
-    : update)
+  updateUpdate = updatedUpdate => {
+    const newUpdatesList = this.state.updatesList.map(update =>
+      update.update_id == updatedUpdate.update_id ? updatedUpdate : update
+    );
     this.setState({
-      updatesList: [ ...newUpdatesList],
-      randomNumber: Math.random() 
-    })
-}
+      updatesList: [...newUpdatesList],
+      randomNumber: Math.random()
+    });
+  };
 
-setLogin = () => {
-  this.state.isLoggedIn
-  ? this.setState({isLoggedIn: false})
-  : this.setState({ isLoggedIn: true })
-}
+  setLogin = () => {
+    this.state.isLoggedIn
+      ? this.setState({ isLoggedIn: false })
+      : this.setState({ isLoggedIn: true });
+  };
 
-setCurrentUser = (currentUser) => {
-  console.log(currentUser.user_type)
-  this.setState({currentUser})
-  TokenService.saveUser(currentUser.user_type)
-}
+  setCurrentUser = currentUser => {
+    this.setState({ currentUser });
+    TokenService.saveUser(currentUser.user_type);
+  };
 
-
-
-render() {
-  //console.log(this.state.teachersList[0])
-  //console.log(this.state.classList[0])
-  //console.log(this.state.homeworkList[0])
-  //console.log(this.state.updatesCommentsList)
-
+  render() {
     const contextValue = {
       randomNumber: this.state.randomNumber,
       currentUser: this.state.currentUser,
@@ -221,11 +196,11 @@ render() {
       setLogin: this.setLogin,
       setUserName: this.setUserName,
       setCurrentUser: this.setCurrentUser
-    }
+    };
     return (
       <ClassesContext.Provider value={contextValue}>
         {this.props.children}
       </ClassesContext.Provider>
-    )
+    );
   }
 }

@@ -1,20 +1,20 @@
-import React from 'react'
-import './Comment.css'
+import React from 'react';
+import './Comment.css';
 
-class Comment extends React.Component {
+function Comment(props) {
+  const { date } = props;
+  const { comment } = props;
+  const { author } = props;
 
-    render() {
-
-        return(
-            <div className="comment-list">
-                <p className="comment-text">{this.props.comment}</p>
-                    <div className="comment-info">
-                        <p className="date">{this.props.date}</p>
-                        <p className="author">By  {this.props.author}</p>
-                        </div>      
-            </div>
-        )
-    }
+  return (
+    <div className='comment-list'>
+      <p className='comment-text'>{comment}</p>
+      <div className='comment-info'>
+        <p className='date'>{date}</p>
+        <p className='author'>By {author}</p>
+      </div>
+    </div>
+  );
 }
 
 export default Comment;

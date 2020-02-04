@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import ClassesContext from '../../contexts/ClassesContext'
-import TokenService from '../../services/token-service'
-import {Hyph} from '../../utils/utils'
-import './Header.css'
-import  School_logo from '../../school_images/school_building.png'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import ClassesContext from '../../contexts/ClassesContext';
+import TokenService from '../../services/token-service';
+import {Hyph} from '../../utils/utils';
+import './Header.css';
+import  School_logo from '../../school_images/school_building.png';
 
 export default class Header extends Component {
 
@@ -103,7 +103,7 @@ export default class Header extends Component {
     const classId = sessionStorage.getItem('classId')
     return (
       <nav className='Header'>
-        <img className="logo" src={School_logo} alt='school-logo'/>
+        <img className='logo' src={School_logo} alt='school-logo'/>
         {classId
           ? this.renderWelcomeLink(classId)
           : this.renderHomeLink()

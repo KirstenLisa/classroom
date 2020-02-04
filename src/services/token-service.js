@@ -1,43 +1,43 @@
-import config from '../config'
+import config from '../config';
 
 const TokenService = {
   saveAuthToken(token) {
-    window.sessionStorage.setItem(config.TOKEN_KEY, token)
+    window.sessionStorage.setItem(config.TOKEN_KEY, token);
   },
   getAuthToken() {
-    return window.sessionStorage.getItem(config.TOKEN_KEY)
+    return window.sessionStorage.getItem(config.TOKEN_KEY);
   },
   clearAuthToken() {
-    window.sessionStorage.removeItem(config.TOKEN_KEY)
+    window.sessionStorage.removeItem(config.TOKEN_KEY);
   },
   hasAuthToken() {
-    return !!TokenService.getAuthToken()
+    return !!TokenService.getAuthToken();
   },
   makeBasicAuthToken(userName, password) {
-    return window.btoa(`${userName}:${password}`)
+    return window.btoa(`${userName}:${password}`);
   },
   saveUser(value) {
-    return window.sessionStorage.setItem('userType', value)
+    return window.sessionStorage.setItem('userType', value);
   },
   saveUsername(username) {
-    return window.sessionStorage.setItem('username', username)
+    return window.sessionStorage.setItem('username', username);
   },
 
   saveClass(classId) {
-    return window.sessionStorage.setItem('classId', classId)
+    return window.sessionStorage.setItem('classId', classId);
   },
 
   clearUser() {
-    return window.sessionStorage.removeItem('userType')
+    return window.sessionStorage.removeItem('userType');
   },
 
   clearUsername() {
-    return window.sessionStorage.removeItem('username')
+    return window.sessionStorage.removeItem('username');
   },
 
   clearClass() {
-    return window.sessionStorage.removeItem('classId')
+    return window.sessionStorage.removeItem('classId');
   }
-}
+};
 
-export default TokenService
+export default TokenService;

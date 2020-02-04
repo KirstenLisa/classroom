@@ -1,3 +1,10 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .app-explanation {
     font-size: 26px;
     color: #104D73;

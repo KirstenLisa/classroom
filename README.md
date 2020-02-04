@@ -30,7 +30,7 @@ Teachers: are able to add, change and delete existing content whether it is home
 
 <h1>Start page:</h1>
 
- <img src="screenshots/startpage_desktop.png"  display="block" alt="screenshot desktop">
+ <img src="screenshots/start-page-desktop.png" display="block" alt="screenshot desktop">
  <img src="screenshots/startpage_mobile.png" width="200px" display="block" alt="screenshot mobile">
 
 

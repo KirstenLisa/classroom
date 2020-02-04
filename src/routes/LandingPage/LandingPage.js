@@ -3,7 +3,7 @@ import './LandingPage.css';
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className='landing-page'>
       <h1 className='landingpage-headline'>
         <span className='blue'>W</span>
         <span className='red'>e</span>
@@ -26,12 +26,6 @@ const LandingPage = () => {
         <span className='red'>m</span>
       </h1>
       <div className='app-explanation'>
-        <p>The app features three user types:</p>
-        <ul>
-          <li>Teacher</li>
-          <li>Parent</li>
-          <li>Student</li>
-        </ul>
 
         <h3>Test Users</h3>
         <ul className='testUserList'>
@@ -50,6 +44,12 @@ const LandingPage = () => {
             <p>Password: SusiSonne!123</p>
             <p>User Type: Student</p>
           </li>
+        </ul>
+        <p>The app features three user types:</p>
+        <ul>
+          <li>Teacher</li>
+          <li>Parent</li>
+          <li>Student</li>
         </ul>
         <p>
           Teachers can add, edit and delete updates as well as homework. They

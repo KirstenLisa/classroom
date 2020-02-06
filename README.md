@@ -1,6 +1,6 @@
 <h1>My Classroom</h1>
 
-<h2>Live: kirstens-classroom-app.now.sh</h2>
+<h2>Live: https://classroom-app.now.sh/</h2>
 
 
 <h1>Description</h1>

@@ -36,7 +36,6 @@ class HomeworkList extends Component {
   render() {
     const userType = sessionStorage.getItem('userType');
     const classId = sessionStorage.getItem('classId');
-    console.log(userType, classId);
 
     const homeworkForClass = this.context.homeworkList.filter(
       homework => homework.class_id == classId
